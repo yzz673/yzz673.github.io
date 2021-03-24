@@ -354,7 +354,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/leftist_skew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -367,7 +367,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/hello-world/" class="post-title-link" itemprop="url">左式堆和斜堆</a>
+          <a href="/2021/03/22/leftist_skew/" class="post-title-link" itemprop="url">左式堆和斜堆</a>
         </h2>
 
         <div class="post-meta-container">
@@ -385,7 +385,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 21:14:20" itemprop="dateModified" datetime="2021-03-24T21:14:20+08:00">2021-03-24</time>
+        <time title="Modified: 2021-03-24 22:42:21" itemprop="dateModified" datetime="2021-03-24T22:42:21+08:00">2021-03-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -417,7 +417,37 @@
 <li>merge的时间界为$O(logN)$</li>
 </ul>
 <h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</li>
+<li><p>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</p>
+<p>Proof by induction</p>
+<p>$r=1$时，显然堆至少有一个节点，成立</p>
+<p>假设$r=1,2,…,k$时均成立，$r=k+1$时，</p>
+<p>先考虑根的右子树，此时右子树的右路径上有$r$个节点，那么右子树至少有$2^r-1$个节点</p>
+<p>再考虑左子树，此时左子树的右路径至少有$r$个节点（否则根不是一个左式堆），那么左子树也至少有$2^r-1$个节点</p>
+<p>故总节点数至少为$2^r-1+2^r-1+1=2^{r+1}-1$，由归纳法知成立</p>
+</li>
+</ul>
+<h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
+<li>递归<ol>
+<li>H1或H2空时，返回另一个</li>
+<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
+<li>不符合左式堆结构时交换新堆的左右子树</li>
+<li>更新新堆的Npl值</li>
+</ol>
+</li>
+<li>非递归<ol>
+<li>将H1和H2右路径上的键值按堆序性排序合并</li>
+<li>遇到不符合左式堆结构时交换左右子树</li>
+</ol>
+</li>
+</ul>
+<h4 id="deletemin"><a href="#deletemin" class="headerlink" title="deletemin"></a>deletemin</h4><ol>
+<li>删除根节点</li>
+<li>merge左右子树</li>
+</ol>
+<h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
+<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
+<li>除了上面一点，操作与左式堆一样</li>
+<li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
 </ul>
 
       

@@ -23,21 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="左式堆 对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;&#x3D;Npl(X-&gt;rightchild)$ $Npl(X)$为X到无双儿节点的最短路径长 merge的时间界为$O(logN)$  定理1 右路径上有$r$个节点的左式堆至少有$2^r-1$个节点">
+<meta name="description" content="左式堆 对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;&#x3D;Npl(X-&gt;rightchild)$ $Npl(X)$为X到无双儿节点的最短路径长 merge的时间界为$O(logN)$  定理1 右路径上有$r$个节点的左式堆至少有$2^r-1$个节点 Proof by induction $r&#x3D;1$时，显然堆至少有一个节点，成立 假设$r&#x3D;1,2,…,k$时均成立，$r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="左式堆和斜堆">
-<meta property="og:url" content="http://example.com/2021/03/22/hello-world/index.html">
+<meta property="og:url" content="http://example.com/2021/03/22/leftist_skew/index.html">
 <meta property="og:site_name" content="May the Force Be With You">
-<meta property="og:description" content="左式堆 对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;&#x3D;Npl(X-&gt;rightchild)$ $Npl(X)$为X到无双儿节点的最短路径长 merge的时间界为$O(logN)$  定理1 右路径上有$r$个节点的左式堆至少有$2^r-1$个节点">
+<meta property="og:description" content="左式堆 对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;&#x3D;Npl(X-&gt;rightchild)$ $Npl(X)$为X到无双儿节点的最短路径长 merge的时间界为$O(logN)$  定理1 右路径上有$r$个节点的左式堆至少有$2^r-1$个节点 Proof by induction $r&#x3D;1$时，显然堆至少有一个节点，成立 假设$r&#x3D;1,2,…,k$时均成立，$r">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-22T05:19:23.499Z">
-<meta property="article:modified_time" content="2021-03-24T13:14:20.577Z">
+<meta property="article:modified_time" content="2021-03-24T14:42:21.909Z">
 <meta property="article:author" content="Darth Vadar">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/03/22/hello-world/">
+<link rel="canonical" href="http://example.com/2021/03/22/leftist_skew/">
 
 
 <script class="page-configurations">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%BC%8F%E5%A0%86"><span class="nav-number">1.</span> <span class="nav-text">左式堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%BC%8F%E5%A0%86"><span class="nav-number">1.</span> <span class="nav-text">左式堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-O-logN"><span class="nav-number">1.0.2.</span> <span class="nav-text">merge($O(logN)$)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deletemin"><span class="nav-number">1.0.3.</span> <span class="nav-text">deletemin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%9C%E5%A0%86"><span class="nav-number">2.</span> <span class="nav-text">斜堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-amortized-bound-O-logN"><span class="nav-number">2.0.1.</span> <span class="nav-text">merge(amortized bound: $O(logN)$)</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,7 +234,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/leftist_skew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -265,7 +265,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 21:14:20" itemprop="dateModified" datetime="2021-03-24T21:14:20+08:00">2021-03-24</time>
+        <time title="Modified: 2021-03-24 22:42:21" itemprop="dateModified" datetime="2021-03-24T22:42:21+08:00">2021-03-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,7 +297,37 @@
 <li>merge的时间界为$O(logN)$</li>
 </ul>
 <h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</li>
+<li><p>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</p>
+<p>Proof by induction</p>
+<p>$r=1$时，显然堆至少有一个节点，成立</p>
+<p>假设$r=1,2,…,k$时均成立，$r=k+1$时，</p>
+<p>先考虑根的右子树，此时右子树的右路径上有$r$个节点，那么右子树至少有$2^r-1$个节点</p>
+<p>再考虑左子树，此时左子树的右路径至少有$r$个节点（否则根不是一个左式堆），那么左子树也至少有$2^r-1$个节点</p>
+<p>故总节点数至少为$2^r-1+2^r-1+1=2^{r+1}-1$，由归纳法知成立</p>
+</li>
+</ul>
+<h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
+<li>递归<ol>
+<li>H1或H2空时，返回另一个</li>
+<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
+<li>不符合左式堆结构时交换新堆的左右子树</li>
+<li>更新新堆的Npl值</li>
+</ol>
+</li>
+<li>非递归<ol>
+<li>将H1和H2右路径上的键值按堆序性排序合并</li>
+<li>遇到不符合左式堆结构时交换左右子树</li>
+</ol>
+</li>
+</ul>
+<h4 id="deletemin"><a href="#deletemin" class="headerlink" title="deletemin"></a>deletemin</h4><ol>
+<li>删除根节点</li>
+<li>merge左右子树</li>
+</ol>
+<h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
+<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
+<li>除了上面一点，操作与左式堆一样</li>
+<li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
 </ul>
 
     </div>
