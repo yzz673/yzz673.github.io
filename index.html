@@ -172,6 +172,18 @@
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
   </nav>
 </div>
   <div class="links-of-author site-overview-item animated">
@@ -179,7 +191,7 @@
         <a href="https://github.com/yzz673" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yzz673" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/yuan001223@163.com" title="E-Mail → yuan001223@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:yuan001223@163.com" title="E-Mail → mailto:yuan001223@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
 
@@ -355,7 +367,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+          <a href="/2021/03/22/hello-world/" class="post-title-link" itemprop="url">左式堆和斜堆</a>
         </h2>
 
         <div class="post-meta-container">
@@ -368,6 +380,26 @@
 
       <time title="Created: 2021-03-22 13:19:23" itemprop="dateCreated datePublished" datetime="2021-03-22T13:19:23+08:00">2021-03-22</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-24 21:03:40" itemprop="dateModified" datetime="2021-03-24T21:03:40+08:00">2021-03-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/ADS/" itemprop="url" rel="index"><span itemprop="name">ADS</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -379,19 +411,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
+<li>对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;=Npl(X-&gt;rightchild)$</li>
+<li>$Npl(X)$为X到无双儿节点的最短路径长</li>
+<li>merge的时间界为$O(logN)$</li>
+</ul>
+<h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
+<li>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</li>
+</ul>
 
       
     </div>
