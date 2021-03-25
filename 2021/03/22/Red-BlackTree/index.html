@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="红黑树">
+<meta name="description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="红黑树">
 <meta property="og:url" content="http://example.com/2021/03/22/Red-BlackTree/index.html">
 <meta property="og:site_name" content="May the Force Be With You">
-<meta property="og:description" content="红黑树">
+<meta property="og:description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-22T07:31:57.316Z">
-<meta property="article:modified_time" content="2021-03-24T15:04:46.849Z">
+<meta property="article:modified_time" content="2021-03-25T05:29:37.046Z">
 <meta property="article:author" content="Darth Vadar">
 <meta property="article:tag" content="Data structure">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-number">1.0.2.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-number">1.0.3.</span> <span class="nav-text">delete</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 23:04:46" itemprop="dateModified" datetime="2021-03-24T23:04:46+08:00">2021-03-24</time>
+        <time title="Modified: 2021-03-25 13:29:37" itemprop="dateModified" datetime="2021-03-25T13:29:37+08:00">2021-03-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -291,7 +291,58 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2>
+        <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
+<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
+<p>Proof</p>
+<p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
+<ol>
+<li><p>$sizeof(x)&gt;=2^{bh(x)}-1$</p>
+<p>$bh(x)=0$，空树，$sizeof(x)=0$，显然成立</p>
+<p>假设$bh(x)=0,1,…,k$都成立，$bh(x)=k+1$时，$sizeof(x-&gt;child)&gt;=2^k-1$，所以$sizeof(x)=2*sizeof(x-&gt;child)+1&gt;=2^{k+1}-1$</p>
+<p>成立</p>
+</li>
+<li><p>$bh(Tree)&gt;=h(Tree)/2$</p>
+<p>红黑树不存在父子关系的红节点，故结论显然成立</p>
+</li>
+</ol>
+<p>由1,2知结论成立</p>
+</li>
+</ul>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><ul>
+<li>插入的节点染成红色，若插入后父亲是红色就要调整<ul>
+<li>叔红：叔、父与祖父换色</li>
+<li>叔黑：<ol>
+<li>zigzag型：旋转父亲变成zigzig</li>
+<li>zigzig型：父亲和祖父换色，旋转祖父（父为轴）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><ul>
+<li><p>非叶节点和红叶节点：按照BST删除方法进行删除，但原节点颜色不变（此时不会影响RBT的性质）</p>
+</li>
+<li><p>黑叶节点（在该路径下要增加一个黑节点）</p>
+<ul>
+<li><p>兄红（case1）：父兄换色父单旋（兄为轴）（未处理完）</p>
+</li>
+<li><p>兄黑：</p>
+<ul>
+<li><p>双侄黑（case2）：兄变红</p>
+<ul>
+<li>父红（case2.1）：父变黑（完成）</li>
+<li>父黑（case2.2）：目标节点上移</li>
+</ul>
+</li>
+<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
+</li>
+<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     
