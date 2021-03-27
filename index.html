@@ -258,7 +258,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-26 00:24:39" itemprop="dateModified" datetime="2021-03-26T00:24:39+08:00">2021-03-26</time>
+        <time title="Modified: 2021-03-26 19:50:38" itemprop="dateModified" datetime="2021-03-26T19:50:38+08:00">2021-03-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,8 +284,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="线性方程组"><a href="#线性方程组" class="headerlink" title="线性方程组"></a>线性方程组</h2><h3 id="直接解法"><a href="#直接解法" class="headerlink" title="直接解法"></a>直接解法</h3><ul>
+          <h2 id="线性方程组"><a href="#线性方程组" class="headerlink" title="线性方程组"></a>线性方程组</h2><h3 id="直接解法"><a href="#直接解法" class="headerlink" title="直接解法"></a>直接解法</h3><h4 id="消元"><a href="#消元" class="headerlink" title="消元"></a>消元</h4><ul>
 <li>高斯消元成上三角($\sum_{k=1}^{n-1}(n-k)(n-k+2)=n^3/3+n^2/2-5n/6$次运算)，再从最后一项回代($1+\sum_{i=1}^{n-1}(n-i+1)=n^2/2+n/2$次运算)</li>
+<li>Gauss-Jordan消元：消成主对角阵</li>
+<li></li>
+</ul>
+<h4 id="选主元"><a href="#选主元" class="headerlink" title="选主元"></a>选主元</h4><ul>
+<li><p>Partial Pivoting</p>
+<ul>
+<li>运行到第k行时，选取$｜a_{ik}｜$最大的一行($k&lt;=i&lt;=n$)并与第k行交换</li>
+</ul>
+</li>
+<li><p>Scaled Partial Pivoting（Scaled- Column Pivoting）</p>
+<ul>
+<li>$s_i=max_{1&lt;=j&lt;=n}(|a_{ij}|)$</li>
+<li>运行到第k行时，选取$\frac{|a_{ik}|}{s_i}$最大的一行($k&lt;=i&lt;=n$)并与第k行交换</li>
+</ul>
+</li>
+<li><p>Complete Pivoting</p>
+<ul>
+<li>运行到第k行时，选取$|a_{ij}|$最大的元素($k&lt;=i&lt;=n,k&lt;=j&lt;=n$)，并通过行变换和列变换交换到$a_{kk}$的位置，列变换需要交换未知数的位置</li>
+</ul>
+</li>
+</ul>
+<h4 id="矩阵和向量"><a href="#矩阵和向量" class="headerlink" title="矩阵和向量"></a>矩阵和向量</h4><ul>
+<li>$A_i(1&lt;=i&lt;=n)$是n阶方阵，则$|\prod_{i=1}^nA_i|=\prod_{i=1}^n|A_i|$</li>
+<li>对角占优矩阵<ul>
+<li>每一行的对角元绝对值大于等于其余元绝对值之和</li>
+<li>若严格大于，则称为严格对角占优</li>
+</ul>
+</li>
 </ul>
 <h3 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h3>
       
