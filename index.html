@@ -168,20 +168,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -218,6 +218,365 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/ADS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/29/ADS/" class="post-title-link" itemprop="url">ADS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-29 16:20:42 / Modified: 16:23:29" itemprop="dateCreated datePublished" datetime="2021-03-29T16:20:42+08:00">2021-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
+<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
+<p>Proof</p>
+<p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
+<ol>
+<li><p>$sizeof(x)&gt;=2^{bh(x)}-1$</p>
+<p>$bh(x)=0$，空树，$sizeof(x)=0$，显然成立</p>
+<p>假设$bh(x)=0,1,…,k$都成立，$bh(x)=k+1$时，$sizeof(x-&gt;child)&gt;=2^k-1$，所以$sizeof(x)=2*sizeof(x-&gt;child)+1&gt;=2^{k+1}-1$</p>
+<p>成立</p>
+</li>
+<li><p>$bh(Tree)&gt;=h(Tree)/2$</p>
+<p>红黑树不存在父子关系的红节点，故结论显然成立</p>
+</li>
+</ol>
+<p>由1,2知结论成立</p>
+</li>
+</ul>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><ul>
+<li>插入的节点染成红色，若插入后父亲是红色就要调整<ul>
+<li>叔红：叔、父与祖父换色</li>
+<li>叔黑：<ol>
+<li>zigzag型：旋转父亲变成zigzig</li>
+<li>zigzig型：父亲和祖父换色，旋转祖父（父为轴）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><ul>
+<li><p>非叶节点和红叶节点：按照BST删除方法进行删除，但原节点颜色不变（此时不会影响RBT的性质）</p>
+</li>
+<li><p>黑叶节点（在该路径下要增加一个黑节点）</p>
+<ul>
+<li><p>兄红（case1）：父兄换色父单旋（兄为轴）（未处理完）</p>
+</li>
+<li><p>兄黑：</p>
+<ul>
+<li><p>双侄黑（case2）：兄变红</p>
+<ul>
+<li>父红（case2.1）：父变黑（完成）</li>
+<li>父黑（case2.2）：目标节点上移</li>
+</ul>
+</li>
+<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
+</li>
+<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
+<li>对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;=Npl(X-&gt;rightchild)$</li>
+<li>$Npl(X)$为X到无双儿节点的最短路径长</li>
+<li>merge的时间界为$O(logN)$</li>
+</ul>
+<h4 id="定理1-1"><a href="#定理1-1" class="headerlink" title="定理1"></a>定理1</h4><ul>
+<li><p>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</p>
+<p>Proof by induction</p>
+<p>$r=1$时，显然堆至少有一个节点，成立</p>
+<p>假设$r=1,2,…,k$时均成立，$r=k+1$时，</p>
+<p>先考虑根的右子树，此时右子树的右路径上有$r$个节点，那么右子树至少有$2^r-1$个节点</p>
+<p>再考虑左子树，此时左子树的右路径至少有$r$个节点（否则根不是一个左式堆），那么左子树也至少有$2^r-1$个节点</p>
+<p>故总节点数至少为$2^r-1+2^r-1+1=2^{r+1}-1$，由归纳法知成立</p>
+</li>
+</ul>
+<h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
+<li>递归<ol>
+<li>H1或H2空时，返回另一个</li>
+<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
+<li>不符合左式堆结构时交换新堆的左右子树</li>
+<li>更新新堆的Npl值</li>
+</ol>
+</li>
+<li>非递归<ol>
+<li>将H1和H2右路径上的键值按堆序性排序合并</li>
+<li>遇到不符合左式堆结构时交换左右子树</li>
+</ol>
+</li>
+</ul>
+<h4 id="deletemin"><a href="#deletemin" class="headerlink" title="deletemin"></a>deletemin</h4><ol>
+<li>删除根节点</li>
+<li>merge左右子树</li>
+</ol>
+<h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
+<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
+<li>除了上面一点，操作与左式堆一样</li>
+<li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/28/SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/28/SQL/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-28 23:32:51" itemprop="dateCreated datePublished" datetime="2021-03-28T23:32:51+08:00">2021-03-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-29 00:02:10" itemprop="dateModified" datetime="2021-03-29T00:02:10+08:00">2021-03-29</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h3 id="连接语句"><a href="#连接语句" class="headerlink" title="连接语句"></a>连接语句</h3><ul>
+<li><pre><code class="lang-sql">r1 join r2 using (A1, A2);
+//此语句代表对r1和r2进行连接，连接的条件是r1.A1 = r2.A1, r1.A2 = r2.A2
+//假设就算r1,r2还有共同属性A3,对于r1.A3 != r2.A3的元组还是会连接起来
+//上述 join using 语句是natural join 语句更泛化的形式
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 外连接</span><br><span class="line"></span><br><span class="line">  * 必要性：假设有两个表student（学生个人信息）和takes（选修课程信息），我们想显示一个所有学生的列表，包括个人信息和选课信息。假设使用natural join语句，如果有一名学生未选修任何课程，那查询结果里将没有这名学生。此时natural join无法满足需求。</span><br><span class="line"></span><br><span class="line">  * 左外连接（left outer join）：只保留左边关系中的元组</span><br><span class="line"></span><br><span class="line">  * 右外连接（right outer join）：只保留右边关系中的元组</span><br><span class="line"></span><br><span class="line">  * 全外连接（full outer join）：保留两边关系中的元组</span><br><span class="line"></span><br><span class="line">  * &#96;&#96;&#96;sql</span><br><span class="line">    &#x2F;&#x2F;对于上述请求，可写出如下语句</span><br><span class="line">    select *</span><br><span class="line">    from student natural left outer join takes</span><br><span class="line">    &#x2F;&#x2F;此时未选课的学生会出现在查询结果中，对于student里的属性置原值，takes里的不存在属性置null</span><br></pre></td></tr></table></figure>
+
+* ```sql
+  //语句1
+  select *
+  from student left outer join takes
+  on student.ID = takes.ID
+  //语句2
+  select *
+  from student left outer join takes
+  where student.ID = takes.ID
+
+  //语句1的执行结果与上面的语句一样，除了ID会出现两次，on子句可以与外连接语句一起使用
+  //语句儿执行结果不一样，对于未选课的学生不会出现在结果中，会被where子句谓词排除掉
+</code></pre>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/C-FTheorem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/27/C-FTheorem/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-27 22:28:30" itemprop="dateCreated datePublished" datetime="2021-03-27T22:28:30+08:00">2021-03-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-28 19:26:23" itemprop="dateModified" datetime="2021-03-28T19:26:23+08:00">2021-03-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Eigenvalues-and-Optimization-The-Courant-Fischer-Theorem"><a href="#Eigenvalues-and-Optimization-The-Courant-Fischer-Theorem" class="headerlink" title="Eigenvalues and Optimization: The Courant-Fischer Theorem"></a>Eigenvalues and Optimization: The Courant-Fischer Theorem</h1><ul>
+<li>瑞利熵：$R(M,x) = \frac{x^TMx}{x^Tx}$</li>
+<li>易知当$Mx = \mu x$ 即x为M的特征向量，$\mu$为对应特征值时有$R(M,x) = \mu$</li>
+<li>当用图的拉普拉斯矩阵代替M，用属性矩阵代替x时，瑞利熵反映了图的光滑程度（相邻节点的相似程度，越相似越光滑）</li>
+<li>瑞利熵的上（下）界为M的最大（小）特征值</li>
+</ul>
+<h2 id="C-F定理"><a href="#C-F定理" class="headerlink" title="C-F定理"></a>C-F定理</h2><ul>
+<li><p>M为n阶对称阵且有特征值$\mu_1&gt;=\mu_2&gt;=…&gt;=\mu_n$，S，T均为n维欧氏空间的子空间，$dimS = k,dimT = n-k+1$，x为非零向量，则有$\mu_k=max (min_{x \in S}R(M,x))=min(max_{x \in T}R(M,x))$</p>
+</li>
+<li><p>证明：设$\psi_1,\psi_2…\psi_n$为一组标准正交基且为M的特征向量，对应特征值为$\mu_1&gt;=\mu_2&gt;=…&gt;=\mu_n$</p>
+<ul>
+<li><p>任意x，将x在上述基下分解$x=\sum_{i=1}^n c_i\psi_i$，其中易证$c_i=\psi_i^Tx$</p>
+</li>
+<li><p>lemma2.1.1</p>
+<ul>
+<li>$x^TMx=\sum_{i=1}^nc_i^2\mu_i$</li>
+<li>证明：$x^TMx=(\sum_{i=1}^n c_i\psi_i)^TM(\sum_{i=1}^n c_i\psi_i)=(\sum_{i=1}^n c_i\psi_i)^T(\sum_{i=1}^n c_iM\psi_i)=(\sum_{i=1}^n c_i\psi_i^T)(\sum_{i=1}^n c_i\mu_i\psi_i)=\sum_{i=1}^nc_i^2\mu_i$ </li>
+</ul>
+</li>
+<li><p>下证$\mu_k=max (min_{x \in S}R(M,x))$</p>
+<ul>
+<li><p>先看$min_{x \in S}R(M,x)$，S为k维子空间，不妨假设其由$\psi_{01},…,\psi_{0k}$张成，对应特征值为$\mu_{01},…\mu_{0k}$</p>
+<p>则$R(M,x)=(\sum_{i=1}^k\mu_{0i}c_i^2)/(\sum_{i=1}^kc_i^2)&gt;=\mu_{0k}$，等号可以取到</p>
+<p>所以对上述值取max，则</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -316,261 +675,6 @@
 </li>
 </ul>
 <h3 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/Red-BlackTree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Darth Vadar">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force Be With You">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/Red-BlackTree/" class="post-title-link" itemprop="url">红黑树</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-22 15:31:57" itemprop="dateCreated datePublished" datetime="2021-03-22T15:31:57+08:00">2021-03-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-25 13:29:37" itemprop="dateModified" datetime="2021-03-25T13:29:37+08:00">2021-03-25</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/ADS/" itemprop="url" rel="index"><span itemprop="name">ADS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
-<p>Proof</p>
-<p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
-<ol>
-<li><p>$sizeof(x)&gt;=2^{bh(x)}-1$</p>
-<p>$bh(x)=0$，空树，$sizeof(x)=0$，显然成立</p>
-<p>假设$bh(x)=0,1,…,k$都成立，$bh(x)=k+1$时，$sizeof(x-&gt;child)&gt;=2^k-1$，所以$sizeof(x)=2*sizeof(x-&gt;child)+1&gt;=2^{k+1}-1$</p>
-<p>成立</p>
-</li>
-<li><p>$bh(Tree)&gt;=h(Tree)/2$</p>
-<p>红黑树不存在父子关系的红节点，故结论显然成立</p>
-</li>
-</ol>
-<p>由1,2知结论成立</p>
-</li>
-</ul>
-<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><ul>
-<li>插入的节点染成红色，若插入后父亲是红色就要调整<ul>
-<li>叔红：叔、父与祖父换色</li>
-<li>叔黑：<ol>
-<li>zigzag型：旋转父亲变成zigzig</li>
-<li>zigzig型：父亲和祖父换色，旋转祖父（父为轴）</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><ul>
-<li><p>非叶节点和红叶节点：按照BST删除方法进行删除，但原节点颜色不变（此时不会影响RBT的性质）</p>
-</li>
-<li><p>黑叶节点（在该路径下要增加一个黑节点）</p>
-<ul>
-<li><p>兄红（case1）：父兄换色父单旋（兄为轴）（未处理完）</p>
-</li>
-<li><p>兄黑：</p>
-<ul>
-<li><p>双侄黑（case2）：兄变红</p>
-<ul>
-<li>父红（case2.1）：父变黑（完成）</li>
-<li>父黑（case2.2）：目标节点上移</li>
-</ul>
-</li>
-<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
-</li>
-<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/leftist_skew/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Darth Vadar">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force Be With You">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/leftist_skew/" class="post-title-link" itemprop="url">左式堆和斜堆</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-22 13:19:23" itemprop="dateCreated datePublished" datetime="2021-03-22T13:19:23+08:00">2021-03-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 22:59:58" itemprop="dateModified" datetime="2021-03-24T22:59:58+08:00">2021-03-24</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/ADS/" itemprop="url" rel="index"><span itemprop="name">ADS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
-<li>对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;=Npl(X-&gt;rightchild)$</li>
-<li>$Npl(X)$为X到无双儿节点的最短路径长</li>
-<li>merge的时间界为$O(logN)$</li>
-</ul>
-<h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</p>
-<p>Proof by induction</p>
-<p>$r=1$时，显然堆至少有一个节点，成立</p>
-<p>假设$r=1,2,…,k$时均成立，$r=k+1$时，</p>
-<p>先考虑根的右子树，此时右子树的右路径上有$r$个节点，那么右子树至少有$2^r-1$个节点</p>
-<p>再考虑左子树，此时左子树的右路径至少有$r$个节点（否则根不是一个左式堆），那么左子树也至少有$2^r-1$个节点</p>
-<p>故总节点数至少为$2^r-1+2^r-1+1=2^{r+1}-1$，由归纳法知成立</p>
-</li>
-</ul>
-<h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
-<li>递归<ol>
-<li>H1或H2空时，返回另一个</li>
-<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
-<li>不符合左式堆结构时交换新堆的左右子树</li>
-<li>更新新堆的Npl值</li>
-</ol>
-</li>
-<li>非递归<ol>
-<li>将H1和H2右路径上的键值按堆序性排序合并</li>
-<li>遇到不符合左式堆结构时交换左右子树</li>
-</ol>
-</li>
-</ul>
-<h4 id="deletemin"><a href="#deletemin" class="headerlink" title="deletemin"></a>deletemin</h4><ol>
-<li>删除根节点</li>
-<li>merge左右子树</li>
-</ol>
-<h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
-<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
-<li>除了上面一点，操作与左式堆一样</li>
-<li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
-</ul>
-
       
     </div>
 
