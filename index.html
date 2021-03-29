@@ -168,7 +168,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -181,7 +181,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -218,6 +218,190 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/DB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/29/DB/" class="post-title-link" itemprop="url">DB</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-29 18:32:27 / Modified: 20:38:31" itemprop="dateCreated datePublished" datetime="2021-03-29T18:32:27+08:00">2021-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h2><ul>
+<li><p>Data abstraction</p>
+<ul>
+<li>Physical level —lowest level</li>
+<li>Logical level</li>
+<li>View level —highest level</li>
+</ul>
+</li>
+<li><p>Data models</p>
+<ul>
+<li>Relational model</li>
+<li>Entity-Relationship Model</li>
+<li>Object-Based Data Model</li>
+<li>Semistructured Data Model</li>
+</ul>
+</li>
+</ul>
+<h2 id="relational-model"><a href="#relational-model" class="headerlink" title="relational model"></a>relational model</h2><h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><ul>
+<li>超码：一个或多个属性的集合，可以唯一标识一个元组</li>
+<li>候选码：最小超码</li>
+<li>主码：被设计者选中的候选码</li>
+<li>外码：r1的属性中包含r2的主码，称为r1参照r2的外码。外码需遵循参照完整性约束，即对于参照属性，r1中出现的的取值在r2的对应属性中必然要出现。</li>
+</ul>
+<h4 id="模式图-schema-diagram"><a href="#模式图-schema-diagram" class="headerlink" title="模式图(schema diagram)"></a>模式图(schema diagram)</h4><h4 id="关系查询语言"><a href="#关系查询语言" class="headerlink" title="关系查询语言"></a>关系查询语言</h4><ul>
+<li><p>$\sigma$</p>
+</li>
+<li><p>$\Pi$</p>
+</li>
+<li><p>$\Join$</p>
+</li>
+<li><p>$\times$</p>
+</li>
+<li><p>$-$</p>
+</li>
+<li><p>$\rho$</p>
+</li>
+<li><p>$\cap$</p>
+</li>
+<li><p>$\cup$</p>
+</li>
+<li><p>$\div$</p>
+<p>关系r</p>
+<p>| A        | B    | C        | D    | E    |<br>| ———— | —— | ———— | —— | —— |<br>| $\alpha$ | a    | $\alpha$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | b    | 1    |<br>| $\beta$  | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | c    | 2    |<br>| $\beta$  | a    | $\gamma$ | b    | 3    |<br>| $\gamma$ | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | b    | 1    |<br>| $\gamma$ | c    | $\beta$  | b    | 1    |</p>
+<p>关系s</p>
+<p>| D    | E    |<br>| —— | —— |<br>| a    | 1    |<br>| b    | 1    |</p>
+<p>$r\div s$</p>
+<p>| A        | B    | C        |<br>| ———— | —— | ———— |<br>| $\alpha$ | b    | $\gamma$ |<br>| $\gamma$ | a    | $\gamma$ |</p>
+<p>除法的结果得到的表属性为r的属性去掉s的属性。</p>
+</li>
+<li><p>聚合操作</p>
+<p>关系r</p>
+<p>| A    | B    | C    |<br>| —— | —— | —— |<br>| a    | a    | 7    |<br>| a    | b    | 7    |<br>| b    | b    | 8    |<br>| b    | a    | 14   |</p>
+<p>$\mathcal G_{avg(c)}(r)$</p>
+<p>| avg-c |<br>| ——- |<br>| 9     |</p>
+<p>$_A\mathcal G_{sum(c)}(r)$ —group by A</p>
+<p>| A    | sum(c) |<br>| —— | ——— |<br>| a    | 14     |<br>| b    | 22     |</p>
+</li>
+</ul>
+<ul>
+<li><p>例子</p>
+<ul>
+<li><p><em>depositor</em>(<em>customer-name</em>, <em>account-number</em>) </p>
+<p><em>account</em>(<em>account-number</em>, <em>branch-name</em>, <em>balance</em>) </p>
+<p>Find all customers who have an account from at least the “Downtown” and the “Uptown” branches. </p>
+<p>$\Pi_{customer_name,branch_name}(depositor\Join account)\div \rho_{tmp(branch_name)}({‘Downtown’,’Uptown})$</p>
+</li>
+<li><p>涉及“全部”等查询，常用除法实现</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><ul>
+<li>smallint: 小整数类型</li>
+<li>numeric(p, d): 共p 位数字（一位符号位），d位数字在小数点右边</li>
+<li>float(n): 精度至少位n</li>
+<li>real: 浮点数</li>
+<li>double precision: 双精度浮点数</li>
+</ul>
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h4><ul>
+<li>“s%”匹配任何以字符串”s”打头等字符串</li>
+<li>“% s%”匹配任何包含”s”的字符串</li>
+<li>“_ _ _”匹配只含三个字符的字符串</li>
+<li><p>“_ _ _%”匹配至少含三个字符的字符串</p>
+</li>
+<li><p>like “ab\%cd%” escape ‘\ ‘匹配所有以”ab%cd”开头的字符串</p>
+</li>
+<li><p>SQL运用like来表达模式</p>
+<p>查询”建筑名称中包含”Watson”的所有系名”：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> dept_name</span><br><span class="line"><span class="keyword">from</span> department</span><br><span class="line"><span class="keyword">where</span> depa_name <span class="keyword">like</span> <span class="string">&#x27;% Watson%&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="排序元组的显示次序"><a href="#排序元组的显示次序" class="headerlink" title="排序元组的显示次序"></a>排序元组的显示次序</h4><ul>
+<li><p>order by语句 —默认使用升序</p>
+</li>
+<li><p>desc表示降序，asc表示升序</p>
+</li>
+<li><p>当值相等时可以指定按另外一个属性排序</p>
+<p>比如按salary降序排列，值相同时就按name升序排列，此时可写为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">desc</span>, name <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="并、交、差运算"><a href="#并、交、差运算" class="headerlink" title="并、交、差运算"></a>并、交、差运算</h4><ul>
+<li>union，intersect，except运算自动去重</li>
+<li>若要不去重，则在前面加上all</li>
+<li>对于差运算，若不去重，则结果中某属性的个数位被减量中出现的次数减去减量中出现的次数</li>
+</ul>
+<h4 id="分组聚集和having子句"><a href="#分组聚集和having子句" class="headerlink" title="分组聚集和having子句"></a>分组聚集和having子句</h4><ul>
+<li>若有些属性在select子句中出现但没有在group by子句中出现，则该属性必须出现在聚集函数内部，不然会报错</li>
+<li>having子句应用到每个分组上，不满足having子句谓词的分组会被抛弃</li>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

@@ -23,21 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
+<meta name="description" content="introduction Data abstraction  Physical level —lowest level Logical level View level —highest level   Data models  Relational model Entity-Relationship Model Object-Based Data Model Semistructured Dat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ADS">
-<meta property="og:url" content="http://example.com/2021/03/29/ADS/index.html">
+<meta property="og:title" content="DB">
+<meta property="og:url" content="http://example.com/2021/03/29/DB/index.html">
 <meta property="og:site_name" content="May the Force Be With You">
-<meta property="og:description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
+<meta property="og:description" content="introduction Data abstraction  Physical level —lowest level Logical level View level —highest level   Data models  Relational model Entity-Relationship Model Object-Based Data Model Semistructured Dat">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-29T08:20:42.000Z">
-<meta property="article:modified_time" content="2021-03-29T08:23:29.962Z">
+<meta property="article:published_time" content="2021-03-29T10:32:27.000Z">
+<meta property="article:modified_time" content="2021-03-29T12:38:31.617Z">
 <meta property="article:author" content="Darth Vadar">
-<meta property="article:tag" content="ADS">
+<meta property="article:tag" content="DB">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/03/29/ADS/">
+<link rel="canonical" href="http://example.com/2021/03/29/DB/">
 
 
 <script class="page-configurations">
@@ -49,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>ADS | May the Force Be With You</title>
+<title>DB | May the Force Be With You</title>
   
 
 
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-number">1.0.2.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-number">1.0.3.</span> <span class="nav-text">delete</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%BC%8F%E5%A0%86"><span class="nav-number">2.</span> <span class="nav-text">左式堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-O-logN"><span class="nav-number">2.0.2.</span> <span class="nav-text">merge($O(logN)$)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deletemin"><span class="nav-number">2.0.3.</span> <span class="nav-text">deletemin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%9C%E5%A0%86"><span class="nav-number">3.</span> <span class="nav-text">斜堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-amortized-bound-O-logN"><span class="nav-number">3.0.1.</span> <span class="nav-text">merge(amortized bound: $O(logN)$)</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relational-model"><span class="nav-number">2.</span> <span class="nav-text">relational model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key"><span class="nav-number">2.0.1.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%9B%BE-schema-diagram"><span class="nav-number">2.0.2.</span> <span class="nav-text">模式图(schema diagram)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="nav-number">2.0.3.</span> <span class="nav-text">关系查询语言</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">3.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">3.0.1.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E5%85%83%E7%BB%84%E7%9A%84%E6%98%BE%E7%A4%BA%E6%AC%A1%E5%BA%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">排序元组的显示次序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E3%80%81%E4%BA%A4%E3%80%81%E5%B7%AE%E8%BF%90%E7%AE%97"><span class="nav-number">3.0.3.</span> <span class="nav-text">并、交、差运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%81%9A%E9%9B%86%E5%92%8Chaving%E5%AD%90%E5%8F%A5"><span class="nav-number">3.0.4.</span> <span class="nav-text">分组聚集和having子句</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,7 +234,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/ADS/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/29/DB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -247,7 +247,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ADS
+          DB
         </h1>
 
         <div class="post-meta-container">
@@ -259,7 +259,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-29 16:20:42 / Modified: 16:23:29" itemprop="dateCreated datePublished" datetime="2021-03-29T16:20:42+08:00">2021-03-29</time>
+      <time title="Created: 2021-03-29 18:32:27 / Modified: 20:38:31" itemprop="dateCreated datePublished" datetime="2021-03-29T18:32:27+08:00">2021-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -281,94 +281,116 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
-<p>Proof</p>
-<p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
-<ol>
-<li><p>$sizeof(x)&gt;=2^{bh(x)}-1$</p>
-<p>$bh(x)=0$，空树，$sizeof(x)=0$，显然成立</p>
-<p>假设$bh(x)=0,1,…,k$都成立，$bh(x)=k+1$时，$sizeof(x-&gt;child)&gt;=2^k-1$，所以$sizeof(x)=2*sizeof(x-&gt;child)+1&gt;=2^{k+1}-1$</p>
-<p>成立</p>
-</li>
-<li><p>$bh(Tree)&gt;=h(Tree)/2$</p>
-<p>红黑树不存在父子关系的红节点，故结论显然成立</p>
-</li>
-</ol>
-<p>由1,2知结论成立</p>
-</li>
-</ul>
-<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><ul>
-<li>插入的节点染成红色，若插入后父亲是红色就要调整<ul>
-<li>叔红：叔、父与祖父换色</li>
-<li>叔黑：<ol>
-<li>zigzag型：旋转父亲变成zigzig</li>
-<li>zigzig型：父亲和祖父换色，旋转祖父（父为轴）</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><ul>
-<li><p>非叶节点和红叶节点：按照BST删除方法进行删除，但原节点颜色不变（此时不会影响RBT的性质）</p>
-</li>
-<li><p>黑叶节点（在该路径下要增加一个黑节点）</p>
+        <h2 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h2><ul>
+<li><p>Data abstraction</p>
 <ul>
-<li><p>兄红（case1）：父兄换色父单旋（兄为轴）（未处理完）</p>
+<li>Physical level —lowest level</li>
+<li>Logical level</li>
+<li>View level —highest level</li>
+</ul>
 </li>
-<li><p>兄黑：</p>
+<li><p>Data models</p>
 <ul>
-<li><p>双侄黑（case2）：兄变红</p>
+<li>Relational model</li>
+<li>Entity-Relationship Model</li>
+<li>Object-Based Data Model</li>
+<li>Semistructured Data Model</li>
+</ul>
+</li>
+</ul>
+<h2 id="relational-model"><a href="#relational-model" class="headerlink" title="relational model"></a>relational model</h2><h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><ul>
+<li>超码：一个或多个属性的集合，可以唯一标识一个元组</li>
+<li>候选码：最小超码</li>
+<li>主码：被设计者选中的候选码</li>
+<li>外码：r1的属性中包含r2的主码，称为r1参照r2的外码。外码需遵循参照完整性约束，即对于参照属性，r1中出现的的取值在r2的对应属性中必然要出现。</li>
+</ul>
+<h4 id="模式图-schema-diagram"><a href="#模式图-schema-diagram" class="headerlink" title="模式图(schema diagram)"></a>模式图(schema diagram)</h4><h4 id="关系查询语言"><a href="#关系查询语言" class="headerlink" title="关系查询语言"></a>关系查询语言</h4><ul>
+<li><p>$\sigma$</p>
+</li>
+<li><p>$\Pi$</p>
+</li>
+<li><p>$\Join$</p>
+</li>
+<li><p>$\times$</p>
+</li>
+<li><p>$-$</p>
+</li>
+<li><p>$\rho$</p>
+</li>
+<li><p>$\cap$</p>
+</li>
+<li><p>$\cup$</p>
+</li>
+<li><p>$\div$</p>
+<p>关系r</p>
+<p>| A        | B    | C        | D    | E    |<br>| ———— | —— | ———— | —— | —— |<br>| $\alpha$ | a    | $\alpha$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | b    | 1    |<br>| $\beta$  | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | c    | 2    |<br>| $\beta$  | a    | $\gamma$ | b    | 3    |<br>| $\gamma$ | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | b    | 1    |<br>| $\gamma$ | c    | $\beta$  | b    | 1    |</p>
+<p>关系s</p>
+<p>| D    | E    |<br>| —— | —— |<br>| a    | 1    |<br>| b    | 1    |</p>
+<p>$r\div s$</p>
+<p>| A        | B    | C        |<br>| ———— | —— | ———— |<br>| $\alpha$ | b    | $\gamma$ |<br>| $\gamma$ | a    | $\gamma$ |</p>
+<p>除法的结果得到的表属性为r的属性去掉s的属性。</p>
+</li>
+<li><p>聚合操作</p>
+<p>关系r</p>
+<p>| A    | B    | C    |<br>| —— | —— | —— |<br>| a    | a    | 7    |<br>| a    | b    | 7    |<br>| b    | b    | 8    |<br>| b    | a    | 14   |</p>
+<p>$\mathcal G_{avg(c)}(r)$</p>
+<p>| avg-c |<br>| ——- |<br>| 9     |</p>
+<p>$_A\mathcal G_{sum(c)}(r)$ —group by A</p>
+<p>| A    | sum(c) |<br>| —— | ——— |<br>| a    | 14     |<br>| b    | 22     |</p>
+</li>
+</ul>
 <ul>
-<li>父红（case2.1）：父变黑（完成）</li>
-<li>父黑（case2.2）：目标节点上移</li>
-</ul>
+<li><p>例子</p>
+<ul>
+<li><p><em>depositor</em>(<em>customer-name</em>, <em>account-number</em>) </p>
+<p><em>account</em>(<em>account-number</em>, <em>branch-name</em>, <em>balance</em>) </p>
+<p>Find all customers who have an account from at least the “Downtown” and the “Uptown” branches. </p>
+<p>$\Pi_{customer_name,branch_name}(depositor\Join account)\div \rho_{tmp(branch_name)}({‘Downtown’,’Uptown})$</p>
 </li>
-<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
-</li>
-<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
-</ul>
-</li>
-</ul>
+<li><p>涉及“全部”等查询，常用除法实现</p>
 </li>
 </ul>
-<h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
-<li>对于堆中任一节点X，$Npl(X-&gt;leftchild)&gt;=Npl(X-&gt;rightchild)$</li>
-<li>$Npl(X)$为X到无双儿节点的最短路径长</li>
-<li>merge的时间界为$O(logN)$</li>
-</ul>
-<h4 id="定理1-1"><a href="#定理1-1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>右路径上有$r$个节点的左式堆至少有$2^r-1$个节点</p>
-<p>Proof by induction</p>
-<p>$r=1$时，显然堆至少有一个节点，成立</p>
-<p>假设$r=1,2,…,k$时均成立，$r=k+1$时，</p>
-<p>先考虑根的右子树，此时右子树的右路径上有$r$个节点，那么右子树至少有$2^r-1$个节点</p>
-<p>再考虑左子树，此时左子树的右路径至少有$r$个节点（否则根不是一个左式堆），那么左子树也至少有$2^r-1$个节点</p>
-<p>故总节点数至少为$2^r-1+2^r-1+1=2^{r+1}-1$，由归纳法知成立</p>
 </li>
 </ul>
-<h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
-<li>递归<ol>
-<li>H1或H2空时，返回另一个</li>
-<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
-<li>不符合左式堆结构时交换新堆的左右子树</li>
-<li>更新新堆的Npl值</li>
-</ol>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><ul>
+<li>smallint: 小整数类型</li>
+<li>numeric(p, d): 共p 位数字（一位符号位），d位数字在小数点右边</li>
+<li>float(n): 精度至少位n</li>
+<li>real: 浮点数</li>
+<li>double precision: 双精度浮点数</li>
+</ul>
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h4><ul>
+<li>“s%”匹配任何以字符串”s”打头等字符串</li>
+<li>“% s%”匹配任何包含”s”的字符串</li>
+<li>“_ _ _”匹配只含三个字符的字符串</li>
+<li><p>“_ _ _%”匹配至少含三个字符的字符串</p>
 </li>
-<li>非递归<ol>
-<li>将H1和H2右路径上的键值按堆序性排序合并</li>
-<li>遇到不符合左式堆结构时交换左右子树</li>
-</ol>
+<li><p>like “ab\%cd%” escape ‘\ ‘匹配所有以”ab%cd”开头的字符串</p>
+</li>
+<li><p>SQL运用like来表达模式</p>
+<p>查询”建筑名称中包含”Watson”的所有系名”：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> dept_name</span><br><span class="line"><span class="keyword">from</span> department</span><br><span class="line"><span class="keyword">where</span> depa_name <span class="keyword">like</span> <span class="string">&#x27;% Watson%&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="deletemin"><a href="#deletemin" class="headerlink" title="deletemin"></a>deletemin</h4><ol>
-<li>删除根节点</li>
-<li>merge左右子树</li>
-</ol>
-<h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
-<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
-<li>除了上面一点，操作与左式堆一样</li>
-<li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
+<h4 id="排序元组的显示次序"><a href="#排序元组的显示次序" class="headerlink" title="排序元组的显示次序"></a>排序元组的显示次序</h4><ul>
+<li><p>order by语句 —默认使用升序</p>
+</li>
+<li><p>desc表示降序，asc表示升序</p>
+</li>
+<li><p>当值相等时可以指定按另外一个属性排序</p>
+<p>比如按salary降序排列，值相同时就按name升序排列，此时可写为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">desc</span>, name <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="并、交、差运算"><a href="#并、交、差运算" class="headerlink" title="并、交、差运算"></a>并、交、差运算</h4><ul>
+<li>union，intersect，except运算自动去重</li>
+<li>若要不去重，则在前面加上all</li>
+<li>对于差运算，若不去重，则结果中某属性的个数位被减量中出现的次数减去减量中出现的次数</li>
+</ul>
+<h4 id="分组聚集和having子句"><a href="#分组聚集和having子句" class="headerlink" title="分组聚集和having子句"></a>分组聚集和having子句</h4><ul>
+<li>若有些属性在select子句中出现但没有在group by子句中出现，则该属性必须出现在聚集函数内部，不然会报错</li>
+<li>having子句应用到每个分组上，不满足having子句谓词的分组会被抛弃</li>
+<li></li>
 </ul>
 
     </div>
@@ -379,18 +401,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/ADS/" rel="tag"># ADS</a>
+              <a href="/tags/DB/" rel="tag"># DB</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/03/29/courseStudy/" rel="prev" title="courseStudy">
+                  <i class="fa fa-chevron-left"></i> courseStudy
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/29/NA/" rel="next" title="NA">
-                  NA <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
