@@ -31,7 +31,7 @@
 <meta property="og:description" content="introduction Data abstraction  Physical level —lowest level Logical level View level —highest level   Data models  Relational model Entity-Relationship Model Object-Based Data Model Semistructured Dat">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-29T10:32:27.000Z">
-<meta property="article:modified_time" content="2021-03-29T12:38:31.617Z">
+<meta property="article:modified_time" content="2021-03-30T01:07:47.736Z">
 <meta property="article:author" content="Darth Vadar">
 <meta property="article:tag" content="DB">
 <meta name="twitter:card" content="summary">
@@ -257,10 +257,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-29 18:32:27 / Modified: 20:38:31" itemprop="dateCreated datePublished" datetime="2021-03-29T18:32:27+08:00">2021-03-29</time>
+      <time title="Created: 2021-03-29 18:32:27" itemprop="dateCreated datePublished" datetime="2021-03-29T18:32:27+08:00">2021-03-29</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-30 09:07:47" itemprop="dateModified" datetime="2021-03-30T09:07:47+08:00">2021-03-30</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -323,22 +329,206 @@
 </li>
 <li><p>$\div$</p>
 <p>关系r</p>
-<p>| A        | B    | C        | D    | E    |<br>| ———— | —— | ———— | —— | —— |<br>| $\alpha$ | a    | $\alpha$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | a    | 1    |<br>| $\alpha$ | b    | $\gamma$ | b    | 1    |<br>| $\beta$  | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | c    | 2    |<br>| $\beta$  | a    | $\gamma$ | b    | 3    |<br>| $\gamma$ | a    | $\gamma$ | a    | 1    |<br>| $\gamma$ | a    | $\gamma$ | b    | 1    |<br>| $\gamma$ | c    | $\beta$  | b    | 1    |</p>
-<p>关系s</p>
-<p>| D    | E    |<br>| —— | —— |<br>| a    | 1    |<br>| b    | 1    |</p>
-<p>$r\div s$</p>
-<p>| A        | B    | C        |<br>| ———— | —— | ———— |<br>| $\alpha$ | b    | $\gamma$ |<br>| $\gamma$ | a    | $\gamma$ |</p>
-<p>除法的结果得到的表属性为r的属性去掉s的属性。</p>
-</li>
-<li><p>聚合操作</p>
-<p>关系r</p>
-<p>| A    | B    | C    |<br>| —— | —— | —— |<br>| a    | a    | 7    |<br>| a    | b    | 7    |<br>| b    | b    | 8    |<br>| b    | a    | 14   |</p>
-<p>$\mathcal G_{avg(c)}(r)$</p>
-<p>| avg-c |<br>| ——- |<br>| 9     |</p>
-<p>$_A\mathcal G_{sum(c)}(r)$ —group by A</p>
-<p>| A    | sum(c) |<br>| —— | ——— |<br>| a    | 14     |<br>| b    | 22     |</p>
 </li>
 </ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>a</td>
+<td>$\alpha$</td>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>b</td>
+<td>$\gamma$</td>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>b</td>
+<td>$\gamma$</td>
+<td>b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>a</td>
+<td>$\gamma$</td>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>a</td>
+<td>$\gamma$</td>
+<td>c</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>a</td>
+<td>$\gamma$</td>
+<td>b</td>
+<td>3</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>a</td>
+<td>$\gamma$</td>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>a</td>
+<td>$\gamma$</td>
+<td>b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>c</td>
+<td>$\beta$</td>
+<td>b</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  关系s</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>b</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  $r\div s$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>b</td>
+<td>$\gamma$</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>a</td>
+<td>$\gamma$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  除法的结果得到的表属性为r的属性去掉s的属性。</p>
+<ul>
+<li><p>聚合操作</p>
+<p>关系r</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>a</td>
+<td>7</td>
+</tr>
+<tr>
+<td>a</td>
+<td>b</td>
+<td>7</td>
+</tr>
+<tr>
+<td>b</td>
+<td>b</td>
+<td>8</td>
+</tr>
+<tr>
+<td>b</td>
+<td>a</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  $\mathcal G_{avg(c)}(r)$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>avg-c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  $_A\mathcal G_{sum(c)}(r)$ —group by A</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>sum(c)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>14</td>
+</tr>
+<tr>
+<td>b</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>例子</p>
 <ul>
