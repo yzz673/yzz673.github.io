@@ -23,18 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yzz673.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
+<meta name="description" content="红黑树定理1 $N$个内点的红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ADS">
 <meta property="og:url" content="http://yzz673.github.io/2021/03/29/ADS/index.html">
 <meta property="og:site_name" content="May the Force Be With You">
-<meta property="og:description" content="红黑树定理1 $N$个内点到红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
+<meta property="og:description" content="红黑树定理1 $N$个内点的红黑树最高$2log(N+1)$ Proof 令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高  $sizeof(x)&gt;&#x3D;2^{bh(x)}-1$ $bh(x)&#x3D;0$，空树，$sizeof(x)&#x3D;0$，显然成立 假设$bh(x)&#x3D;0,1,…,k$都成立，$bh(x)&#x3D;k+1$时，$sizeof(x-&gt;child)&gt;&#x3D;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yzz673.github.io/Users/yuanzhizhang/Library/Application%20Support/typora-user-images/image-20210520111617829.png">
 <meta property="article:published_time" content="2021-03-29T08:20:42.000Z">
-<meta property="article:modified_time" content="2021-04-07T01:00:00.285Z">
+<meta property="article:modified_time" content="2021-06-03T15:47:02.929Z">
 <meta property="article:author" content="Darth Vadar">
 <meta property="article:tag" content="ADS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yzz673.github.io/Users/yuanzhizhang/Library/Application%20Support/typora-user-images/image-20210520111617829.png">
 
 
 <link rel="canonical" href="http://yzz673.github.io/2021/03/29/ADS/">
@@ -160,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-number">1.0.2.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-number">1.0.3.</span> <span class="nav-text">delete</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%BC%8F%E5%A0%86"><span class="nav-number">2.</span> <span class="nav-text">左式堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-O-logN"><span class="nav-number">2.0.2.</span> <span class="nav-text">merge($O(logN)$)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deletemin"><span class="nav-number">2.0.3.</span> <span class="nav-text">deletemin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%9C%E5%A0%86"><span class="nav-number">3.</span> <span class="nav-text">斜堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-amortized-bound-O-logN"><span class="nav-number">3.0.1.</span> <span class="nav-text">merge(amortized bound: $O(logN)$)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E9%98%9F%E5%88%97"><span class="nav-number">4.</span> <span class="nav-text">二项队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#operations"><span class="nav-number">4.1.</span> <span class="nav-text">operations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#findmin"><span class="nav-number">4.1.1.</span> <span class="nav-text">findmin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">4.1.2.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-1"><span class="nav-number">4.1.3.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deletemin"><span class="nav-number">4.1.4.</span> <span class="nav-text">Deletemin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#implementation"><span class="nav-number">4.1.5.</span> <span class="nav-text">implementation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%A0%86"><span class="nav-number">5.</span> <span class="nav-text">斐波那契堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backtracking"><span class="nav-number">6.</span> <span class="nav-text">backtracking</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">1.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-number">1.0.2.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-number">1.0.3.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RB-tree-vs-AVL-tree"><span class="nav-number">1.0.4.</span> <span class="nav-text">RB tree vs AVL tree</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%BC%8F%E5%A0%86"><span class="nav-number">2.</span> <span class="nav-text">左式堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-O-logN"><span class="nav-number">2.0.2.</span> <span class="nav-text">merge($O(logN)$)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deletemin"><span class="nav-number">2.0.3.</span> <span class="nav-text">deletemin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%9C%E5%A0%86"><span class="nav-number">3.</span> <span class="nav-text">斜堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-amortized-bound-O-logN"><span class="nav-number">3.0.1.</span> <span class="nav-text">merge(amortized bound: $O(logN)$)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E9%98%9F%E5%88%97"><span class="nav-number">4.</span> <span class="nav-text">二项队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#operations"><span class="nav-number">4.1.</span> <span class="nav-text">operations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#findmin"><span class="nav-number">4.1.1.</span> <span class="nav-text">findmin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">4.1.2.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-1"><span class="nav-number">4.1.3.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deletemin"><span class="nav-number">4.1.4.</span> <span class="nav-text">Deletemin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#implementation"><span class="nav-number">4.1.5.</span> <span class="nav-text">implementation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%A0%86"><span class="nav-number">5.</span> <span class="nav-text">斐波那契堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backtracking"><span class="nav-number">6.</span> <span class="nav-text">backtracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Divide-and-conquer"><span class="nav-number">7.</span> <span class="nav-text">Divide and conquer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Master-method"><span class="nav-number">7.0.1.</span> <span class="nav-text">Master method</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Master-Theorem"><span class="nav-number">7.0.1.1.</span> <span class="nav-text">[Master Theorem]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Master-Theorem-another-form"><span class="nav-number">7.0.1.2.</span> <span class="nav-text">[Master Theorem] another form</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem"><span class="nav-number">7.0.1.3.</span> <span class="nav-text">[Theorem]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#example"><span class="nav-number">7.0.1.4.</span> <span class="nav-text">example</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP-Completeness"><span class="nav-number">8.</span> <span class="nav-text">NP-Completeness</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Turing-machine"><span class="nav-number">8.1.</span> <span class="nav-text">Turing machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP"><span class="nav-number">8.2.</span> <span class="nav-text">NP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NP-Complete"><span class="nav-number">8.2.1.</span> <span class="nav-text">NP-Complete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#relation"><span class="nav-number">8.2.2.</span> <span class="nav-text">relation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Formal-language-Framework"><span class="nav-number">8.3.</span> <span class="nav-text">A Formal-language Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#abstract-problem"><span class="nav-number">8.3.1.</span> <span class="nav-text">abstract problem</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approximation"><span class="nav-number">9.</span> <span class="nav-text">Approximation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#target"><span class="nav-number">9.1.</span> <span class="nav-text">target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#approximation-ratio"><span class="nav-number">9.2.</span> <span class="nav-text">approximation ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#approximation-scheme"><span class="nav-number">9.3.</span> <span class="nav-text">approximation scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bin-packing"><span class="nav-number">9.4.</span> <span class="nav-text">Bin packing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next-fit"><span class="nav-number">9.4.1.</span> <span class="nav-text">next fit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#first-fit"><span class="nav-number">9.4.2.</span> <span class="nav-text">first fit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#best-fit"><span class="nav-number">9.4.3.</span> <span class="nav-text">best fit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#on-line-algorithm"><span class="nav-number">9.4.4.</span> <span class="nav-text">on-line algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#off-line-algorithm"><span class="nav-number">9.4.5.</span> <span class="nav-text">off-line algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#knapsack-problem"><span class="nav-number">9.5.</span> <span class="nav-text">knapsack problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fractional-version"><span class="nav-number">9.5.1.</span> <span class="nav-text">fractional version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0-1-version"><span class="nav-number">9.5.2.</span> <span class="nav-text">0-1 version</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-center-problem"><span class="nav-number">9.6.</span> <span class="nav-text">K-center problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-search"><span class="nav-number">10.</span> <span class="nav-text">Local search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#neighbor-relaiton"><span class="nav-number">10.1.</span> <span class="nav-text">neighbor relaiton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vertex-cover"><span class="nav-number">10.2.</span> <span class="nav-text">vertex cover</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Metropolis-Algorithm"><span class="nav-number">10.2.1.</span> <span class="nav-text">The Metropolis Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#simulated-annealing-%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB"><span class="nav-number">10.2.2.</span> <span class="nav-text">simulated annealing(模拟退火)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hopfiled-Neural-Networks"><span class="nav-number">10.3.</span> <span class="nav-text">Hopfiled Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">10.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">10.3.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#state-flipping-algorithm"><span class="nav-number">10.3.3.</span> <span class="nav-text">state-flipping algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum-cut"><span class="nav-number">10.4.</span> <span class="nav-text">maximum cut</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">10.4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#related-to-local-search"><span class="nav-number">10.4.2.</span> <span class="nav-text">related to local search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#special-Hopfield-Neural-Network"><span class="nav-number">10.4.3.</span> <span class="nav-text">special Hopfield Neural Network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-good-is-the-local-optimum"><span class="nav-number">10.4.4.</span> <span class="nav-text">how good is the local optimum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#improvement"><span class="nav-number">10.4.5.</span> <span class="nav-text">improvement</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,20 +176,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -265,7 +267,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-07 09:00:00" itemprop="dateModified" datetime="2021-04-07T09:00:00+08:00">2021-04-07</time>
+        <time title="Modified: 2021-06-03 23:47:02" itemprop="dateModified" datetime="2021-06-03T23:47:02+08:00">2021-06-03</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,7 +290,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
+<li><p>$N$个内点的红黑树最高$2log(N+1)$</p>
 <p>Proof</p>
 <p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
 <ol>
@@ -324,18 +326,21 @@
 </li>
 <li><p>兄黑：</p>
 <ul>
-<li><p>双侄黑（case2）：兄变红</p>
-<ul>
+<li>双侄黑（case2）：兄变红<ul>
 <li>父红（case2.1）：父变黑（完成）</li>
 <li>父黑（case2.2）：目标节点上移</li>
 </ul>
 </li>
-<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
-</li>
-<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
+<li>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</li>
+<li>zigzig位的侄子为红（case4）：父兄换色，zigzig位侄子置黑，父单旋（兄为轴）（完成）</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h4 id="RB-tree-vs-AVL-tree"><a href="#RB-tree-vs-AVL-tree" class="headerlink" title="RB tree vs AVL tree"></a>RB tree vs AVL tree</h4><ul>
+<li><p>Number of rotations:</p>
+<p>|      | Insert | Delete  |<br>| —— | ——— | ———- |<br>| RB   | &lt;=2    | &lt;=3     |<br>| AVL  | &lt;=2    | O(logN) |</p>
 </li>
 </ul>
 <h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
@@ -354,11 +359,22 @@
 </li>
 </ul>
 <h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
-<li>递归<ol>
-<li>H1或H2空时，返回另一个</li>
-<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
-<li>不符合左式堆结构时交换新堆的左右子树</li>
-<li>更新新堆的Npl值</li>
+<li><p>递归</p>
+<ol>
+<li><p>H1或H2空时，返回另一个</p>
+</li>
+<li><p>不妨设H1-&gt;val &lt; H2-&gt;val</p>
+<ul>
+<li><p>H1-&gt;left == NULL，H1-&gt;left = H2</p>
+</li>
+<li><p>H1-&gt;left != NULL，合并H1-&gt;right和H2</p>
+</li>
+</ul>
+</li>
+<li><p>不符合左式堆结构时交换新堆的左右子树</p>
+</li>
+<li><p>更新新堆的Npl值</p>
+</li>
 </ol>
 </li>
 <li>非递归<ol>
@@ -372,7 +388,7 @@
 <li>merge左右子树</li>
 </ol>
 <h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
-<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
+<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值的子树）</li>
 <li>除了上面一点，操作与左式堆一样</li>
 <li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
 </ul>
@@ -433,7 +449,181 @@
 <li>二项树的表示采用左儿子右兄弟，子树从左到右由大到小，这样使combine trees在常数时间内完成</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2147483647</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">binNode</span> *<span class="title">binTree</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">collection</span> *<span class="title">binQueue</span>;</span></span><br><span class="line"><span class="comment">//树节点声明</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">binNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    binTree lchild, nsibling;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//堆声明</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">collection</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> curSize;</span><br><span class="line">    binTree *trees;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> maxSize = <span class="number">10000</span>; <span class="comment">//堆中树的容量</span></span><br><span class="line"><span class="comment">//初始化一颗二项树</span></span><br><span class="line"><span class="function">binTree <span class="title">initTree</span><span class="params">(binTree T, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    T = <span class="keyword">new</span> binNode;</span><br><span class="line">    T-&gt;lchild = T-&gt;nsibling = <span class="literal">NULL</span>;</span><br><span class="line">    T-&gt;val = val;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//初始化一个堆</span></span><br><span class="line"><span class="function">binQueue <span class="title">initQueue</span><span class="params">(binQueue H)</span> </span>&#123;</span><br><span class="line">    H = <span class="keyword">new</span> collection;</span><br><span class="line">    H-&gt;curSize = <span class="number">0</span>;</span><br><span class="line">    H-&gt;trees = <span class="keyword">new</span> binTree[maxSize];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//连接两颗二项树</span></span><br><span class="line"><span class="function">binTree <span class="title">combine</span><span class="params">(binTree T1, binTree T2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T1-&gt;val&gt;T2-&gt;val)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">combine</span>(T2, T1);</span><br><span class="line">    T2-&gt;nsibling = T1-&gt;lchild;</span><br><span class="line">    T1-&gt;lchild = T2;</span><br><span class="line">    <span class="keyword">return</span> T1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//合并两个堆（二进制加法）</span></span><br><span class="line"><span class="function">binQueue <span class="title">merge</span><span class="params">(binQueue H1, binQueue H2)</span> </span>&#123;</span><br><span class="line">    binTree T1, T2, carry = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    H1-&gt;curSize += H2-&gt;curSize;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>, j=<span class="number">1</span>; j&lt;H1-&gt;curSize; i++, j*=<span class="number">2</span>) &#123;</span><br><span class="line">        T1 = H1-&gt;trees[i];</span><br><span class="line">        T2 = H2-&gt;trees[i];</span><br><span class="line">        <span class="built_in"><span class="keyword">switch</span></span>(<span class="number">4</span>*!!carry + <span class="number">2</span>*!!T2 + !!T1) &#123; <span class="comment">//枚举carry, T1, T2所有可能情况</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">//000</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">break</span>; <span class="comment">//001</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: H1-&gt;trees[i] = T2; <span class="comment">//010</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>: carry = <span class="built_in">combine</span>(T1, T2); <span class="comment">//011</span></span><br><span class="line">                    H1-&gt;trees[i] = H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: H1-&gt;trees[i] = carry; <span class="comment">//100</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>: carry = <span class="built_in">combine</span>(T1, carry); <span class="comment">//101</span></span><br><span class="line">                    H1-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>: carry = <span class="built_in">combine</span>(T2, carry); <span class="comment">//110</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">7</span>: carry = <span class="built_in">combine</span>(carry, T2); <span class="comment">//111</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> H1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除最小元</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deletemin</span><span class="params">(binQueue H)</span> </span>&#123;</span><br><span class="line">    binQueue delQ = <span class="built_in">initQueue</span>(delQ);</span><br><span class="line">    binTree delT, oldRoot;</span><br><span class="line">    <span class="keyword">int</span> i, j, minTree, minItem = -INF;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;maxSize; i++)</span><br><span class="line">        <span class="keyword">if</span>(H-&gt;trees[i]&amp;&amp;H-&gt;trees[i]-&gt;val&lt;minItem) &#123;</span><br><span class="line">            minItem = H-&gt;trees[i]-&gt;val;</span><br><span class="line">            minTree = i;</span><br><span class="line">        &#125;</span><br><span class="line">    delT = H-&gt;trees[minTree];</span><br><span class="line">    H-&gt;trees[minTree] = <span class="literal">NULL</span>;</span><br><span class="line">    oldRoot = delT;</span><br><span class="line">    delT = delT-&gt;lchild;</span><br><span class="line">    <span class="built_in">free</span>(oldRoot);</span><br><span class="line">    delQ-&gt;curSize = (<span class="number">1</span> &lt;&lt; minTree)<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(j=minTree<span class="number">-1</span>; j&gt;=<span class="number">0</span>; j--) &#123;</span><br><span class="line">        delQ-&gt;trees[j] = delT;</span><br><span class="line">        delT = delT-&gt;nsibling;</span><br><span class="line">        delQ-&gt;trees[j]-&gt;nsibling = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    H-&gt;curSize -= <span class="number">1</span> &lt;&lt; minTree;</span><br><span class="line">    H = <span class="built_in">merge</span>(H, delQ);</span><br><span class="line">    <span class="keyword">return</span> minItem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="斐波那契堆"><a href="#斐波那契堆" class="headerlink" title="斐波那契堆"></a>斐波那契堆</h2><h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2>
+<h2 id="斐波那契堆"><a href="#斐波那契堆" class="headerlink" title="斐波那契堆"></a>斐波那契堆</h2><h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2><h2 id="Divide-and-conquer"><a href="#Divide-and-conquer" class="headerlink" title="Divide and conquer"></a>Divide and conquer</h2><h4 id="Master-method"><a href="#Master-method" class="headerlink" title="Master method"></a>Master method</h4><h5 id="Master-Theorem"><a href="#Master-Theorem" class="headerlink" title="[Master Theorem]"></a>[Master Theorem]</h5><p>Let $a\geq1$ and $b &gt; 1$ be constants, let $f(N)$ be a function, and let $T(N)$ be defined on the nonnegative integers by the recurrence $T(N)=aT(\frac{N}{b})+f(N)$. Then:</p>
+<ol>
+<li>If $f(N)=O(N^{\log_ba-\varepsilon})$ for some constant $\varepsilon &gt; 0$, then $T(N)=\Theta(N^{\log_ba})$</li>
+<li>If $f(N) = \Theta(N^{\log_ba})$, then $T(N) = \Theta(N^{\log_ba}\log{N})$</li>
+<li>If $f(N)=\Omega(N^{\log_ba+\varepsilon})$ for some constant $\varepsilon &gt; 0$, and if $af(\frac{N}{b}) &lt; cf(N)$ for some constant $c&lt;1$ and all sufficiently large $N$, then $T(N) = \Theta(f(N))$</li>
+</ol>
+<p>However, this cannot cover all the cases.</p>
+<h5 id="Master-Theorem-another-form"><a href="#Master-Theorem-another-form" class="headerlink" title="[Master Theorem] another form"></a>[Master Theorem] another form</h5><p>The recurrence $T(N) = aT(\frac{N}{b})+f(N)$ can be solve as follow:</p>
+<ol>
+<li>If $af(\frac{N}{b})=\kappa f(N)$ for some constant $\kappa&lt;1$, then $T(N)=\Theta(f(N))$</li>
+<li>If $af(\frac{N}{b})=\Kappa f(N)$ for some constant $K&gt;1$, then $T(N)=\Theta(N^{\log_ba})$</li>
+<li>If $af(\frac{N}{b})=f(N)$, then $T(N)=\Theta(f(N)\log_bN)$</li>
+</ol>
+<h5 id="Theorem"><a href="#Theorem" class="headerlink" title="[Theorem]"></a>[Theorem]</h5><p>The solution to the equation $T(N)=aT(\frac{N}{b})+\Theta(N^k\log^pN)$</p>
+<p>where $a\geq1$,$b\geq1$,and $p\geq0$ is</p>
+<ol>
+<li>$T(N)=O(N^{\log_ba})$            if $a&gt;b^k$</li>
+<li>$T(N)=O(N^k\log^{p+1}N)$ if $a=b^k$</li>
+<li>$T(N)=O(N^k\log^pN)$     if $a&lt;b^k$</li>
+</ol>
+<h5 id="example"><a href="#example" class="headerlink" title="example"></a>example</h5><p>$T(n) = 2T(\sqrt n) + logn$</p>
+<p>此时无法直接用master theorem，需要转化</p>
+<p>令$n = 2^m$</p>
+<p>则化为$T(2^m) = 2T(2^{m/2})+m$</p>
+<p>令$G(m) = T(2^m)$</p>
+<p>则$G(m) = 2G(m/2)+m$</p>
+<p>由master theorem 知$T(n) = G(m) = O(mlogm) = O(lognloglogn)$</p>
+<h2 id="NP-Completeness"><a href="#NP-Completeness" class="headerlink" title="NP-Completeness"></a>NP-Completeness</h2><h3 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h3><ul>
+<li><strong>Deterministic Turing Machine</strong>: executes one instruction at each point in time. The depending on the instruction, it goes to the next unique instruction</li>
+<li><strong>Nondeterministic Turing Machine</strong>: free to choose its next step from a finite set. And if one of these steps leads to a solution, it will always choose the correct one</li>
+</ul>
+<h3 id="NP"><a href="#NP" class="headerlink" title="NP"></a>NP</h3><ul>
+<li>Solve by a <strong>==N==ondeterministic Turing Machine</strong> in <strong>==p==olynomial time</strong></li>
+<li>proof any solution is true in polynomial time(equal to the above one)</li>
+</ul>
+<h4 id="NP-Complete"><a href="#NP-Complete" class="headerlink" title="NP-Complete"></a>NP-Complete</h4><ul>
+<li>The hardest in NP</li>
+<li>Any problem in NP can be polynomially reduced to it(we can convert any NP problem to a NPC problem in polynomial time)</li>
+<li>NP hard &gt;= NPC !!!</li>
+</ul>
+<h4 id="relation"><a href="#relation" class="headerlink" title="relation"></a>relation</h4><ul>
+<li><img src="/Users/yuanzhizhang/Library/Application Support/typora-user-images/image-20210520111617829.png" alt="image-20210520111617829" style="zoom:50%;float: left"></li>
+</ul>
+<h3 id="A-Formal-language-Framework"><a href="#A-Formal-language-Framework" class="headerlink" title="A Formal-language Framework"></a>A Formal-language Framework</h3><h4 id="abstract-problem"><a href="#abstract-problem" class="headerlink" title="abstract problem"></a>abstract problem</h4><ul>
+<li><strong>an</strong> <strong>abstract problem Q</strong> <strong>is a binary relation on a set</strong> <strong>I</strong> <strong>of problem</strong> <strong>instances</strong> <strong>and a set</strong> <strong>S</strong> <strong>of problem</strong> <strong>solutions</strong></li>
+</ul>
+<h2 id="Approximation"><a href="#Approximation" class="headerlink" title="Approximation"></a>Approximation</h2><h3 id="target"><a href="#target" class="headerlink" title="target"></a>target</h3><ul>
+<li>find near-optimal solutions in a polynomial time</li>
+</ul>
+<h3 id="approximation-ratio"><a href="#approximation-ratio" class="headerlink" title="approximation ratio"></a>approximation ratio</h3><ul>
+<li>任意规模n的输入，$max(C/C^<em>,C^</em>/C)&lt;=\rho(n)$，其中$C^*$为最优解，$C$为近似解。</li>
+</ul>
+<h3 id="approximation-scheme"><a href="#approximation-scheme" class="headerlink" title="approximation scheme"></a>approximation scheme</h3><ul>
+<li><p>也属于一种近似算法</p>
+</li>
+<li><p>输入多了一个值$\epsilon&gt;0$，使得对于任意固定的$\epsilon$，该模式是一个$(1+\epsilon)$- approximation</p>
+</li>
+<li><p>如果对于任意的$\epsilon$，该approximation scheme在多项式时间内完成，则称之为PTAS(polynomial-time approximation scheme)。</p>
+<p>但常常是$O(n^{2/\epsilon}),O((1/\epsilon)^2n^3)$这样的复杂度，当算法结果越接近精确值，时间复杂度也将迅速增大，$O((1/\epsilon)^2n^3)$被称为FPTAS，因为对于n和$\epsilon$都是polynomial的</p>
+</li>
+</ul>
+<h3 id="Bin-packing"><a href="#Bin-packing" class="headerlink" title="Bin packing"></a>Bin packing</h3><h4 id="next-fit"><a href="#next-fit" class="headerlink" title="next fit"></a>next fit</h4><ul>
+<li>对于每个物品，上一个箱子能放下就放下，放不下就开个新箱子</li>
+<li>$O(n)$</li>
+<li>假设最少需要M个箱子，则next fit最多需要2M-1个箱子，而且这个上界可以取到</li>
+</ul>
+<h4 id="first-fit"><a href="#first-fit" class="headerlink" title="first fit"></a>first fit</h4><ul>
+<li>对于每个物品，从头遍历每个箱子，遇到能放进去的就放进去，要是都放不进去就开一个新箱子</li>
+<li>$O(nlogn)$</li>
+<li>假设最少需要M个箱子，first fit最多要17M/10个箱子，总能构造出一个序列使其用掉17(M-1)/10个箱子</li>
+</ul>
+<h4 id="best-fit"><a href="#best-fit" class="headerlink" title="best fit"></a>best fit</h4><ul>
+<li>寻找能放进而且剩余空隙最小的箱子</li>
+<li>$O(nlogn)$</li>
+<li>和first fit相同，上界仍然是1.7M</li>
+</ul>
+<h4 id="on-line-algorithm"><a href="#on-line-algorithm" class="headerlink" title="on-line algorithm"></a>on-line algorithm</h4><ul>
+<li>对于在线装箱问题，总存在一个序列使得算法用掉的箱子至少是最优解的5/3倍</li>
+</ul>
+<h4 id="off-line-algorithm"><a href="#off-line-algorithm" class="headerlink" title="off-line algorithm"></a>off-line algorithm</h4><ul>
+<li>先将物品大小降序排列，在运用first fit或best fit</li>
+<li>M是最优解，对于off-line的first fit，最多用掉(11M+6)/9个箱子</li>
+</ul>
+<h3 id="knapsack-problem"><a href="#knapsack-problem" class="headerlink" title="knapsack problem"></a>knapsack problem</h3><h4 id="fractional-version"><a href="#fractional-version" class="headerlink" title="fractional version"></a>fractional version</h4><ul>
+<li><p>给一个容量为M的箱子和N件物品，第i件物品重量为wi，利润为pi，wi的xi被打包，即可获利pixi，找到获利最大的打包方案，即$\sum_{i=1}^Nw_ix_i&lt;=M$的情况下，使$\sum_{i=1}^Np_ix_i$最大化</p>
+</li>
+<li><p>greedy：依pi/wi的值对物品进行降序排列，然后依次选取</p>
+</li>
+</ul>
+<h4 id="0-1-version"><a href="#0-1-version" class="headerlink" title="0-1 version"></a>0-1 version</h4><ul>
+<li>每个物品要么取要么不取</li>
+<li>greedy：对pi或pi/wi进行贪心——2-approximation</li>
+<li>dp：经典dp问题</li>
+</ul>
+<h3 id="K-center-problem"><a href="#K-center-problem" class="headerlink" title="K-center problem"></a>K-center problem</h3><ul>
+<li>输入n个sites：$s_1,…,s_n$，选择K个centers，此时每个site都有一个离它最近的center，记$s_i$对应的这个距离为$dist(s_i,C)$，目标是使得$r(C)=\max_i dist(s_i,C)$最小</li>
+<li></li>
+</ul>
+<h2 id="Local-search"><a href="#Local-search" class="headerlink" title="Local search"></a>Local search</h2><h3 id="neighbor-relaiton"><a href="#neighbor-relaiton" class="headerlink" title="neighbor relaiton"></a>neighbor relaiton</h3><ul>
+<li>$S\sim S’$: $S’$ is a neiboring solution of S($S’$可由S的微小改动得到)</li>
+<li>$N(S)$: $S’$组成的集合</li>
+</ul>
+<h3 id="vertex-cover"><a href="#vertex-cover" class="headerlink" title="vertex cover"></a>vertex cover</h3><ul>
+<li><p>寻找最小点集实现顶点覆盖</p>
+</li>
+<li><p>feasible solution set $\mathcal F\mathcal S$: all the vertex covers($V \in \mathcal F\mathcal S$)</p>
+</li>
+<li>cost(S) = |S|</li>
+<li>$S\sim S’$: $S’$由S增加或删除一个点得到</li>
+<li>search：从S=V开始，不断删除点，直到不是顶点覆盖（很多时候无法到达全局最优）</li>
+</ul>
+<h4 id="The-Metropolis-Algorithm"><a href="#The-Metropolis-Algorithm" class="headerlink" title="The Metropolis Algorithm"></a>The Metropolis Algorithm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SolutionType Metropolis()</span><br><span class="line">&#123;   </span><br><span class="line">		Define constants k and T;</span><br><span class="line">    Start from a feasible solution S in FS ;</span><br><span class="line">    MinCost &#x3D; cost(S);</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        S’ &#x3D; Randomly chosen from N(S); &#x2F;&#x2F;add or delete</span><br><span class="line">        CurrentCost &#x3D; cost(S’);</span><br><span class="line">        if ( CurrentCost &lt; MinCost ) &#123;</span><br><span class="line">            MinCost &#x3D; CurrentCost;    S &#x3D; S’;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            With a probability P let S &#x3D; S’;</span><br><span class="line">            else  break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的伪代码中$P = e^{-\Delta cost/(kT)}$</p>
+<h4 id="simulated-annealing-模拟退火"><a href="#simulated-annealing-模拟退火" class="headerlink" title="simulated annealing(模拟退火)"></a>simulated annealing(模拟退火)</h4><ul>
+<li>The material is cooled very gradually from a high temperature, allowing it enough time to reach equilibrium at a succession of intermediate lower temperatures</li>
+<li>Cooling schedule: $T=\{T_1,T_2,..\}$</li>
+</ul>
+<h3 id="Hopfiled-Neural-Networks"><a href="#Hopfiled-Neural-Networks" class="headerlink" title="Hopfiled Neural Networks"></a>Hopfiled Neural Networks</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>图G具有非0整数权重w的边</li>
+<li>顶点具有两种状态：+1和-1</li>
+<li><p>边权为负：两顶点状态相同；边权为正：两顶点状态相反</p>
+</li>
+<li><p>边权的绝对值代表我们想要两顶点状态相同或相反的强烈程度</p>
+</li>
+<li>输出：a configuration S: 给每个顶点assign一个state满足上述条件</li>
+</ul>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li><p>上述configuration不一定能找到，所以退而求其次，找到一个sufficiently good的解</p>
+</li>
+<li><p>edge e(u, v) is good：$w_es_us_v&lt;0$</p>
+<p>上述条件等价于：$w_e&lt;0$当且仅当$s_u=s_v$</p>
+</li>
+<li><p>node u is satisfied: 在包含该顶点的所有边中，好边总权值大于等于坏边总权值</p>
+<p>公式表达：$\sum_{v:e(u,v)\in E}w_es_us_v&lt;=0$</p>
+</li>
+<li><p>a configuration is stable: 所有顶点satisfied</p>
+</li>
+</ul>
+<h4 id="state-flipping-algorithm"><a href="#state-flipping-algorithm" class="headerlink" title="state-flipping algorithm"></a>state-flipping algorithm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ConfigType State_flipping()</span><br><span class="line">&#123;</span><br><span class="line">    Start from an arbitrary configuration S;</span><br><span class="line">    while ( ! IsStable(S) ) &#123;</span><br><span class="line">        u &#x3D; GetUnsatisfied(S);</span><br><span class="line">        su &#x3D; - su;</span><br><span class="line">    &#125;</span><br><span class="line">    return S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>顶点可能被flip多次，但此算法一定会终止</li>
+<li>Claim: state-flipping算法最多循环$W=\sum_e|w_e|$次</li>
+</ul>
+<h3 id="maximum-cut"><a href="#maximum-cut" class="headerlink" title="maximum cut"></a>maximum cut</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>对于边权为正整数的无向图G，将顶点分成两部分A, B，使得$w(A, B)=\sum_{u\in A,v\in B}w_{uv}$最大</li>
+</ul>
+<h4 id="related-to-local-search"><a href="#related-to-local-search" class="headerlink" title="related to local search"></a>related to local search</h4><ul>
+<li>Problem: maximize $w(A,B)$</li>
+<li>Feasible solution set: any partition (A, B)</li>
+<li>$S\sim S’$: $S’$可由S将一个顶点由一个集合移到另一个集合得到</li>
+</ul>
+<h4 id="special-Hopfield-Neural-Network"><a href="#special-Hopfield-Neural-Network" class="headerlink" title="special Hopfield Neural Network"></a>special Hopfield Neural Network</h4><ul>
+<li>上述问题是特殊的Hopfield，所有边权大于0</li>
+<li>但用state-flipping解时，不一定是全局最优</li>
+</ul>
+<h4 id="how-good-is-the-local-optimum"><a href="#how-good-is-the-local-optimum" class="headerlink" title="how good is the local optimum"></a>how good is the local optimum</h4><ul>
+<li><p>Claim: $(A,B)$为局部最优，$(A^<em>,B^</em>)$为全局最优，则$w(A,B)&gt;=w(A^<em>,B^</em>)/2$</p>
+<p>Proof: 任取$u \in A$，因为$(A,B)$为局部最优，故有$\sum_{v \in A}w_{uv}&lt;=\sum_{v\in B}w_{uv}$</p>
+<p>两边对所有$u\in A$求和：</p>
+<p>$\sum_{u\in A}\sum_{v \in A}w_{uv}&lt;=w(A,B)$</p>
+<p>同理：</p>
+<p>$\sum_{u\in B}\sum_{v \in B}w_{uv}&lt;=w(A,B)$</p>
+<p>所以$w(A^<em>,B^</em>)&lt;=\sum w_e=w(A,B)+1/2\sum_{u\in A}\sum_{v \in A}w_{uv}+1/2\sum_{u\in B}\sum_{v \in B}w_{uv}&lt;=w(A,B)+1/2w(A,B)+1/2w(A,B)=2w(A,B)$</p>
+</li>
+<li><p>Unless P=NP, no 17/16 approximation algorithm for MAX-CUT</p>
+</li>
+</ul>
+<h4 id="improvement"><a href="#improvement" class="headerlink" title="improvement"></a>improvement</h4><ul>
+<li>上述算法可能无法在多项式时间内完成，可以考虑提早跳出循环：当任何翻转后都无法提升“足够多”时，就跳出循环</li>
+<li>Big-improvement-flip：选择node翻转时保证翻转后$w(A,B)$至少提升$\frac{2\epsilon}{|V|}w(A,B)$</li>
+<li>上述算法结束循环时，能够保证$(2+\epsilon)w(A,B)&gt;=w(A^<em>,B^</em>)$</li>
+<li>上述算法结束循环时，最多执行$O(\frac{n}{\epsilon} logW)$次翻转</li>
+<li></li>
+</ul>
+
     </div>
 
     

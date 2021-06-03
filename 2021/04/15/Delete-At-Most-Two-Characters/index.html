@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yzz673.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Delete At Most Two CharactersintroductionGiven a string which contains only lower case English letters, how many different strings you can get after deleting AT MOST TWO characters in it? input specif">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Delete At Most Two Characters">
+<meta property="og:url" content="http://yzz673.github.io/2021/04/15/Delete-At-Most-Two-Characters/index.html">
+<meta property="og:site_name" content="May the Force Be With You">
+<meta property="og:description" content="Delete At Most Two CharactersintroductionGiven a string which contains only lower case English letters, how many different strings you can get after deleting AT MOST TWO characters in it? input specif">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-15T10:49:24.000Z">
+<meta property="article:modified_time" content="2021-04-16T02:22:59.244Z">
+<meta property="article:author" content="Darth Vadar">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="solution">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yzz673.github.io/2021/04/15/Delete-At-Most-Two-Characters/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Delete At Most Two Characters | May the Force Be With You</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">May the Force Be With You</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Delete-At-Most-Two-Characters"><span class="nav-number">1.</span> <span class="nav-text">Delete At Most Two Characters</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-specification"><span class="nav-number">1.1.1.</span> <span class="nav-text">input specification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output-specification"><span class="nav-number">1.1.2.</span> <span class="nav-text">output specification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">1.2.</span> <span class="nav-text">solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E6%90%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">暴搜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dp"><span class="nav-number">1.2.2.</span> <span class="nav-text">dp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sourse-code"><span class="nav-number">1.3.</span> <span class="nav-text">sourse code</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Darth Vadar</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yzz673" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yzz673" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuan001223@163.com" title="E-Mail → mailto:yuan001223@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/04/15/Delete-At-Most-Two-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Delete At Most Two Characters
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-15 18:49:24" itemprop="dateCreated datePublished" datetime="2021-04-15T18:49:24+08:00">2021-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-16 10:22:59" itemprop="dateModified" datetime="2021-04-16T10:22:59+08:00">2021-04-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/solution/" itemprop="url" rel="index"><span itemprop="name">solution</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Delete-At-Most-Two-Characters"><a href="#Delete-At-Most-Two-Characters" class="headerlink" title="Delete At Most Two Characters"></a>Delete At Most Two Characters</h1><h2 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h2><p>Given a string which contains only lower case English letters, how many different strings you can get after deleting <strong>AT MOST TWO</strong> characters in it?</p>
+<h3 id="input-specification"><a href="#input-specification" class="headerlink" title="input specification"></a>input specification</h3><p>Each input file contains one test case, which gives the string whose length is in [3,10^6].</p>
+<h3 id="output-specification"><a href="#output-specification" class="headerlink" title="output specification"></a>output specification</h3><p>Print in a line the number of different strings you can get after deleting at most 2 characters.</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h3 id="暴搜"><a href="#暴搜" class="headerlink" title="暴搜"></a>暴搜</h3><ul>
+<li>$O(N^2)$时间复杂度，会超时</li>
+</ul>
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><ul>
+<li><p>假设输入的字符串为s，长度为n</p>
+</li>
+<li><p>考虑使用两个数组</p>
+<ul>
+<li>dp1[n]：dp1[i]表示子串0到i删去一个字符得到的字符串数</li>
+<li>dp2[n]：dp2[i]表示子串0到i删去两个字符得到的字符串数</li>
+</ul>
+</li>
+<li><p>状态转移方程</p>
+<ul>
+<li><p>dp1[i]，考虑s[i]和s[i-1]</p>
+<ul>
+<li>不删除s[i]：共dp1[i-1]种</li>
+<li>删除s[i]：1种</li>
+<li><p>但要考虑s[i]和s[i-1]</p>
+<ul>
+<li>若s[i] != s[i-1]则上述情况不会重合，dp1[i] = dp1[i-1] + 1</li>
+<li>若s[i] == s[i-1]则删s[i]和删s[i-1]得到的结果是一样的，dp1[i] = dp1[i-1]</li>
+</ul>
+</li>
+<li><p>得到如下转移方程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp1[i] = s[i] == s[i<span class="number">-1</span>] ? dp1[i<span class="number">-1</span>] + dp1[i<span class="number">-1</span>] + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>dp2[i]，此时需考虑s[i]，s[i-1]，s[i-2]</p>
+<ul>
+<li><p>不删除s[i]：相当于在前i-1个字符里删除两个，则有dp2[i-1]种</p>
+</li>
+<li><p>删除s[i]：相当于在前i-1个字符删除一个字符，则有dp1[i-1]种</p>
+</li>
+<li><p>如果s[i] != s[i-1]，s[i] != s[i-2]则上述两种情况不会出现重合，不需要去重</p>
+</li>
+<li><p>如果s[i] == s[i-1]</p>
+<p>考虑字符串s’aa，s’是一个任意字符串</p>
+<p>删s[i]中，若删掉最后一个a(s[i])和s’中的一个字符，此时有dp1[i-2]种情况</p>
+<p>不删s[i]中，若删掉倒数第二个a(s[i-1])和s’中一个字符，此时有dp1[i-2]种情况</p>
+<p>可以看到，有dp1[i-2]种情况被累加两次，所以需要减掉一个dp1[i-2]</p>
+</li>
+<li><p>如果s[i] != s[i-1] &amp;&amp;s[i] == s[i-2]</p>
+<p>考虑字符串s’aba，s’是任意一个字符串</p>
+<p>删s[i]中，若删掉最后两个字符，此时一种情况</p>
+<p>不删s[i]中，若删掉倒数第二，三个字符，此时一种情况</p>
+<p>发现上面同样的情况被累加了两次，需减去一次</p>
+</li>
+<li><p>综上可得到如下转移方程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp2[i] = dp2[i<span class="number">-1</span>] + dp1[i<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">if</span>(s[i] == s[i<span class="number">-1</span>]) dp2[i] -= dp1[i<span class="number">-2</span>];</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s[i] == s[i<span class="number">-2</span>]) dp2[i] --;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意，dp2[i]可能会超过int的表示范围，需要long long，但此时用一个数组会内存超限，观察上面的状态转移方程，若发现状态i最多与i-1和i-2有关，所以不需要数组，此时状态转移方程改成如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//dp1ll, dp1l, dp1分别代表dp1[i-2], dp1[i-1], dp1[i]</span></span><br><span class="line"><span class="comment">//dp2l, dp2分别代表dp2[i-1], dp2[i]</span></span><br><span class="line">dp1 = s[i] == s[i<span class="number">-1</span>] ? dp1l : dp1l + <span class="number">1</span>;</span><br><span class="line">dp2 = dp2l + dp1l;</span><br><span class="line"><span class="keyword">if</span>(s[i] == s[i<span class="number">-1</span>]) dp2 -= dp1ll;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s[i] == s[i<span class="number">-2</span>]) dp2 --;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="sourse-code"><a href="#sourse-code" class="headerlink" title="sourse code"></a>sourse code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> n = s.<span class="built_in">size</span>(), i;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> dp1ll, dp1l, dp1, dp2l, dp2;</span><br><span class="line">    dp1ll = dp2l = <span class="number">1</span>;</span><br><span class="line">    dp1l = s[<span class="number">0</span>] == s[<span class="number">1</span>] ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>; i&lt;n; i++) &#123;</span><br><span class="line">        dp1 = s[i] == s[i<span class="number">-1</span>] ? dp1l : dp1l + <span class="number">1</span>;</span><br><span class="line">        dp2 = dp1l + dp2l;</span><br><span class="line">        <span class="keyword">if</span>(s[i<span class="number">-1</span>] == s[i]) dp2 -= dp1ll;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s[i<span class="number">-2</span>] == s[i]) dp2 --;</span><br><span class="line">        dp1ll = dp1l; dp1l = dp1;</span><br><span class="line">        dp2l = dp2;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp1 + dp2 + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dp/" rel="tag"># dp</a>
+              <a href="/tags/solution/" rel="tag"># solution</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/15/The-Best-Peak-Shape/" rel="prev" title="The Best Peak Shape">
+                  <i class="fa fa-chevron-left"></i> The Best Peak Shape
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/04/cs224w/" rel="next" title="cs224w">
+                  cs224w <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darth Vadar</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

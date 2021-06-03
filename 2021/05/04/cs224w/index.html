@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yzz673.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="cs224wtraditional feature-based methodsNode-levelEigenvector centrality a node v is important if surrounded by important neighboring nodes u $\in$ N(v) ——我的邻居越重要，我就越重要  $c_v &#x3D; \frac{1}{\lambda}\sum_{u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs224w">
+<meta property="og:url" content="http://yzz673.github.io/2021/05/04/cs224w/index.html">
+<meta property="og:site_name" content="May the Force Be With You">
+<meta property="og:description" content="cs224wtraditional feature-based methodsNode-levelEigenvector centrality a node v is important if surrounded by important neighboring nodes u $\in$ N(v) ——我的邻居越重要，我就越重要  $c_v &#x3D; \frac{1}{\lambda}\sum_{u">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-04T03:55:03.000Z">
+<meta property="article:modified_time" content="2021-05-30T01:20:54.394Z">
+<meta property="article:author" content="Darth Vadar">
+<meta property="article:tag" content="graph">
+<meta property="article:tag" content="machine learning">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yzz673.github.io/2021/05/04/cs224w/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>cs224w | May the Force Be With You</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">May the Force Be With You</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cs224w"><span class="nav-number">1.</span> <span class="nav-text">cs224w</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#traditional-feature-based-methods"><span class="nav-number">1.1.</span> <span class="nav-text">traditional feature-based methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-level"><span class="nav-number">1.1.1.</span> <span class="nav-text">Node-level</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eigenvector-centrality"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Eigenvector centrality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#betweenness-centrality"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">betweenness centrality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#closeness-centrality"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">closeness centrality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clustering-coefficient"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">clustering coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graphlets"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">graphlets</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Link-level"><span class="nav-number">1.1.2.</span> <span class="nav-text">Link-level</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#distance-based-features"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">distance-based features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#local-neighborhood-overlap"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">local neighborhood overlap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Global-neighborhood-overlap"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">Global neighborhood overlap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-level"><span class="nav-number">1.1.3.</span> <span class="nav-text">Graph-level</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kernel-methods"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">kernel methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graphlet-kernel"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">graphlet kernel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#weisfeiler-lehman-WL-kernel"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">weisfeiler-lehman(WL) kernel</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-embedding"><span class="nav-number">1.2.</span> <span class="nav-text">Node embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step"><span class="nav-number">1.2.1.</span> <span class="nav-text">step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#encoder"><span class="nav-number">1.2.2.</span> <span class="nav-text">encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-walk"><span class="nav-number">1.2.3.</span> <span class="nav-text">random walk</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Darth Vadar</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yzz673" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yzz673" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuan001223@163.com" title="E-Mail → mailto:yuan001223@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/05/04/cs224w/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs224w
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-04 11:55:03" itemprop="dateCreated datePublished" datetime="2021-05-04T11:55:03+08:00">2021-05-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-30 09:20:54" itemprop="dateModified" datetime="2021-05-30T09:20:54+08:00">2021-05-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="cs224w"><a href="#cs224w" class="headerlink" title="cs224w"></a>cs224w</h1><h2 id="traditional-feature-based-methods"><a href="#traditional-feature-based-methods" class="headerlink" title="traditional feature-based methods"></a>traditional feature-based methods</h2><h3 id="Node-level"><a href="#Node-level" class="headerlink" title="Node-level"></a>Node-level</h3><h4 id="Eigenvector-centrality"><a href="#Eigenvector-centrality" class="headerlink" title="Eigenvector centrality"></a>Eigenvector centrality</h4><ul>
+<li><p>a node v is important if surrounded by important neighboring nodes u $\in$ N(v)</p>
+<p>——我的邻居越重要，我就越重要</p>
+</li>
+<li><p>$c_v = \frac{1}{\lambda}\sum_{u\in N(v)}c_u \leftrightarrow \lambda c=Ac$</p>
+<ul>
+<li>A是adjacency matrix</li>
+<li>c是central vector</li>
+</ul>
+</li>
+<li><p>$\lambda_{max}$恒为正值且唯一</p>
+</li>
+<li>$c_{max}$is used for centrality </li>
+</ul>
+<h4 id="betweenness-centrality"><a href="#betweenness-centrality" class="headerlink" title="betweenness centrality"></a>betweenness centrality</h4><ul>
+<li>a node v is important if it lies on many shortest paths between other nodes</li>
+<li>$c_v = \sum_{s\neq v\neq t}\frac{n_v}{n}$, $n_v$ is the shortest paths between s and t contains v, n is the shortest paths between s and t</li>
+</ul>
+<h4 id="closeness-centrality"><a href="#closeness-centrality" class="headerlink" title="closeness centrality"></a>closeness centrality</h4><ul>
+<li>a node v is important if it has small shortest path lengths to all other nodes</li>
+<li>$c_v = 1/\sum_{u\neq v}l_{uv}$, $l_{uv}$is the length of the shortest path between u and v</li>
+</ul>
+<h4 id="clustering-coefficient"><a href="#clustering-coefficient" class="headerlink" title="clustering coefficient"></a>clustering coefficient</h4><ul>
+<li>measures how connected v’s neighboring nodes are</li>
+<li>$e_v = E_v/C_{k_v}^2 \in [0,1]$, $E_v$ is the edges among neighboring nodes, $k_v$ is the degree of v</li>
+<li>clustering coefficient counts the #(triangles) in the ego-network</li>
+</ul>
+<h4 id="graphlets"><a href="#graphlets" class="headerlink" title="graphlets"></a>graphlets</h4><ul>
+<li>rooted connected non-isomorphic subgraphs</li>
+<li>graphic degree vector(GDV): graphite-base features for nodes, a count vector of graphlets rooted at a given node</li>
+</ul>
+<h3 id="Link-level"><a href="#Link-level" class="headerlink" title="Link-level"></a>Link-level</h3><h4 id="distance-based-features"><a href="#distance-based-features" class="headerlink" title="distance-based features"></a>distance-based features</h4><ul>
+<li>Shortest-path distance between 2 nodes——does not capture the degree of neighborhood overlap</li>
+</ul>
+<h4 id="local-neighborhood-overlap"><a href="#local-neighborhood-overlap" class="headerlink" title="local neighborhood overlap"></a>local neighborhood overlap</h4><ul>
+<li>Capture neighboring nodes shared between v1 and v2<ul>
+<li>Common neighbors: $|N(v_1) \cap N(v_2)|$</li>
+<li>Jaccard’s coefficient: $|N(v_1) \cap N(v_2)|/|N(v_1) \cup N(v_2)|$</li>
+<li>Adamic-Adar index: $\sum_{u \in N(v_1) \cap N(v_2)}1/logk_v$</li>
+</ul>
+</li>
+</ul>
+<h4 id="Global-neighborhood-overlap"><a href="#Global-neighborhood-overlap" class="headerlink" title="Global neighborhood overlap"></a>Global neighborhood overlap</h4><ul>
+<li>Katz index: count the number of paths of all lengths between a given pair of nodes</li>
+<li>用邻接矩阵的幂计算路径数，即$A^k_{uv} = P^{(k)}_{uv}$</li>
+<li>Katz index between v1 and v2 is calculated as $S_{v_1v_2}=\sum_{l=1}^{\infty}\beta^lA^l_{v_1v_2}, \beta \in (0,1)$, $\beta$是一个权重因子，距离越远权重越低</li>
+<li>Katz index matrix: $S = \sum_{i=1}^{\infty}\beta^iA^i=(I-\beta A)^{-1}-I$ </li>
+</ul>
+<h3 id="Graph-level"><a href="#Graph-level" class="headerlink" title="Graph-level"></a>Graph-level</h3><h4 id="kernel-methods"><a href="#kernel-methods" class="headerlink" title="kernel methods"></a>kernel methods</h4><ul>
+<li>Kernel $K(G,G’) \in R$ measures similarity between data points(2 graphs)</li>
+<li>Kernel matrix $K = (K(G,G’))_{G,G’}$必须半正定</li>
+<li><p>There exists a feature representation $\phi(.)$ such that $K(G,G’)=\phi(G)^T \phi(G’)$</p>
+<h4 id="graphlet-kernel"><a href="#graphlet-kernel" class="headerlink" title="graphlet kernel"></a>graphlet kernel</h4></li>
+<li><p>key ides: count the number of different graphlet in a graph</p>
+</li>
+<li><p>graphlet here is  different from node-level features:</p>
+<ul>
+<li>node in graphlet do not need to be connected</li>
+<li>the graphlet are not rooted</li>
+</ul>
+</li>
+<li><p>Given graph G</p>
+<ul>
+<li>the graphlet list $\mathcal{G_k} = (g_1,…g_{n_k})$</li>
+<li>the graphlet count vector $f_G \in R^{n_k}, (f_G)_i = num(g_i \subseteq G)$</li>
+</ul>
+</li>
+<li>Graphlet kernel: $K(G,G’) =h_G^Th_{G’}, h_G = f_G/sum(f_G)$</li>
+</ul>
+<h4 id="weisfeiler-lehman-WL-kernel"><a href="#weisfeiler-lehman-WL-kernel" class="headerlink" title="weisfeiler-lehman(WL) kernel"></a>weisfeiler-lehman(WL) kernel</h4><ul>
+<li>Color refinement<ul>
+<li>Given a graph G with a set of nodes V<ul>
+<li>Assign a color $c^{(0)}(v)$ to each node v</li>
+<li>Iteratively refine node colors by $c^{(k+1)}(v) = HASH(\{c^{(k)}(v),\{c^{(k)}(u)\}_{u \in N(v)}\})$, HASH maps different inputs to different colors</li>
+<li>After K steps of color refinement, $c^{(K)}(v)$ summarizes the structure of K-hop neighborhood </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>After refinement, WL kernel counts number of nodes with a given color——形成一个向量$\phi(G)$</li>
+</ul>
+<h2 id="Node-embedding"><a href="#Node-embedding" class="headerlink" title="Node embedding"></a>Node embedding</h2><h3 id="step"><a href="#step" class="headerlink" title="step"></a>step</h3><ul>
+<li><p>Encoder maps from nodes to embeddings</p>
+</li>
+<li><p>Define a node similarity function(a measure of similarity in the original network)</p>
+</li>
+<li><p>Decoder DEC maps from embeddingds to the similarity score</p>
+</li>
+<li><p>Optimize the parameters of the decoder so that:</p>
+<p>$similarity(u, v) \approx z_v^Tz_u$</p>
+</li>
+</ul>
+<h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><ul>
+<li><p>Maps each node to a low-dimensional vector</p>
+<p>$ENC(v) = z_v$</p>
+</li>
+<li><p>Simplest approach: an embedding-lookup</p>
+</li>
+</ul>
+<h3 id="random-walk"><a href="#random-walk" class="headerlink" title="random walk"></a>random walk</h3><ul>
+<li><p>notation</p>
+<ul>
+<li>$z_u$: the embedding of node u</li>
+<li>$P(v|z_u)$: the (predicted) probability of visiting node v on random walks starting from node u</li>
+<li>$\sigma(z)_i=e^{z_i}/\sum_{j=1}^Ke^{z_j}$: Softmax function, turns vector of K values(model predictions) into K probabilities that sum to 1</li>
+<li>$S(x)=1/(1+e^{-x})$: sigmoid function, S-shaped function that turns real values into range of $(0,1)$</li>
+</ul>
+</li>
+<li><p>random walk: given a graph and a starting point, select a neighbor randomly then move to the neighbor. The sequence of point visited this way is a random walk on the graph</p>
+</li>
+<li><p>random walk embeddings</p>
+<ul>
+<li>$z_u^Tz_v \approx $ probability that u and v co-occur on a random walk over the graph</li>
+<li>Idea: if random walk starting from node u visits v with high probability, u and v are similar</li>
+</ul>
+</li>
+<li><p>Unsupervised feature learning</p>
+<ul>
+<li>Intuition: find embeddings of nodes in d-dimensional space that preserves similarity</li>
+<li>Idea: learn node embedding such that nearby nodes are close together in the network</li>
+</ul>
+</li>
+<li><p>feature learning as optimization:</p>
+<ul>
+<li><p>Given G(V, E)</p>
+</li>
+<li><p>Goal: learn a mapping $f:u \rightarrow R^d:f(u)=z_u$</p>
+</li>
+<li><p>似然函数(Log-likelihood objective):</p>
+<p>$max_f\sum_{u \in V}logP(N_R(u)|z_u)$</p>
+<p>$N_R(u)$ is the neighborhood of node u by strategy R</p>
+</li>
+</ul>
+</li>
+<li><p>random walk optimization</p>
+<ul>
+<li>run short fixed-length random walks starting from each node u in the graph using some random walk strategy R</li>
+<li>for each node u collect $N_R(u)$, the multiset of nodes visited on random walks</li>
+<li>optimize embeddings according to: given node u, predict its neighbor $N_R(u)$</li>
+<li>似然函数：$L=\sum_{u \in V}\sum_{v \in N_R(u)}-log(P(v|z_u))$</li>
+<li>定义$P(v|z_u)=exp(z_u^Tz_v)/\sum_{n \in V}exp(z_u^Tz_n)$</li>
+<li>按上述定义，时间复杂度过高，需要优化$P(v|z_u)$</li>
+<li>优化方法：negative sampling<ul>
+<li>$log(exp(z_u^Tz_v)/\sum_{n \in V}exp(z_u^Tz_n)) \approx log(\sigma(z_u^Tz_v))-\sum_{i=1}^klog(\sigma(z_u^Tz_{n_i})$</li>
+<li>instead of normalize all nodes, just normalize against k random negative samples</li>
+<li>Choose negative samples<ul>
+<li>Sample k negative node each with probability, proportional to its degree(度数更高更有可能被选作negative sample)</li>
+<li>Higher k gives robust estimates</li>
+<li>Higher k corresponds to higher bias on negative events</li>
+<li>In practice k = 5-20</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>node2vec</p>
+<ul>
+<li>Goal: embed node with similar network neughborhoods close in the feature space</li>
+<li>Develop biased 2nd order random walk R to generate network neighborhood $N_R(u)$ of node u</li>
+<li>use DFS or BFS</li>
+<li>Interpolating BFS an DFS<ul>
+<li>2 parameters<ul>
+<li>return parameter p</li>
+<li>in-out parameter q</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>embedding entire graph</p>
+<ul>
+<li><p>Anonymous walk</p>
+<ul>
+<li><p>对定点进行索引编号，索引为第一次遇到该点的时间</p>
+</li>
+<li><p>example：</p>
+<p>A-&gt;B-&gt;C-&gt;B-&gt;C对应1-&gt;2-&gt;3-&gt;2-&gt;3</p>
+<p>同样的，C-&gt;D-&gt;B-&gt;D-&gt;B也对应1-&gt;2-&gt;3-&gt;2-&gt;3</p>
+</li>
+<li><p>Anonymous walks 的个数与点个数呈指数关系</p>
+</li>
+</ul>
+</li>
+<li><p>sampling anonymous walks</p>
+<ul>
+<li>generate independently a set of m random walks</li>
+<li>要想使误差大于$\epsilon$的概率小于$\delta$，$m=\lceil \frac{2}{\epsilon^2}(log(2^\eta-2)-log\epsilon)\rceil$($\eta$ is the total number of anonymous walks of length $l$)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/graph/" rel="tag"># graph</a>
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/15/Delete-At-Most-Two-Characters/" rel="prev" title="Delete At Most Two Characters">
+                  <i class="fa fa-chevron-left"></i> Delete At Most Two Characters
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darth Vadar</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

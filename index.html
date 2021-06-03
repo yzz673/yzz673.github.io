@@ -168,20 +168,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -227,6 +227,505 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/05/04/cs224w/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/04/cs224w/" class="post-title-link" itemprop="url">cs224w</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-04 11:55:03" itemprop="dateCreated datePublished" datetime="2021-05-04T11:55:03+08:00">2021-05-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-30 09:20:54" itemprop="dateModified" datetime="2021-05-30T09:20:54+08:00">2021-05-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="cs224w"><a href="#cs224w" class="headerlink" title="cs224w"></a>cs224w</h1><h2 id="traditional-feature-based-methods"><a href="#traditional-feature-based-methods" class="headerlink" title="traditional feature-based methods"></a>traditional feature-based methods</h2><h3 id="Node-level"><a href="#Node-level" class="headerlink" title="Node-level"></a>Node-level</h3><h4 id="Eigenvector-centrality"><a href="#Eigenvector-centrality" class="headerlink" title="Eigenvector centrality"></a>Eigenvector centrality</h4><ul>
+<li><p>a node v is important if surrounded by important neighboring nodes u $\in$ N(v)</p>
+<p>——我的邻居越重要，我就越重要</p>
+</li>
+<li><p>$c_v = \frac{1}{\lambda}\sum_{u\in N(v)}c_u \leftrightarrow \lambda c=Ac$</p>
+<ul>
+<li>A是adjacency matrix</li>
+<li>c是central vector</li>
+</ul>
+</li>
+<li><p>$\lambda_{max}$恒为正值且唯一</p>
+</li>
+<li>$c_{max}$is used for centrality </li>
+</ul>
+<h4 id="betweenness-centrality"><a href="#betweenness-centrality" class="headerlink" title="betweenness centrality"></a>betweenness centrality</h4><ul>
+<li>a node v is important if it lies on many shortest paths between other nodes</li>
+<li>$c_v = \sum_{s\neq v\neq t}\frac{n_v}{n}$, $n_v$ is the shortest paths between s and t contains v, n is the shortest paths between s and t</li>
+</ul>
+<h4 id="closeness-centrality"><a href="#closeness-centrality" class="headerlink" title="closeness centrality"></a>closeness centrality</h4><ul>
+<li>a node v is important if it has small shortest path lengths to all other nodes</li>
+<li>$c_v = 1/\sum_{u\neq v}l_{uv}$, $l_{uv}$is the length of the shortest path between u and v</li>
+</ul>
+<h4 id="clustering-coefficient"><a href="#clustering-coefficient" class="headerlink" title="clustering coefficient"></a>clustering coefficient</h4><ul>
+<li>measures how connected v’s neighboring nodes are</li>
+<li>$e_v = E_v/C_{k_v}^2 \in [0,1]$, $E_v$ is the edges among neighboring nodes, $k_v$ is the degree of v</li>
+<li>clustering coefficient counts the #(triangles) in the ego-network</li>
+</ul>
+<h4 id="graphlets"><a href="#graphlets" class="headerlink" title="graphlets"></a>graphlets</h4><ul>
+<li>rooted connected non-isomorphic subgraphs</li>
+<li>graphic degree vector(GDV): graphite-base features for nodes, a count vector of graphlets rooted at a given node</li>
+</ul>
+<h3 id="Link-level"><a href="#Link-level" class="headerlink" title="Link-level"></a>Link-level</h3><h4 id="distance-based-features"><a href="#distance-based-features" class="headerlink" title="distance-based features"></a>distance-based features</h4><ul>
+<li>Shortest-path distance between 2 nodes——does not capture the degree of neighborhood overlap</li>
+</ul>
+<h4 id="local-neighborhood-overlap"><a href="#local-neighborhood-overlap" class="headerlink" title="local neighborhood overlap"></a>local neighborhood overlap</h4><ul>
+<li>Capture neighboring nodes shared between v1 and v2<ul>
+<li>Common neighbors: $|N(v_1) \cap N(v_2)|$</li>
+<li>Jaccard’s coefficient: $|N(v_1) \cap N(v_2)|/|N(v_1) \cup N(v_2)|$</li>
+<li>Adamic-Adar index: $\sum_{u \in N(v_1) \cap N(v_2)}1/logk_v$</li>
+</ul>
+</li>
+</ul>
+<h4 id="Global-neighborhood-overlap"><a href="#Global-neighborhood-overlap" class="headerlink" title="Global neighborhood overlap"></a>Global neighborhood overlap</h4><ul>
+<li>Katz index: count the number of paths of all lengths between a given pair of nodes</li>
+<li>用邻接矩阵的幂计算路径数，即$A^k_{uv} = P^{(k)}_{uv}$</li>
+<li>Katz index between v1 and v2 is calculated as $S_{v_1v_2}=\sum_{l=1}^{\infty}\beta^lA^l_{v_1v_2}, \beta \in (0,1)$, $\beta$是一个权重因子，距离越远权重越低</li>
+<li>Katz index matrix: $S = \sum_{i=1}^{\infty}\beta^iA^i=(I-\beta A)^{-1}-I$ </li>
+</ul>
+<h3 id="Graph-level"><a href="#Graph-level" class="headerlink" title="Graph-level"></a>Graph-level</h3><h4 id="kernel-methods"><a href="#kernel-methods" class="headerlink" title="kernel methods"></a>kernel methods</h4><ul>
+<li>Kernel $K(G,G’) \in R$ measures similarity between data points(2 graphs)</li>
+<li>Kernel matrix $K = (K(G,G’))_{G,G’}$必须半正定</li>
+<li><p>There exists a feature representation $\phi(.)$ such that $K(G,G’)=\phi(G)^T \phi(G’)$</p>
+<h4 id="graphlet-kernel"><a href="#graphlet-kernel" class="headerlink" title="graphlet kernel"></a>graphlet kernel</h4></li>
+<li><p>key ides: count the number of different graphlet in a graph</p>
+</li>
+<li><p>graphlet here is  different from node-level features:</p>
+<ul>
+<li>node in graphlet do not need to be connected</li>
+<li>the graphlet are not rooted</li>
+</ul>
+</li>
+<li><p>Given graph G</p>
+<ul>
+<li>the graphlet list $\mathcal{G_k} = (g_1,…g_{n_k})$</li>
+<li>the graphlet count vector $f_G \in R^{n_k}, (f_G)_i = num(g_i \subseteq G)$</li>
+</ul>
+</li>
+<li>Graphlet kernel: $K(G,G’) =h_G^Th_{G’}, h_G = f_G/sum(f_G)$</li>
+</ul>
+<h4 id="weisfeiler-lehman-WL-kernel"><a href="#weisfeiler-lehman-WL-kernel" class="headerlink" title="weisfeiler-lehman(WL) kernel"></a>weisfeiler-lehman(WL) kernel</h4><ul>
+<li>Color refinement<ul>
+<li>Given a graph G with a set of nodes V<ul>
+<li>Assign a color $c^{(0)}(v)$ to each node v</li>
+<li>Iteratively refine node colors by $c^{(k+1)}(v) = HASH(\{c^{(k)}(v),\{c^{(k)}(u)\}_{u \in N(v)}\})$, HASH maps different inputs to different colors</li>
+<li>After K steps of color refinement, $c^{(K)}(v)$ summarizes the structure of K-hop neighborhood </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>After refinement, WL kernel counts number of nodes with a given color——形成一个向量$\phi(G)$</li>
+</ul>
+<h2 id="Node-embedding"><a href="#Node-embedding" class="headerlink" title="Node embedding"></a>Node embedding</h2><h3 id="step"><a href="#step" class="headerlink" title="step"></a>step</h3><ul>
+<li><p>Encoder maps from nodes to embeddings</p>
+</li>
+<li><p>Define a node similarity function(a measure of similarity in the original network)</p>
+</li>
+<li><p>Decoder DEC maps from embeddingds to the similarity score</p>
+</li>
+<li><p>Optimize the parameters of the decoder so that:</p>
+<p>$similarity(u, v) \approx z_v^Tz_u$</p>
+</li>
+</ul>
+<h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><ul>
+<li><p>Maps each node to a low-dimensional vector</p>
+<p>$ENC(v) = z_v$</p>
+</li>
+<li><p>Simplest approach: an embedding-lookup</p>
+</li>
+</ul>
+<h3 id="random-walk"><a href="#random-walk" class="headerlink" title="random walk"></a>random walk</h3><ul>
+<li><p>notation</p>
+<ul>
+<li>$z_u$: the embedding of node u</li>
+<li>$P(v|z_u)$: the (predicted) probability of visiting node v on random walks starting from node u</li>
+<li>$\sigma(z)_i=e^{z_i}/\sum_{j=1}^Ke^{z_j}$: Softmax function, turns vector of K values(model predictions) into K probabilities that sum to 1</li>
+<li>$S(x)=1/(1+e^{-x})$: sigmoid function, S-shaped function that turns real values into range of $(0,1)$</li>
+</ul>
+</li>
+<li><p>random walk: given a graph and a starting point, select a neighbor randomly then move to the neighbor. The sequence of point visited this way is a random walk on the graph</p>
+</li>
+<li><p>random walk embeddings</p>
+<ul>
+<li>$z_u^Tz_v \approx $ probability that u and v co-occur on a random walk over the graph</li>
+<li>Idea: if random walk starting from node u visits v with high probability, u and v are similar</li>
+</ul>
+</li>
+<li><p>Unsupervised feature learning</p>
+<ul>
+<li>Intuition: find embeddings of nodes in d-dimensional space that preserves similarity</li>
+<li>Idea: learn node embedding such that nearby nodes are close together in the network</li>
+</ul>
+</li>
+<li><p>feature learning as optimization:</p>
+<ul>
+<li><p>Given G(V, E)</p>
+</li>
+<li><p>Goal: learn a mapping $f:u \rightarrow R^d:f(u)=z_u$</p>
+</li>
+<li><p>似然函数(Log-likelihood objective):</p>
+<p>$max_f\sum_{u \in V}logP(N_R(u)|z_u)$</p>
+<p>$N_R(u)$ is the neighborhood of node u by strategy R</p>
+</li>
+</ul>
+</li>
+<li><p>random walk optimization</p>
+<ul>
+<li>run short fixed-length random walks starting from each node u in the graph using some random walk strategy R</li>
+<li>for each node u collect $N_R(u)$, the multiset of nodes visited on random walks</li>
+<li>optimize embeddings according to: given node u, predict its neighbor $N_R(u)$</li>
+<li>似然函数：$L=\sum_{u \in V}\sum_{v \in N_R(u)}-log(P(v|z_u))$</li>
+<li>定义$P(v|z_u)=exp(z_u^Tz_v)/\sum_{n \in V}exp(z_u^Tz_n)$</li>
+<li>按上述定义，时间复杂度过高，需要优化$P(v|z_u)$</li>
+<li>优化方法：negative sampling<ul>
+<li>$log(exp(z_u^Tz_v)/\sum_{n \in V}exp(z_u^Tz_n)) \approx log(\sigma(z_u^Tz_v))-\sum_{i=1}^klog(\sigma(z_u^Tz_{n_i})$</li>
+<li>instead of normalize all nodes, just normalize against k random negative samples</li>
+<li>Choose negative samples<ul>
+<li>Sample k negative node each with probability, proportional to its degree(度数更高更有可能被选作negative sample)</li>
+<li>Higher k gives robust estimates</li>
+<li>Higher k corresponds to higher bias on negative events</li>
+<li>In practice k = 5-20</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>node2vec</p>
+<ul>
+<li>Goal: embed node with similar network neughborhoods close in the feature space</li>
+<li>Develop biased 2nd order random walk R to generate network neighborhood $N_R(u)$ of node u</li>
+<li>use DFS or BFS</li>
+<li>Interpolating BFS an DFS<ul>
+<li>2 parameters<ul>
+<li>return parameter p</li>
+<li>in-out parameter q</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>embedding entire graph</p>
+<ul>
+<li><p>Anonymous walk</p>
+<ul>
+<li><p>对定点进行索引编号，索引为第一次遇到该点的时间</p>
+</li>
+<li><p>example：</p>
+<p>A-&gt;B-&gt;C-&gt;B-&gt;C对应1-&gt;2-&gt;3-&gt;2-&gt;3</p>
+<p>同样的，C-&gt;D-&gt;B-&gt;D-&gt;B也对应1-&gt;2-&gt;3-&gt;2-&gt;3</p>
+</li>
+<li><p>Anonymous walks 的个数与点个数呈指数关系</p>
+</li>
+</ul>
+</li>
+<li><p>sampling anonymous walks</p>
+<ul>
+<li>generate independently a set of m random walks</li>
+<li>要想使误差大于$\epsilon$的概率小于$\delta$，$m=\lceil \frac{2}{\epsilon^2}(log(2^\eta-2)-log\epsilon)\rceil$($\eta$ is the total number of anonymous walks of length $l$)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/04/15/Delete-At-Most-Two-Characters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/15/Delete-At-Most-Two-Characters/" class="post-title-link" itemprop="url">Delete At Most Two Characters</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-15 18:49:24" itemprop="dateCreated datePublished" datetime="2021-04-15T18:49:24+08:00">2021-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-16 10:22:59" itemprop="dateModified" datetime="2021-04-16T10:22:59+08:00">2021-04-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/solution/" itemprop="url" rel="index"><span itemprop="name">solution</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Delete-At-Most-Two-Characters"><a href="#Delete-At-Most-Two-Characters" class="headerlink" title="Delete At Most Two Characters"></a>Delete At Most Two Characters</h1><h2 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h2><p>Given a string which contains only lower case English letters, how many different strings you can get after deleting <strong>AT MOST TWO</strong> characters in it?</p>
+<h3 id="input-specification"><a href="#input-specification" class="headerlink" title="input specification"></a>input specification</h3><p>Each input file contains one test case, which gives the string whose length is in [3,10^6].</p>
+<h3 id="output-specification"><a href="#output-specification" class="headerlink" title="output specification"></a>output specification</h3><p>Print in a line the number of different strings you can get after deleting at most 2 characters.</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h3 id="暴搜"><a href="#暴搜" class="headerlink" title="暴搜"></a>暴搜</h3><ul>
+<li>$O(N^2)$时间复杂度，会超时</li>
+</ul>
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><ul>
+<li><p>假设输入的字符串为s，长度为n</p>
+</li>
+<li><p>考虑使用两个数组</p>
+<ul>
+<li>dp1[n]：dp1[i]表示子串0到i删去一个字符得到的字符串数</li>
+<li>dp2[n]：dp2[i]表示子串0到i删去两个字符得到的字符串数</li>
+</ul>
+</li>
+<li><p>状态转移方程</p>
+<ul>
+<li><p>dp1[i]，考虑s[i]和s[i-1]</p>
+<ul>
+<li>不删除s[i]：共dp1[i-1]种</li>
+<li>删除s[i]：1种</li>
+<li><p>但要考虑s[i]和s[i-1]</p>
+<ul>
+<li>若s[i] != s[i-1]则上述情况不会重合，dp1[i] = dp1[i-1] + 1</li>
+<li>若s[i] == s[i-1]则删s[i]和删s[i-1]得到的结果是一样的，dp1[i] = dp1[i-1]</li>
+</ul>
+</li>
+<li><p>得到如下转移方程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp1[i] = s[i] == s[i<span class="number">-1</span>] ? dp1[i<span class="number">-1</span>] + dp1[i<span class="number">-1</span>] + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>dp2[i]，此时需考虑s[i]，s[i-1]，s[i-2]</p>
+<ul>
+<li><p>不删除s[i]：相当于在前i-1个字符里删除两个，则有dp2[i-1]种</p>
+</li>
+<li><p>删除s[i]：相当于在前i-1个字符删除一个字符，则有dp1[i-1]种</p>
+</li>
+<li><p>如果s[i] != s[i-1]，s[i] != s[i-2]则上述两种情况不会出现重合，不需要去重</p>
+</li>
+<li><p>如果s[i] == s[i-1]</p>
+<p>考虑字符串s’aa，s’是一个任意字符串</p>
+<p>删s[i]中，若删掉最后一个a(s[i])和s’中的一个字符，此时有dp1[i-2]种情况</p>
+<p>不删s[i]中，若删掉倒数第二个a(s[i-1])和s’中一个字符，此时有dp1[i-2]种情况</p>
+<p>可以看到，有dp1[i-2]种情况被累加两次，所以需要减掉一个dp1[i-2]</p>
+</li>
+<li><p>如果s[i] != s[i-1] &amp;&amp;s[i] == s[i-2]</p>
+<p>考虑字符串s’aba，s’是任意一个字符串</p>
+<p>删s[i]中，若删掉最后两个字符，此时一种情况</p>
+<p>不删s[i]中，若删掉倒数第二，三个字符，此时一种情况</p>
+<p>发现上面同样的情况被累加了两次，需减去一次</p>
+</li>
+<li><p>综上可得到如下转移方程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp2[i] = dp2[i<span class="number">-1</span>] + dp1[i<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">if</span>(s[i] == s[i<span class="number">-1</span>]) dp2[i] -= dp1[i<span class="number">-2</span>];</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s[i] == s[i<span class="number">-2</span>]) dp2[i] --;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意，dp2[i]可能会超过int的表示范围，需要long long，但此时用一个数组会内存超限，观察上面的状态转移方程，若发现状态i最多与i-1和i-2有关，所以不需要数组，此时状态转移方程改成如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//dp1ll, dp1l, dp1分别代表dp1[i-2], dp1[i-1], dp1[i]</span></span><br><span class="line"><span class="comment">//dp2l, dp2分别代表dp2[i-1], dp2[i]</span></span><br><span class="line">dp1 = s[i] == s[i<span class="number">-1</span>] ? dp1l : dp1l + <span class="number">1</span>;</span><br><span class="line">dp2 = dp2l + dp1l;</span><br><span class="line"><span class="keyword">if</span>(s[i] == s[i<span class="number">-1</span>]) dp2 -= dp1ll;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s[i] == s[i<span class="number">-2</span>]) dp2 --;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="sourse-code"><a href="#sourse-code" class="headerlink" title="sourse code"></a>sourse code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> n = s.<span class="built_in">size</span>(), i;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> dp1ll, dp1l, dp1, dp2l, dp2;</span><br><span class="line">    dp1ll = dp2l = <span class="number">1</span>;</span><br><span class="line">    dp1l = s[<span class="number">0</span>] == s[<span class="number">1</span>] ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>; i&lt;n; i++) &#123;</span><br><span class="line">        dp1 = s[i] == s[i<span class="number">-1</span>] ? dp1l : dp1l + <span class="number">1</span>;</span><br><span class="line">        dp2 = dp1l + dp2l;</span><br><span class="line">        <span class="keyword">if</span>(s[i<span class="number">-1</span>] == s[i]) dp2 -= dp1ll;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s[i<span class="number">-2</span>] == s[i]) dp2 --;</span><br><span class="line">        dp1ll = dp1l; dp1l = dp1;</span><br><span class="line">        dp2l = dp2;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp1 + dp2 + <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/04/15/The-Best-Peak-Shape/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Darth Vadar">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force Be With You">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/15/The-Best-Peak-Shape/" class="post-title-link" itemprop="url">The Best Peak Shape</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-15 10:38:45 / Modified: 10:49:54" itemprop="dateCreated datePublished" datetime="2021-04-15T10:38:45+08:00">2021-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/solution/" itemprop="url" rel="index"><span itemprop="name">solution</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="The-Best-Peak-Shape"><a href="#The-Best-Peak-Shape" class="headerlink" title="The Best Peak Shape"></a>The Best Peak Shape</h1><h2 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h2><p>In many research areas, one important target of analyzing data is to find the best “peak shape” out of a huge amount of raw data full of noises. A “peak shape” of length $L$ is an ordered sequence of numbers $D_1,…,D_L$ satisfying that there exists an index $i(1<i<L)$ such that $d_1<...<d_{i-1}<d_i>D_{i+1}&gt;…&gt;D_L$.</i<L)$></p>
+<p>Now given $N$ input numbers ordered by their indices, you may remove some of them to keep the rest of the numbers in a peak shape. The best peak shape is the longest sub-sequence that forms a peak shape. If there is a tie, then the most symmetric (meaning that the difference of the lengths of the increasing and the decreasing sub-sequences is minimized) one will be chosen.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h3><p>Each input file contains one test case. For each case, the first line gives an integer $N(3&lt;=N&lt;=10^4)$. Then $N$ integers are given in the next line, separated by spaces. All the integers are in [−10000,10000].</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h3><p>For each case, print in a line the length of the best peak shape, the index (starts from 1) and the value of the peak number. If the solution does not exist, simply print “No peak shape” in a line. The judge’s input guarantees the uniqueness of the output.</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><h4 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h4><ul>
+<li>一道很简单的dp问题，本质是最长单调子序列</li>
+<li>正向求单增子列，逆向求单减子列</li>
+<li>再遍历一遍找出结果</li>
+</ul>
+<h4 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, i, j, maxl = <span class="number">0</span>, diff = <span class="number">10000</span>, peak, peakloc;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> a[n], dpup[n], dpdown[n]; <span class="comment">//两个dp数组</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        dpdown[i] = dpup[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//正向求单增子列</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;i; j++)</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt; a[j]) dpup[i] = <span class="built_in">max</span>(dpup[i], dpup[j] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//逆向求单减子列</span></span><br><span class="line">    <span class="keyword">for</span>(i = n<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=n<span class="number">-1</span>; j&gt;i; j--)</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt; a[j]) dpdown[i] = <span class="built_in">max</span>(dpdown[i], dpdown[j] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//再循环一遍找出结果</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;n<span class="number">-1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(dpdown[i]&gt;<span class="number">1</span>&amp;&amp;dpup[i]&gt;<span class="number">1</span>&amp;&amp;(maxl &lt; dpdown[i]+dpup[i]<span class="number">-1</span>||maxl == dpdown[i]+dpup[i]<span class="number">-1</span>&amp;&amp;diff &gt; <span class="built_in">abs</span>(dpup[i]-dpdown[i]))) &#123;</span><br><span class="line">            maxl = dpdown[i]+dpup[i]<span class="number">-1</span>;</span><br><span class="line">            diff = <span class="built_in">abs</span>(dpup[i]-dpdown[i]);</span><br><span class="line">            peak = a[i];</span><br><span class="line">            peakloc = i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!maxl) cout &lt;&lt; <span class="string">&quot;No peak shape&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; maxl &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; peakloc &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; peak &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://yzz673.github.io/2021/04/08/safe-fruit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -250,10 +749,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-04-08 14:58:23 / Modified: 20:15:13" itemprop="dateCreated datePublished" datetime="2021-04-08T14:58:23+08:00">2021-04-08</time>
+      <time title="Created: 2021-04-08 14:58:23" itemprop="dateCreated datePublished" datetime="2021-04-08T14:58:23+08:00">2021-04-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-09 21:20:15" itemprop="dateModified" datetime="2021-04-09T21:20:15+08:00">2021-04-09</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -300,7 +805,7 @@
 <li>维护一个数组dp，dp[i]为索引i到m-1的点集组成的最大独立集的点数</li>
 <li>根据以上内容可在回溯过程中增加两个剪枝条件，都是在确定再搜索下去不能产生更大的独立集的情况下return，具体见代码部分</li>
 </ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//g[100][100]是图的邻接矩阵</span></span><br><span class="line"><span class="comment">//num是最终独立集的元素个数，p是最终独立集里水果的价格</span></span><br><span class="line"><span class="comment">//dp[i]为索引i到m-1的点集组成的最大独立集的点数</span></span><br><span class="line"><span class="comment">//adj[i]储存当前独立集元素个数为i时与当前独立集所有点不相邻的点</span></span><br><span class="line"><span class="comment">//vector&lt;int&gt; fSet是最终最大独立集的集合</span></span><br><span class="line"><span class="comment">//vector&lt;int&gt; price存储水果的价格</span></span><br><span class="line"><span class="keyword">int</span> g[<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;, num = <span class="number">0</span>, p, dp[<span class="number">100</span>], adj[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; fSet, price; </span><br><span class="line"><span class="comment">//回溯算法</span></span><br><span class="line"><span class="comment">//m是图中点的个数</span></span><br><span class="line"><span class="comment">//adjN是与当前独立集所有点都不相邻的点集中元素个数</span></span><br><span class="line"><span class="comment">//curnum是当前独立集的元素个数，curp是当前独立集中水果的价格，curfSet是当前独立点集</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> adjN, <span class="keyword">int</span> curnum, <span class="keyword">int</span> curp, vector&lt;<span class="keyword">int</span>&gt; &amp;curfSet)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!adjN) &#123; <span class="comment">//已经没有点不和当前点相邻，搜到底了，准备返回</span></span><br><span class="line">      <span class="comment">//如果这个独立集比之前最大的都大或者和之前最大的一样大且便宜一些，则更新结果</span></span><br><span class="line">        <span class="keyword">if</span>(num &lt; curnum||(num == curnum&amp;&amp;p &gt; curp)) &#123;</span><br><span class="line">            p = curp;</span><br><span class="line">            num = curnum;</span><br><span class="line">            fSet = curfSet;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, idx;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;adjN; i++) &#123; <span class="comment">//遍历所有与当前独立集所有点不相邻</span></span><br><span class="line">        k = adj[curnum][i];</span><br><span class="line">      <span class="comment">//由于只考虑索引大于等于k的点，所以m-k是能够加进去的点的最大数量，当前点数curnum再加上m-k还不比结果大，则可以直接返回</span></span><br><span class="line">      <span class="comment">//dp[k]是由点k到m-1能够组成的最大独立集点数（因为是倒叙搜索，所以dp[k]已经得到），当前点数curnum再加上dp[k]还不比当前结果			//大，则直接返回</span></span><br><span class="line">        <span class="keyword">if</span>(curnum+m-k &lt; num || curnum+dp[k] &lt; num) <span class="keyword">return</span>; </span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>, idx=<span class="number">0</span>; j&lt;adjN; j++) <span class="comment">//从当前集合中选择不与k相邻的点加到adj[curnum+1]中</span></span><br><span class="line">            <span class="keyword">if</span>(!g[k][adj[curnum][j]]) adj[curnum+<span class="number">1</span>][idx++] = adj[curnum][j];</span><br><span class="line">        curfSet.<span class="built_in">push_back</span>(k); <span class="comment">//将k压到当前独立集中</span></span><br><span class="line">        <span class="built_in">backtrack</span>(m, idx, curnum+<span class="number">1</span>, curp + price[k], curfSet); <span class="comment">//继续搜索</span></span><br><span class="line">        curfSet.<span class="built_in">pop_back</span>(); <span class="comment">//搜完后将k pop出来</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//求最大独立集函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">maxIndepSet</span><span class="params">(<span class="keyword">int</span> m, vector&lt;<span class="keyword">int</span>&gt; &amp;curfSet)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, idx, j;</span><br><span class="line">    <span class="keyword">for</span>(i=m<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--) &#123; <span class="comment">//倒序枚举顶点</span></span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>, idx = <span class="number">0</span>; j&lt;m; j++) <span class="comment">//确定初始集合</span></span><br><span class="line">            <span class="keyword">if</span>(!g[i][j]) adj[<span class="number">1</span>][idx++] = j;</span><br><span class="line">        curfSet.<span class="built_in">push_back</span>(i); <span class="comment">//将第一个点i压到独立集中</span></span><br><span class="line">        <span class="built_in">backtrack</span>(m, idx, <span class="number">1</span>, price[i], curfSet); <span class="comment">//搜索</span></span><br><span class="line">        curfSet.<span class="built_in">pop_back</span>(); </span><br><span class="line">        dp[i] = num; <span class="comment">//记录dp</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m, i, j, f1, f2, pr;</span><br><span class="line">  <span class="comment">//构建id2idx和idx2id形成索引与ID号到双射</span></span><br><span class="line">    vector&lt;int&gt; id2idx(1000, 100), idx2id(100), curfSet;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt; &gt;<span class="built_in">G</span>(<span class="number">1000</span>); <span class="comment">//G[i]向量中含有所有不能和i一起吃的水果ID号</span></span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; f1 &gt;&gt; f2;</span><br><span class="line">        G[f1].<span class="built_in">push_back</span>(f2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;m; i++) &#123;</span><br><span class="line">        cin &gt;&gt; f1 &gt;&gt; pr;</span><br><span class="line">        id2idx[f1] = i;</span><br><span class="line">        idx2id[i] = f1;</span><br><span class="line">        price.<span class="built_in">push_back</span>(pr);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//构建图的邻接矩阵g</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;m; i++) &#123;</span><br><span class="line">        f1 = idx2id[i];</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;G[f1].<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">            f2 = id2idx[G[f1][j]];</span><br><span class="line">            <span class="keyword">if</span>(f2 &lt; m) g[i][f2] = g[f2][i] = <span class="number">1</span>; <span class="comment">//这里加一个判断是为了处理tip中出现的水果在basket中没有出现的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">maxIndepSet</span>(m, curfSet); <span class="comment">//求最大独立集</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;fSet.<span class="built_in">size</span>(); i++)</span><br><span class="line">        fSet[i] = idx2id[fSet[i]]; <span class="comment">//此时fSet是最终最大独立集，但由于题目要输出ID号，所以还需要用idx2id转换一下</span></span><br><span class="line">    <span class="built_in">sort</span>(fSet.<span class="built_in">begin</span>(), fSet.<span class="built_in">end</span>()); <span class="comment">//题目要求升序输出</span></span><br><span class="line">    cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setw</span>(<span class="number">3</span>) &lt;&lt; <span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; fSet[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;fSet.<span class="built_in">size</span>(); i++) cout &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="built_in">setw</span>(<span class="number">3</span>) &lt;&lt; <span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; fSet[i];</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; p &lt;&lt; endl;</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//g[100][100]是图的邻接矩阵</span></span><br><span class="line"><span class="comment">//num是最终独立集的元素个数，p是最终独立集里水果的价格</span></span><br><span class="line"><span class="comment">//dp[i]为索引i到m-1的点集组成的最大独立集的点数</span></span><br><span class="line"><span class="comment">//adj[i]储存当前独立集元素个数为i时与当前独立集所有点不相邻的点</span></span><br><span class="line"><span class="comment">//vector&lt;int&gt; fSet是最终最大独立集的集合</span></span><br><span class="line"><span class="comment">//vector&lt;int&gt; price存储水果的价格</span></span><br><span class="line"><span class="keyword">int</span> g[<span class="number">100</span>][<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;, num = <span class="number">0</span>, p, dp[<span class="number">100</span>], adj[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; fSet, price; </span><br><span class="line"><span class="comment">//回溯算法</span></span><br><span class="line"><span class="comment">//m是图中点的个数</span></span><br><span class="line"><span class="comment">//adjN是与当前独立集所有点都不相邻的点集中元素个数</span></span><br><span class="line"><span class="comment">//curnum是当前独立集的元素个数，curp是当前独立集中水果的价格，curfSet是当前独立集</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> adjN, <span class="keyword">int</span> curnum, <span class="keyword">int</span> curp, vector&lt;<span class="keyword">int</span>&gt; &amp;curfSet)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!adjN) &#123; <span class="comment">//已经没有点不和当前点相邻，搜到底了，准备返回</span></span><br><span class="line">      <span class="comment">//如果这个独立集比之前最大的都大或者和之前最大的一样大且便宜一些，则更新结果</span></span><br><span class="line">        <span class="keyword">if</span>(num &lt; curnum||(num == curnum&amp;&amp;p &gt; curp)) &#123;</span><br><span class="line">            p = curp;</span><br><span class="line">            num = curnum;</span><br><span class="line">            fSet = curfSet;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, idx;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;adjN; i++) &#123; <span class="comment">//遍历所有与当前独立集所有点不相邻</span></span><br><span class="line">        k = adj[curnum][i];</span><br><span class="line">      <span class="comment">//由于只考虑索引大于等于k的点，所以m-k是能够加进去的点的最大数量，当前点数curnum再加上m-k还不比结果大，则可以直接返回</span></span><br><span class="line">      <span class="comment">//dp[k]是由点k到m-1能够组成的最大独立集点数（因为是倒叙搜索，所以dp[k]已经得到），当前点数curnum再加上dp[k]还不比当前结果			//大，则直接返回</span></span><br><span class="line">        <span class="keyword">if</span>(curnum+m-k &lt; num || curnum+dp[k] &lt; num) <span class="keyword">return</span>; </span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>, idx=<span class="number">0</span>; j&lt;adjN; j++) <span class="comment">//从当前集合中选择不与k相邻的点加到adj[curnum+1]中</span></span><br><span class="line">            <span class="keyword">if</span>(!g[k][adj[curnum][j]]) adj[curnum+<span class="number">1</span>][idx++] = adj[curnum][j];</span><br><span class="line">        curfSet.<span class="built_in">push_back</span>(k); <span class="comment">//将k压到当前独立集中</span></span><br><span class="line">        <span class="built_in">backtrack</span>(m, idx, curnum+<span class="number">1</span>, curp + price[k], curfSet); <span class="comment">//继续搜索</span></span><br><span class="line">        curfSet.<span class="built_in">pop_back</span>(); <span class="comment">//搜完后将k pop出来</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//求最大独立集函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">maxIndepSet</span><span class="params">(<span class="keyword">int</span> m, vector&lt;<span class="keyword">int</span>&gt; &amp;curfSet)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, idx, j;</span><br><span class="line">    <span class="keyword">for</span>(i=m<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--) &#123; <span class="comment">//倒序枚举顶点</span></span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>, idx = <span class="number">0</span>; j&lt;m; j++) <span class="comment">//确定初始集合</span></span><br><span class="line">            <span class="keyword">if</span>(!g[i][j]) adj[<span class="number">1</span>][idx++] = j;</span><br><span class="line">        curfSet.<span class="built_in">push_back</span>(i); <span class="comment">//将第一个点i压到独立集中</span></span><br><span class="line">        <span class="built_in">backtrack</span>(m, idx, <span class="number">1</span>, price[i], curfSet); <span class="comment">//搜索</span></span><br><span class="line">        curfSet.<span class="built_in">pop_back</span>(); </span><br><span class="line">        dp[i] = num; <span class="comment">//记录dp</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m, i, j, f1, f2, pr;</span><br><span class="line">  <span class="comment">//构建id2idx和idx2id形成索引与ID号到双射</span></span><br><span class="line">    vector&lt;int&gt; id2idx(1000, 100), idx2id(100), curfSet;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt; &gt;<span class="built_in">G</span>(<span class="number">1000</span>); <span class="comment">//G[i]向量中含有所有不能和i一起吃的水果ID号</span></span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; f1 &gt;&gt; f2;</span><br><span class="line">        G[f1].<span class="built_in">push_back</span>(f2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;m; i++) &#123;</span><br><span class="line">        cin &gt;&gt; f1 &gt;&gt; pr;</span><br><span class="line">        id2idx[f1] = i;</span><br><span class="line">        idx2id[i] = f1;</span><br><span class="line">        price.<span class="built_in">push_back</span>(pr);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//构建图的邻接矩阵g</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;m; i++) &#123;</span><br><span class="line">        f1 = idx2id[i];</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;G[f1].<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">            f2 = id2idx[G[f1][j]];</span><br><span class="line">            <span class="keyword">if</span>(f2 &lt; m) g[i][f2] = g[f2][i] = <span class="number">1</span>; <span class="comment">//这里加一个判断是为了处理tip中出现的水果在basket中没有出现的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">maxIndepSet</span>(m, curfSet); <span class="comment">//求最大独立集</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;fSet.<span class="built_in">size</span>(); i++)</span><br><span class="line">        fSet[i] = idx2id[fSet[i]]; <span class="comment">//此时fSet是最终最大独立集，但由于题目要输出ID号，所以还需要用idx2id转换一下</span></span><br><span class="line">    <span class="built_in">sort</span>(fSet.<span class="built_in">begin</span>(), fSet.<span class="built_in">end</span>()); <span class="comment">//题目要求升序输出</span></span><br><span class="line">    cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">setw</span>(<span class="number">3</span>) &lt;&lt; <span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; fSet[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;fSet.<span class="built_in">size</span>(); i++) cout &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="built_in">setw</span>(<span class="number">3</span>) &lt;&lt; <span class="built_in">setfill</span>(<span class="string">&#x27;0&#x27;</span>) &lt;&lt; fSet[i];</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; p &lt;&lt; endl;</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -431,7 +936,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-30 09:07:47" itemprop="dateModified" datetime="2021-03-30T09:07:47+08:00">2021-03-30</time>
+        <time title="Modified: 2021-05-17 10:22:22" itemprop="dateModified" datetime="2021-05-17T10:22:22+08:00">2021-05-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -744,9 +1249,264 @@
 <li>对于差运算，若不去重，则结果中某属性的个数位被减量中出现的次数减去减量中出现的次数</li>
 </ul>
 <h4 id="分组聚集和having子句"><a href="#分组聚集和having子句" class="headerlink" title="分组聚集和having子句"></a>分组聚集和having子句</h4><ul>
-<li>若有些属性在select子句中出现但没有在group by子句中出现，则该属性必须出现在聚集函数内部，不然会报错</li>
+<li><p>找出教师平均工资大于42000的系，并列出平均工资</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select dept_name, avg(salary)</span><br><span class="line">from instructor</span><br><span class="line">group by dept_name</span><br><span class="line">having avg(salary) &gt; 42000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若有些属性在select子句中出现但没有在group by子句中出现，则该属性必须出现在聚集函数内部，不然会报错</p>
+</li>
 <li>having子句应用到每个分组上，不满足having子句谓词的分组会被抛弃</li>
-<li></li>
+</ul>
+<h4 id="in-not-in"><a href="#in-not-in" class="headerlink" title="in, not in"></a>in, not in</h4><ul>
+<li><p>用于枚举</p>
+</li>
+<li><p>example：找出既不叫”Mozart”， 又不叫”Einstein”的教师姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select distinct name</span><br><span class="line">from instructor</span><br><span class="line">where name not in(&#39;Mozart&#39;, &#39;Einstein&#39;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="some-all"><a href="#some-all" class="headerlink" title="some, all"></a>some, all</h4><ul>
+<li><p>找出至少比”Biology”系某一个教师工资高的所有教师姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select name</span><br><span class="line">from instructor</span><br><span class="line">where salary &gt; some(select salary</span><br><span class="line">                   	from instructor</span><br><span class="line">                   	where dept_name &#x3D; &#39;Biology&#39;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找出比”Biology”系所有教师工资都高的所有教师姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select name</span><br><span class="line">from instructor</span><br><span class="line">where salary &gt; all(select salary</span><br><span class="line">                   	from instructor</span><br><span class="line">                   	where dept_name &#x3D; &#39;Biology&#39;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="exists-not-exists"><a href="#exists-not-exists" class="headerlink" title="exists, not exists"></a>exists, not exists</h4><ul>
+<li><p>测试子查询结果中是否包含元组</p>
+</li>
+<li><p>找出在2009秋和2010春同时开课的所有课程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select course_id</span><br><span class="line">from section as S</span><br><span class="line">where S.year &#x3D; 2009 and S.semester &#x3D; &#39;Fall&#39; and exists (select * </span><br><span class="line">                                                       	from section as T</span><br><span class="line">                                                       	where T.year &#x3D; 2010 and T.semester &#x3D; &#39;Spring&#39;</span><br><span class="line">                                                       	and T.course_id &#x3D; S.course_id)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关系A包含关系B可写成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not exists(B except A)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找出选修了Biology系开设的所有课程的学生（即该学生选的课程包含Biology开设的所有课程）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select S.id</span><br><span class="line">from student as S</span><br><span class="line">where not exists((select course_id</span><br><span class="line">                 from course</span><br><span class="line">                 where dept_name &#x3D; &#39;Biology&#39;)</span><br><span class="line">                 except</span><br><span class="line">                 (select T.course_id</span><br><span class="line">                 from takes as T</span><br><span class="line">                 where T.id &#x3D; S.id))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="unique-not-unique"><a href="#unique-not-unique" class="headerlink" title="unique, not unique"></a>unique, not unique</h4><ul>
+<li><p>重复元组存在性测试</p>
+</li>
+<li><p>找出2009年最多开设一次的课程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select T.course_id</span><br><span class="line">from course as T</span><br><span class="line">where unique(select S.course_id</span><br><span class="line">             from section as S</span><br><span class="line">             where S.course_id &#x3D; T.course_id and S.year &#x3D; 2009)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找出2009年最少开设两次的课程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select T.course_id</span><br><span class="line">from course as T</span><br><span class="line">where not unique(select S.course_id</span><br><span class="line">             		 from section as S</span><br><span class="line">             		 where S.course_id &#x3D; T.course_id and S.year &#x3D; 2009)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><ul>
+<li>保留未匹配的元组</li>
+<li>Left outer join: 保留左边关系元组</li>
+<li>Right outer join：保留右边关系元组</li>
+<li>Full outer join：保留两边关系元组</li>
+</ul>
+<h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><ul>
+<li><p>基本形式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view view_name as &lt;query&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可对视图进行查询</p>
+</li>
+</ul>
+<h4 id="transaction"><a href="#transaction" class="headerlink" title="transaction"></a>transaction</h4><h2 id="E-R-model"><a href="#E-R-model" class="headerlink" title="E-R model"></a>E-R model</h2><h3 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h3><ul>
+<li>E-R图中若某实体全部参与，则用双线进行关联</li>
+</ul>
+<h3 id="弱实体集"><a href="#弱实体集" class="headerlink" title="弱实体集"></a>弱实体集</h3><ul>
+<li>没有足够的属性以形成主码的实体集，或者对另一个实体集具有强依赖的实体集</li>
+<li>必须与另一个称作identifying（标识） 或own entity set（属主实体集）的实体集关联才有意义， 这种关联称作identifying relationship（标识性联系），这种联系是从弱实体集到标识实体集到多对一关系，在E-R图中用双菱形表示</li>
+<li>discriminator（分辨符）：区分依赖于特定强实体集到弱实体集的属性集合，在E-R图中以虚下划线标明</li>
+<li>弱实体集的主码由标识实体集的主码加上分辨符组成</li>
+</ul>
+<h2 id="relational-database-design"><a href="#relational-database-design" class="headerlink" title="relational database design"></a>relational database design</h2><h3 id="atomic-domain-and-1NF"><a href="#atomic-domain-and-1NF" class="headerlink" title="atomic domain and 1NF"></a>atomic domain and 1NF</h3><ul>
+<li>Elements in the domain are indivisible unit</li>
+<li>R is in first normal form(1 NF) if the domains of all attributes of R are atomic（第一范式）</li>
+</ul>
+<h3 id="decomposition"><a href="#decomposition" class="headerlink" title="decomposition"></a>decomposition</h3><h4 id="functional-dependency"><a href="#functional-dependency" class="headerlink" title="functional dependency"></a>functional dependency</h4><ul>
+<li><p>给定一个实例r(R)，a, b为属性集。a-&gt;b，即a决定b</p>
+<p>对于任意两个元组t1, t2，若t1[a] = t2[a]，则一定有t1[b] = t2[b]</p>
+</li>
+<li><p>若k-&gt;R，则k是superkey</p>
+</li>
+<li><p>a-&gt;b is trivial if b $\subseteq$ a</p>
+</li>
+<li><p>F is the set of functional dependency on r(R), $F^+$is the closure of F</p>
+</li>
+</ul>
+<h4 id="Armstrong’s-axioms"><a href="#Armstrong’s-axioms" class="headerlink" title="Armstrong’s axioms"></a>Armstrong’s axioms</h4><ul>
+<li><p>3 axioms:</p>
+<ul>
+<li>Reflexive: if b $\subseteq$ a, then a-&gt;b</li>
+<li>Augmentation: if a-&gt;b, then ac-&gt;bc</li>
+<li>Transitivity: if a-&gt;b and b-&gt;c, then a-&gt;c</li>
+</ul>
+</li>
+<li><p>Armstrong’s axioms can be used repeatedly to compute $F^+$</p>
+</li>
+</ul>
+<h4 id="additional-rules"><a href="#additional-rules" class="headerlink" title="additional rules"></a>additional rules</h4><ul>
+<li><p>3 rules:</p>
+<ul>
+<li>Union: if a-&gt;b and a-&gt;c, then a-&gt;bc</li>
+<li>Decomposition: if a-&gt;bc, then a-&gt;b and a-&gt;c</li>
+<li>Pseudotransitivity: if a-&gt;b and bc-&gt;d, then ac-&gt;d</li>
+</ul>
+</li>
+<li><p>Union and Decomposition 推得：a-&gt;b &amp;&amp; a-&gt;c 和 a-&gt;bc互为充要条件</p>
+</li>
+</ul>
+<h4 id="The-closure-of-a-under-F-a"><a href="#The-closure-of-a-under-F-a" class="headerlink" title="The closure of a under F   ($a^+$)"></a>The closure of a under F   ($a^+$)</h4><ul>
+<li><p>依赖于a的属性集称为a的闭包</p>
+</li>
+<li><p>pseudo code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">result:&#x3D;a;</span><br><span class="line">repeat</span><br><span class="line">	for each functional dependency b-&gt;c in F do</span><br><span class="line">		begin</span><br><span class="line">			if b is the subset of result then result:&#x3D;result union c;</span><br><span class="line">		end</span><br><span class="line">until(result not change)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Example :R = (a, b, c, g, h, i); F = (a-&gt;b, a-&gt;c, cg-&gt;h, cg-&gt;i, b-&gt;h); compute $(ag)^+$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; ag;</span><br><span class="line">a-&gt;b, a is in result; -&gt; result &#x3D; abg;</span><br><span class="line">a-&gt;c, a is in result; -&gt; result &#x3D; abcg;</span><br><span class="line">cg-&gt;h, cg is in result; -&gt; result &#x3D; abcgh;</span><br><span class="line">cg-&gt;i, cg is in result; -&gt; result &#x3D; abcghi;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use:</p>
+<ul>
+<li>检验a是否为superkey，即检验$a^+$ = R ?</li>
+<li>检验a-&gt;b是否成立，即检验b $\subseteq$ $a^+$ ?</li>
+<li>计算$F^+$，即计算R中所有属性的闭包</li>
+</ul>
+</li>
+</ul>
+<h4 id="Canonical-cover-F-c"><a href="#Canonical-cover-F-c" class="headerlink" title="Canonical cover  ($F_c$)"></a>Canonical cover  ($F_c$)</h4><ul>
+<li><p>extraneous attribute: Consider a-&gt;b in F and attribute A, if</p>
+<ul>
+<li><p>A $\in $ a, F -&gt; {F-(a-&gt;b) $\cup$ (a-A)-&gt;b}</p>
+<p>or</p>
+</li>
+<li><p>A $\in$ b, {F-(a-&gt;b) $\cup$ a-&gt;(b-A)}-&gt;F</p>
+</li>
+</ul>
+<p>then A is an extraneous attribute</p>
+</li>
+<li><p>Find $F_c$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Fc:&#x3D;F;</span><br><span class="line">repeat</span><br><span class="line">	replace a1-&gt;b1 &amp;&amp; a1-&gt;b2 in Fc by a1-&gt;b1b2; &#x2F;&#x2F;先把左边一样的并起来</span><br><span class="line">	for a-&gt;b in Fc, find extraneous attributes in a or b, then delete them &#x2F;&#x2F;再删去左边或右边的冗余项</span><br><span class="line">until (Fc not change)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Lossless-Decomposition"><a href="#Lossless-Decomposition" class="headerlink" title="Lossless Decomposition"></a>Lossless Decomposition</h4><ul>
+<li><p>将r(R)分解为r1(R1)和r2(R2)时未失去任何信息</p>
+</li>
+<li><p>将R分解为R1，R2时，若</p>
+<ul>
+<li>R1 $\cap$ R2 -&gt; R1</li>
+<li>R1 $\cap$ R2 -&gt; R2</li>
+</ul>
+<p>中至少有一个在$F^+$中，则R1, R2是无损分解，即R1 $\cap$ R2是R1或R2的超码，则为无损分解</p>
+</li>
+</ul>
+<h4 id="Dependency-Preservation"><a href="#Dependency-Preservation" class="headerlink" title="Dependency Preservation"></a>Dependency Preservation</h4><ul>
+<li>将R分解为R1,…,Rn; F对Ri对restriction为Fi, 其中Fi $\subseteq$ F 且Fi只含Ri中的属性</li>
+<li>令$F^{‘}$为F1到Fn的并，若$F^{‘+}=F^+$，则分解为保持依赖的</li>
+</ul>
+<h4 id="Boyce-Codd-Normal-Form-BCNF"><a href="#Boyce-Codd-Normal-Form-BCNF" class="headerlink" title="Boyce-Codd Normal Form(BCNF)"></a>Boyce-Codd Normal Form(BCNF)</h4><ul>
+<li><p>关系模式R的依赖集F满足BCNF的条件是：对所有functional dependency a-&gt;b in $F^+$，至少满足以下两个条件之一：</p>
+<ul>
+<li>b $\subseteq$ a</li>
+<li>a是R的一个superkey</li>
+</ul>
+</li>
+<li><p>对于不满足BCNF的schema R，想要decompose R时，由于至少存在函数依赖a-&gt;b不满足BCNF的两个条件，将R分为两个部分</p>
+<ul>
+<li>a $\cup$ b</li>
+<li>R-(b-a)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Third-Normal-Form"><a href="#Third-Normal-Form" class="headerlink" title="Third Normal Form"></a>Third Normal Form</h4><ul>
+<li><p>关系模式R的依赖集F满足第三范式的条件是：对所有functional dependency a-&gt;b in $F^+$，至少满足以下三个条件之一：</p>
+<ul>
+<li>b $\subseteq$ a</li>
+<li>a是R的一个superkey</li>
+<li>对于b-a中的每一个attribute A，A都在R的某个候选码中</li>
+</ul>
+</li>
+<li><p>3NF decomposition</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">i:&#x3D;0;</span><br><span class="line">for each a-&gt;b in Fc</span><br><span class="line">	i:&#x3D;i+1;</span><br><span class="line">	Ri:&#x3D;ab;</span><br><span class="line">if none of the schemas Rj(1 &lt;&#x3D; j &lt;&#x3D; i) contains a candidate key of R then</span><br><span class="line">	i:&#x3D;i+1;</span><br><span class="line">	Ri:&#x3D;any candidate key of R;</span><br><span class="line">repeat</span><br><span class="line">	if any Rj is contained in Rk then</span><br><span class="line">		Rj:&#x3D;Ri;</span><br><span class="line">		i:&#x3D;i-1;</span><br><span class="line">until (no Rj can be deleted)</span><br><span class="line">return (R1, ... ,Ri)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="multivalued-dependency"><a href="#multivalued-dependency" class="headerlink" title="multivalued dependency"></a>multivalued dependency</h3><ul>
+<li>若a-&gt;b，则a-&gt;-&gt;b</li>
+<li>若a-&gt;-&gt;b，则a-&gt;-&gt;R-a-b</li>
+<li>若b $\subseteq$ a或b $\cup$ a = R，则a-&gt;-&gt;b是平凡的</li>
+</ul>
+<h4 id="第四范式"><a href="#第四范式" class="headerlink" title="第四范式"></a>第四范式</h4><ul>
+<li>函数依赖和多值依赖集为D的关系模式r(R)属于第四范式(4NF)的条件是，对$D^+$中所有形如a-&gt;-&gt;b的多值依赖，至少有以下之一成立：<ul>
+<li>a-&gt;-&gt;b是平凡的</li>
+<li>a是superkey</li>
+</ul>
+</li>
+</ul>
+<h4 id="4NF分解"><a href="#4NF分解" class="headerlink" title="4NF分解"></a>4NF分解</h4><ul>
+<li>步骤：对于R中非平凡多值依赖a-&gt;-&gt;b，将R其分解为:<ul>
+<li>a $\cup$ b</li>
+<li>R - (b-a)</li>
+</ul>
+</li>
+</ul>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><h2 id="储存和文件结构"><a href="#储存和文件结构" class="headerlink" title="储存和文件结构"></a>储存和文件结构</h2><h3 id="储存介质"><a href="#储存介质" class="headerlink" title="储存介质"></a>储存介质</h3><ul>
+<li>cache：高速缓冲储存器，位于CPU和主存储器DRAM（Dynamic Random Access Memory）之间，规模较小，但速度很快，通常由SRAM（Static Random Access Memory静态存储器）组成</li>
+<li>main memory：主储存器，存放可处理的数据，通用机器指令在主储存器上执行</li>
+<li>flash memory：快闪储存器，具有非易失性，目前有两种类型：NAND快闪和NOR快闪</li>
+<li>magnetic-disc storage：磁盘储存器，用于长期联机数据存储</li>
+<li>optical storage：光学存储器</li>
+<li>tape storage：磁带存储器</li>
+</ul>
+<h3 id="storage-hierarchy"><a href="#storage-hierarchy" class="headerlink" title="storage hierarchy"></a>storage hierarchy</h3><ul>
+<li>Primary storage: 基本存储(cache, main memory)，易失性</li>
+<li>Secondary storage: 辅助存储(flash memory, magnetic disks)，又叫online storage(联机存储)，非易失性</li>
+<li>Tertiary storage: 三级存储(magnetic tape, optical storage)，又叫off-line storage(脱机存储)，非易失性，速度慢</li>
+</ul>
+<h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><ul>
+<li>盘片表面从逻辑上划分为磁道(track)，磁道又划分为扇区(sector)。扇区是磁盘读写的最小单位</li>
+<li>读写头(read-write head)：通过反转磁性物质磁化的方向将将信息磁化储存到扇区中</li>
+<li>所有盘片的第i条磁道合在一起称为第i个柱面</li>
+</ul>
+<h4 id="disc-controller"><a href="#disc-controller" class="headerlink" title="disc controller"></a>disc controller</h4><ul>
+<li>interfaces between the computer system and the disk drive hardware</li>
+<li>accepts high-level commands to read or write a sector</li>
+<li>为其所写的扇区附加校验和(checksum)，校验和是从写到扇区中的数据计算得到的。读取一个扇区的数据时，disc controller用读到的数据再次计算一次校验和，与储存的校验和相比较，若不一致，则会重读几次，若一直错误，则发出一个读取失败信号</li>
+<li>remapping of bad sector：磁盘初始格式化或写一个扇区时，若disc controller检测到一个损坏的扇区则会把这个扇区在逻辑上映射到另一个物理位置，写操作在该位置上执行</li>
+</ul>
+<h4 id="Disk-Subsystem"><a href="#Disk-Subsystem" class="headerlink" title="Disk Subsystem"></a>Disk Subsystem</h4><ul>
+<li>将磁盘连接到计算机操作系统的接口<ul>
+<li>ATA (AT adaptor) range of standards</li>
+<li>SATA (Serial ATA) </li>
+<li>SCSI (Small Computer System Interconnect) range of standards</li>
+<li>SAS (Serial Attached SCSI)</li>
+<li>Several variants of each standard (different speeds and capabilities)</li>
+</ul>
+</li>
+</ul>
+<h4 id="磁盘性能度量"><a href="#磁盘性能度量" class="headerlink" title="磁盘性能度量"></a>磁盘性能度量</h4><ul>
+<li>access time：访问时间，从发出请求到数据开始传输到时间</li>
+<li>访问数据时，磁盘臂必须先定位到正确的磁道，该时间被称为寻道时间(seek time)，平均寻道时间是寻道时间的平均值，依赖于目的磁道与磁盘臂的距离</li>
+<li>定位到正确的磁道后，要访问的扇区出现在读写头下的时间称为旋转等待时间(rotational latency time)，平均旋转等待时间=磁盘旋转一周的时间/2</li>
+<li>数据传输率(data-transfer rate)，从磁盘获得数据或者向磁盘存储数据的速率</li>
+<li>平均故障时间(mean time to failure, MTTF)，这是磁盘可靠性的度量</li>
+</ul>
+<h4 id="磁盘块访问的优化"><a href="#磁盘块访问的优化" class="headerlink" title="磁盘块访问的优化"></a>磁盘块访问的优化</h4><ul>
+<li>buffering：缓冲，从磁盘读取的块暂时存储在缓冲区中</li>
+<li>read-ahead：预读，当一个磁盘块被访问时，相同磁道的连续块也被读入内存缓冲区中（对于随机块访问不是很有用）</li>
+<li>scheduling：调度，访问不同柱面上的块时，按照使磁盘臂移动最短距离的顺序发出请求。Disk-arm-scheduling algorithms(磁盘臂调度算法) order pending accesses to tracks so that disk arm movement is minimized</li>
+<li>file organization：文件组织，按照与预期数据访问方式最接近的方式来组织磁盘上的块</li>
+<li>nonvolatile write buffer：非易失性写缓冲区，加速写磁盘的操作</li>
+<li>log disc：日志磁盘，专门用于写顺序日志的磁盘，消除了寻道时间</li>
+</ul>
+<h4 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h4><ul>
+<li>redundancy：冗余，存储正常情况下不需要的额外信息，但这些信息可在磁盘故障时重建丢失的信息。最简单也是最昂贵的一种方法是镜像技术，即复制每张磁盘的信息。</li>
+<li>并行，在多张磁盘上进行数据拆分(striping data)来提高传输速率<ul>
+<li>比特级拆分(bit-level striping)，将一个byte拆分成8个bit到不同的磁盘上（适用于磁盘总数为8的倍数或8的因子的情形），读到效率为原来的8倍但写和访问的效率降低</li>
+<li>块级拆分(block-level striping)，将块拆分到多张磁盘，假设将块从0开始编号，一共n张磁盘，则第i个块存储在第(i mod n)+1张磁盘上</li>
+</ul>
+</li>
+</ul>
+<h5 id="RAID-level"><a href="#RAID-level" class="headerlink" title="RAID level"></a>RAID level</h5><ul>
+<li>level 0： 块级拆分，没有冗余</li>
+<li>level 1：块级拆分，磁盘镜像</li>
+<li>level 2：内存风格的纠错码，将字节拆分存储在多张磁盘上，纠错位储存在其它磁盘上</li>
+<li>level 3：位交叉的奇偶校验，</li>
 </ul>
 
       
@@ -897,10 +1657,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-29 16:28:15 / Modified: 16:30:17" itemprop="dateCreated datePublished" datetime="2021-03-29T16:28:15+08:00">2021-03-29</time>
+      <time title="Created: 2021-03-29 16:28:15" itemprop="dateCreated datePublished" datetime="2021-03-29T16:28:15+08:00">2021-03-29</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-02 20:21:48" itemprop="dateModified" datetime="2021-06-02T20:21:48+08:00">2021-06-02</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -924,7 +1690,6 @@
           <h2 id="线性方程组"><a href="#线性方程组" class="headerlink" title="线性方程组"></a>线性方程组</h2><h3 id="直接解法"><a href="#直接解法" class="headerlink" title="直接解法"></a>直接解法</h3><h4 id="消元"><a href="#消元" class="headerlink" title="消元"></a>消元</h4><ul>
 <li>高斯消元成上三角($\sum_{k=1}^{n-1}(n-k)(n-k+2)=n^3/3+n^2/2-5n/6$次运算)，再从最后一项回代($1+\sum_{i=1}^{n-1}(n-i+1)=n^2/2+n/2$次运算)</li>
 <li>Gauss-Jordan消元：消成主对角阵</li>
-<li></li>
 </ul>
 <h4 id="选主元"><a href="#选主元" class="headerlink" title="选主元"></a>选主元</h4><ul>
 <li><p>Partial Pivoting</p>
@@ -952,7 +1717,189 @@
 </ul>
 </li>
 </ul>
-<h3 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h3>
+<h3 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h3><h2 id="interpolation（差值）"><a href="#interpolation（差值）" class="headerlink" title="interpolation（差值）"></a>interpolation（差值）</h2><h3 id="Lagrange-Interpolation"><a href="#Lagrange-Interpolation" class="headerlink" title="Lagrange Interpolation"></a>Lagrange Interpolation</h3><h4 id="系数"><a href="#系数" class="headerlink" title="系数"></a>系数</h4><p>$P_n = a_0+a_1x+…+a_nx^n$</p>
+<p>这种表示形式中$1,x,x^2,…,x^n$作为一组基</p>
+<p>差值中假设有$P_n(x_i) = y_i(0&lt;=i&lt;=n)$，若用上面的一组基表示$P_n$，则需要解方程组</p>
+<p>在Lagrange差值中，变换基为$L_{n,i}(x)$此时$P_n = \sum_{i=0}^nL_{n,i}(x)y_i$，这是为了直接让$y_i$作为系数，省去了解方程组的麻烦，$L_{n, i}$满足如下条件：</p>
+<ul>
+<li>$x=x_i,L_{n, i}=1;x\neq x_i,L_{n,i}=0$</li>
+</ul>
+<p>此时要确定Lagrange系数$L_{n,i}$</p>
+<p>由其满足的条件可以令$L_{n,i} = c_i\prod_{j\neq i}(x-x_j)$，令$x=x_i$有$c_i\prod_{j\neq i}(x_i-x_j)=1$</p>
+<p>所以$L_{n,i}=\prod_{j\neq i}(x-x_j)/(x_i-x_j)$</p>
+<h4 id="余项"><a href="#余项" class="headerlink" title="余项"></a>余项</h4><p>$R_n(x)=f(x)-P_n(x)$至少有n+1个根，令$R_n(x)=K(x)\prod_{i=0}^n(x-x_i),a&lt;=x_0&lt;=…&lt;=x_n&lt;=b$</p>
+<p>固定$x\neq x_i$，令$g(t)=R_n(t)-K(x)\prod_{i=0}^n(t-x_i)=(K(t)-K(x))\prod_{i=0}^n(x-x_i)$至少有$x_0,…,x_n,x$共n+2个根</p>
+<p>所以由Rolle定理，存在$\xi_x$使得$g^{(n+1)}(\xi_x)=0$即$R^{(n+1)}_n(\xi_x)-K(x)(n+1)!=f^{(n+1)}(\xi_x)-K(x)(n+1)!=0$</p>
+<p>故$R_n(x)=\frac{f^{(n+1)}(\xi_x)}{(n+1)!}\prod_{i=0}^n(x-x_i)$</p>
+<h3 id="divided-differences"><a href="#divided-differences" class="headerlink" title="divided differences"></a>divided differences</h3><p>一阶差商：$f[x_i,x_j]=\frac{f(x_i)-f(x_j)}{x_i-x_j}$</p>
+<p>k阶差商：$f[x_0,…,x_k]=\frac{f[x_0,…,x_{k-1}]-f[x_1,…x_k]}{x_0-x_k}=\sum_{i=0}^kf(x_i)/\prod_{j\neq i}(x_i-x_j)$</p>
+<h3 id="Newton’s-Interpolation"><a href="#Newton’s-Interpolation" class="headerlink" title="Newton’s Interpolation"></a>Newton’s Interpolation</h3><p>$f(x)=f(x_0)+(x-x_0)f[x,x_0]$</p>
+<p>$f[x,x_0]=f[x_0,x_1]+(x-x_1)f[x,x_0,x_1]$</p>
+<p>…</p>
+<p>$f[x,x_0,…,x_{n-1}]=f[x_0,…,x_n]+(x-x_n)f[x,x_0,…,x_n]$</p>
+<p>综合上面式子</p>
+<p>$f(x)=f(x_0)+(x-x_0)f[x_0,x_1]+(x-x_0)(x-x_1)f[x_0,x_1,x_2]+…+\prod_{i=0}^{n-1}(x-x_i)f[x_0,…,x_n]+R_n(x)$</p>
+<p>$R_n(x)=\prod_{i=0}^n(x-x_i)f[x,x_0,…,x_n]$</p>
+<p>此时可以得到$\frac{f^{(n+1)}(\xi_x)}{(n+1)!}\prod_{i=0}^n(x-x_i)=\prod_{i=0}^n(x-x_i)f[x,x_0,…,x_n]$</p>
+<p>即$\frac{f^{(n+1)}(\xi_x)}{(n+1)!}=f[x,x_0,…,x_n]$</p>
+<p>所以有如下差商公式：</p>
+<p>$<strong>f[x_0,..,x_n]=f^n(\xi)/n!, \xi \in(x_{min},x_{max})</strong>$ </p>
+<ul>
+<li><p>example:</p>
+<p>$f(x)=2x^3+4x,x_k=kh(k=0,1,…)$</p>
+<p>求$f[x_1,x_2,x_3],f[x_1,x_2,x_3,x_4],f[x_1,…,x_5],f[x_1,…,x_6],f[x_1,…,x_7]$</p>
+<p>直接硬解比较麻烦，可以利用差商公式，f(x)求4次即以上次导就是0，所以后三个都是0</p>
+<p>对于第二个，求3次导后是常数12，所以$f[x_1,…,x_4]=12/3!=2$</p>
+<p>对于第一个只能按公式来$f[x_1,x_2,x_3]=(f[x_1,x_2]-f[x_2,x_3])/(x_1-x_3)$</p>
+<p>$f[x_1,x_2]=(f(h)-f(2h))/(-h)=14h^2+4$</p>
+<p>$f[x_2,x_3]=(f(2h)-f(3h))/(-h)=38h^2+4$</p>
+<p>所以$f[x_1,x_2,x_3]=12h$</p>
+</li>
+</ul>
+<h3 id="Hermite-Interpolation"><a href="#Hermite-Interpolation" class="headerlink" title="Hermite Interpolation"></a>Hermite Interpolation</h3><p>给定$x_0,…,x_n;H_{2n+1}(x_i)=y_i,H’_{2n+1}(x_i)=y’_i$</p>
+<p>令$H_{2n+1}(x)=\sum_{i=0}^nh_i(x)y_i+\sum_{i=0}^n\hat{h}_i(x)y’_i$</p>
+<p>$H’_{2n+1}(x)=\sum_{i=0}^nh’_i(x)y_i+\sum_{i=0}^n\hat{h}’_i(x)y’_i$</p>
+<p>对于$h_i(x)$，$x\neq x_i,h_i(x)=0,h’_i(x)=0;x=x_i,h_i(x)=1,h’_i(x)=0$</p>
+<p>所以$<strong>h_i(x)=(ax+b)L^2_{n,i}(x)</strong>$</p>
+<p>利用$h_i(x)=1,h’_i(x)=0$得到$h_i(x)=(1-2L’_{n,i}(x_i)(x-x_i))L^2_{n,i}(x)$</p>
+<p>对于$\hat{h}_i(x),x\neq x_i,\hat{h}_i(x)=0,\hat{h}_i’(x)=0;x=x_i,\hat{h}_i(x)=0,\hat{h}_i’(x)=1$</p>
+<p>所以$<strong>\hat{h}_i(x)=(x-x_i)L_{n,i}^2(x)</strong>$</p>
+<p>$R_n(x)=f^{(2n+2)}(\xi_x)[\prod_{i=0}^n(x-x_i)]^2/(2n+2)!$</p>
+<h3 id="Cubic-Spline-Interpolation"><a href="#Cubic-Spline-Interpolation" class="headerlink" title="Cubic Spline Interpolation"></a>Cubic Spline Interpolation</h3><p>给定$a=x_0&lt;…&lt;x_n=b$，三次样条差值S满足如下条件：</p>
+<ul>
+<li>$S_i(x)$是三次多项式，$S_j(x)=a_j+b_j(x-x_{j-1})+c_j(x-x_{j-1})^2+d_j(x-x_{j-1})^3$</li>
+<li>$S(x_i)=f(x_i),i=0,..,n$</li>
+<li>$S_{i+1}(x_{i+1})=S_i(x_{i+1}),i=0,…,n-2$</li>
+<li>$S’_{i+1}(x_{i+1})=S’_i(x_{i+1}),i=0,…,n-2$</li>
+<li>$S’’_{i+1}(x_{i+1})=S’’_i(x_{i+1}),i=0,…,n-2$</li>
+</ul>
+<p>上述条件构成n+1+3(n-1)=4n-2个方程，通过一些手段减少方程的个数</p>
+<p>令$h_j=x_j-x_{j-1},S_j’’(x_j)=M_j$</p>
+<p>$\lambda_i=h_{j+1}/(h_j+h_{j+1}),\mu_j=1-\lambda_j,g_j=6(f[x_j,x_{j+1}]-f[x_{j-1},x_j])/(h_j+h_{j+1})$</p>
+<p>则有$\mu_jM_{j-1}+2M_j+\lambda_jM_{j+1}=g_j,j=1,…,n-1$</p>
+<p>此时有n+1个未知数和n-1个方程，需再添加两个约束</p>
+<ul>
+<li><p>固定边界（Clamped boundary）</p>
+<p>$S’(a)=y’_0, S’(b)=y’_n,\lambda_0=\mu_n=1$</p>
+<p>$g_0=6(f[x_0,x_1]-y’_0)/h_1$</p>
+<p>$g_n=6(y’_n-f[x_{n-1},x_n])/h_n$</p>
+</li>
+<li><p>自由边界（free boundary）</p>
+<p>$S’’(a)=y’’_0,S’’(b)=y’’_n,\lambda_0=\mu_n=0$</p>
+<p>$g_0=2y’’_0$</p>
+<p>$g_n=2y’’_n$</p>
+</li>
+<li><p>周期性边界（Periodic boundary）</p>
+<p>如果f是周期性函数，则令$y_n=y_0$</p>
+</li>
+</ul>
+<p>解出$M_j$后，需求出$a_j, b_j, c_j, d_j$</p>
+<p>$a_j=y_{j-1}$</p>
+<p>$b_j=\frac{(y_j-y_{j-1})}{h_j}-\frac{m_{j-1}}{2}h_j-\frac{m_j-m_{j-1}}{6}h_j$</p>
+<p>$c_j=\frac{m_{j-1}}{2}$</p>
+<p>$d_j=\frac{m_j-m_{j-1}}{6}h_j$</p>
+<h2 id="Approximation-Theory"><a href="#Approximation-Theory" class="headerlink" title="Approximation Theory"></a>Approximation Theory</h2><h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><ul>
+<li>用$P(x)$估计函数$f$使得$E_2 = \sum_{i=1}^m|P(x_i)-y_i|^2$最小</li>
+</ul>
+<h4 id="变量替换"><a href="#变量替换" class="headerlink" title="变量替换"></a>变量替换</h4><ul>
+<li><p>$E_2$不好算的时候考虑变量替换将$P(x)$转成多项式函数</p>
+</li>
+<li><p>$y \approx P(x) = x/(ax+b)$，$Y = 1/y, X = 1/x$，问题转为：$Y \approx aX + b$</p>
+</li>
+<li>$y \approx P(x) = ae^{-b/x}$，$Y = lny, A = lna, X = 1/x, B = -b$，问题转为：$Y \approx A + BX$</li>
+</ul>
+<h4 id="两种形式"><a href="#两种形式" class="headerlink" title="两种形式"></a>两种形式</h4><ul>
+<li>离散形式：给点$(x_i, y_i), i=1,…,m$，使得$E = \sum_{i=1}^m|P(x_i)-y_i|^2$最小</li>
+<li>连续形式：给函数$f(x) \in D[a, b]$，使得$E = \int_a^b[P(x)-f(x)]^2dx$最小</li>
+</ul>
+<h4 id="线性无关"><a href="#线性无关" class="headerlink" title="线性无关"></a>线性无关</h4><ul>
+<li>函数集${\phi_0(x),…,\phi_n(x)}$在$[a, b]$满足：任意x，只要$\sum_{i=0}^na_i\phi_i(x)=0$，必有$a_i=0$，则该函数集线性无关</li>
+<li>若$\phi_i(x)$为i次多项式，则线性无关</li>
+</ul>
+<h4 id="广义多项式"><a href="#广义多项式" class="headerlink" title="广义多项式"></a>广义多项式</h4><ul>
+<li>线性无关函数组的线性组合即为广义多项式</li>
+</ul>
+<h4 id="inner-product-and-norm"><a href="#inner-product-and-norm" class="headerlink" title="inner product and norm"></a>inner product and norm</h4><ul>
+<li><p>内积两种形式：$(f, g)$</p>
+<ul>
+<li>$\sum_{i=1}^mw_if(x_i)g(x_i)$</li>
+<li>$\int_a^bw(x)f(x)g(x)dx$</li>
+</ul>
+</li>
+<li><p>norm：$||f|| = \sqrt{(f, f)}$</p>
+</li>
+</ul>
+<h4 id="广义最小二乘逼近"><a href="#广义最小二乘逼近" class="headerlink" title="广义最小二乘逼近"></a>广义最小二乘逼近</h4><ul>
+<li><p>寻找一个广义多项式$P(x)$使得$E = (P-y, P-y)$最小</p>
+</li>
+<li><p>令$P(x) = \sum_{i=0}^na_i\phi_i(x)$，目标是求出$a_i$，令$\frac{\partial E}{\partial a_i} = 0$可得：$B\vec{a} = \vec{c}$ </p>
+<p>其中$B_{ij} = (\phi_i, \phi_j), \vec{a} = (a_0,…,a_n)^T, \vec{c} = ((\phi_0, f),…,(\phi_n, f))^T$</p>
+</li>
+</ul>
+<h3 id="切比雪夫多项式"><a href="#切比雪夫多项式" class="headerlink" title="切比雪夫多项式"></a>切比雪夫多项式</h3><h4 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h4><ul>
+<li>给定函数$f(x)$，寻找n次多项式$P_n(x)$使得$||P-f||_{\infty}$最小，是一个minimax问题</li>
+</ul>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>$f \in C[a, b]$且$f$不是n次多项式，则存在一个唯一的n次多项式$P_n(x)$使得$||P-f||_{\infty}$最小</li>
+<li>Chebyshev Theorem：假设$P_n(x)$使得$||P-f||_{\infty}$最小，等价于函数$P-f$至少有n+2个最值点且最大值和最小值交替出现（且绝对值相等），这n+2个最值点组成的序列叫Chebyshev alternating sequence</li>
+</ul>
+<h4 id="问题等价转化"><a href="#问题等价转化" class="headerlink" title="问题等价转化"></a>问题等价转化</h4><ul>
+<li>由chebyshev theorem，$P_n(x)$是对$f$的n次差值多项式，所以$P$由n+1个差值点决定，此时转化为寻找合适的差值点问题，此时余项$|R_n(x)| = |\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{i=0}^n(x-x_i)|$，$\xi$不可控并且大多数情况下f在n+1次求导后会十分平缓，近似为常数，故优化后面的部分</li>
+<li>令$w_n(x) = \prod_{i=0}^n(x-x_i)$，问题转化为求点列$x_i$使得$||w_n(x)||_{\infty}$最小，其中$x \in [-1, 1]$（实际应用时运用线性变换可扩展到实轴上）</li>
+<li>$w_n(x) = x^n - P_{n-1}(x)$，问题进一步转化为$||x^n - P_{n-1}(x)||_{\infty}$的最小化问题，由chebyshev theorem知，$w_n(x)$在$[-1, 1]$上有交替出现的n+1个最大（小）值点</li>
+</ul>
+<h4 id="切比雪夫多项式-1"><a href="#切比雪夫多项式-1" class="headerlink" title="切比雪夫多项式"></a>切比雪夫多项式</h4><ul>
+<li><p>$cos(n\theta) = \sum_{k=0}^na_k(cos\theta)^k$，作变量替换$x = cos\theta \in [-1, 1]$，此时$T_n(x) = cos(n\theta) = cos(n*arc cosx)$为切比雪夫多项式</p>
+</li>
+<li><p>$T_n(x)$的n个根为$x_k = cos(\frac{2k-1}{2n}\pi),k = 1, …, n$</p>
+</li>
+<li><p>$T_0(x)=1, T_1(x)=x, T_{n+1}(x) = 2xT_n(x)-T_{n-1}(x)$，故最高次项系数为$2^{n-1}$</p>
+<ul>
+<li>此时易知$w_n(x) = T_n(x)/2^{n-1}$，$min||w_n(x)||_{\infty}=1/2^{n-1}$，差值点即为$T_n(x)$的根</li>
+</ul>
+</li>
+<li><p>$|R_n(x)| &lt;= M/(2^n(n+1)!)$，M为$|f^{(n+1)}(x)|$的上界</p>
+</li>
+</ul>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><p>在$[0, 1]$用多项式逼近$f(x) =e^x$，且绝对误差不超过$0.5*10^{-4}$</p>
+<ul>
+<li><p>区间变换：将[0, 1]映射到[-1, 1]</p>
+<p>作变量替换$t=2x-1$</p>
+</li>
+<li><p>确定多项式阶数，注意此时处理的函数为$g(t) = e^{(t+1)/2}$</p>
+<p>$|R_n| &lt;= \frac{e}{2^{n+1}}\frac{1}{(n+1)!}\frac{1}{2^n} &lt;= 0.5*10^{-4}$，故n = 4</p>
+</li>
+<li><p>确定差值点$t_i$，即$T_5(x)$的5个根：$cos\frac{\pi}{10}$ $cos\frac{3\pi}{10}$ $cos\frac{5\pi}{10}$ $cos\frac{7\pi}{10}$ $cos\frac{9\pi}{10}$</p>
+</li>
+<li><p>解出差值点$x_i$，即$x_i = (t_i+1)/2$</p>
+</li>
+<li><p>用$x_i$进行Lagrange差值</p>
+</li>
+</ul>
+<h2 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h2><h3 id="Gaussian-Quadrature"><a href="#Gaussian-Quadrature" class="headerlink" title="Gaussian Quadrature"></a>Gaussian Quadrature</h3><ul>
+<li>用$\sum_{k=0}^nA_kf(x_k)$近似$\int_a^bw(x)f(x)dx$，达到2n+1阶精度，其中$x_i$为Gaussian point</li>
+<li>直接计算会解非线性方程组，考虑先将Gaussian point求出来，再求$A_i$</li>
+</ul>
+<h4 id="Theorem"><a href="#Theorem" class="headerlink" title="Theorem"></a>Theorem</h4><ul>
+<li><p>令$W(x)=\prod_{i=0}^n(x-x_i)$，则$x_i,i=0,..,n$为高斯点的充要条件是$W(x)$与任意次数小于n+1的多项式正交</p>
+</li>
+<li><p>proof：</p>
+<ul>
+<li><p>必要性：$x_i$为高斯点，则存在$A_i$使得$\sum_{k=0}^nA_kf(x_k)=\int_a^bw(x)f(x)dx$对任意次数小于等于2n+1的多项式都成立</p>
+<p>考虑$\int_a^bw(x)W(x)P_m(x)$，$P_m(x)$为m次多项式($m&lt;=n$)</p>
+<p>此时$W(x)P_m(x)$为次数低于2n+1的多项式</p>
+<p>则有$\int_a^bw(x)W(x)P_m(x)=\sum_{i=0}^nA_iW(x_i)P_m(x_i)=0$</p>
+</li>
+<li><p>充分性：$W(x)$与任意次数小于n+1的多项式正交，令$P_m(x)=W(x)q(x)+r(x)$，其中$P_m(x)$为m次多项式($m&lt;=2n+1$)，$q(x)$为次数小于等于n的多项式，$r(x)$为次数小于n的多项式。</p>
+<p>下证存在$A_i$使得$\sum_{k=0}^nA_kf(x_k)=\int_a^bw(x)f(x)dx$对任意次数小于等于2n+1的多项式都成立</p>
+<p>$\int_a^bw(x)P_m(x)dx=\int_a^bw(x)W(x)q(x)dx+\int_a^bw(x)r(x)$</p>
+<p>因为$W(x)$与任意次数小于n+1的多项式正交，故$\int_a^bw(x)W(x)q(x)dx=0$</p>
+<p>即$\int_a^bw(x)P_m(x)dx=\int_a^bw(x)r(x)=\sum_{i=0}^nA_ir(x_i)=\sum_{i=0}^nA_iP_m(x_i)$</p>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -1009,7 +1956,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-07 09:00:00" itemprop="dateModified" datetime="2021-04-07T09:00:00+08:00">2021-04-07</time>
+        <time title="Modified: 2021-06-03 23:47:02" itemprop="dateModified" datetime="2021-06-03T23:47:02+08:00">2021-06-03</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1032,7 +1979,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><ul>
-<li><p>$N$个内点到红黑树最高$2log(N+1)$</p>
+<li><p>$N$个内点的红黑树最高$2log(N+1)$</p>
 <p>Proof</p>
 <p>令$sizeof(x)$表示根为x的树的内点个数，$bh(x)$表示根为x的树的黑高</p>
 <ol>
@@ -1068,18 +2015,21 @@
 </li>
 <li><p>兄黑：</p>
 <ul>
-<li><p>双侄黑（case2）：兄变红</p>
-<ul>
+<li>双侄黑（case2）：兄变红<ul>
 <li>父红（case2.1）：父变黑（完成）</li>
 <li>父黑（case2.2）：目标节点上移</li>
 </ul>
 </li>
-<li><p>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</p>
-</li>
-<li>zigzig位的侄子为红（case4）：父兄换色，右侄子置黑，父单旋（兄为轴）（完成）</li>
+<li>zigzag位的侄子为红，zigzig位的侄子为黑（case3）：红侄子与兄换色，兄单旋（兄为右儿子就右单旋，左儿子就左单旋）</li>
+<li>zigzig位的侄子为红（case4）：父兄换色，zigzig位侄子置黑，父单旋（兄为轴）（完成）</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h4 id="RB-tree-vs-AVL-tree"><a href="#RB-tree-vs-AVL-tree" class="headerlink" title="RB tree vs AVL tree"></a>RB tree vs AVL tree</h4><ul>
+<li><p>Number of rotations:</p>
+<p>|      | Insert | Delete  |<br>| —— | ——— | ———- |<br>| RB   | &lt;=2    | &lt;=3     |<br>| AVL  | &lt;=2    | O(logN) |</p>
 </li>
 </ul>
 <h2 id="左式堆"><a href="#左式堆" class="headerlink" title="左式堆"></a>左式堆</h2><ul>
@@ -1098,11 +2048,22 @@
 </li>
 </ul>
 <h4 id="merge-O-logN"><a href="#merge-O-logN" class="headerlink" title="merge($O(logN)$)"></a>merge($O(logN)$)</h4><ul>
-<li>递归<ol>
-<li>H1或H2空时，返回另一个</li>
-<li>选取H1和H2键值小的一个的右子树与另一个合并</li>
-<li>不符合左式堆结构时交换新堆的左右子树</li>
-<li>更新新堆的Npl值</li>
+<li><p>递归</p>
+<ol>
+<li><p>H1或H2空时，返回另一个</p>
+</li>
+<li><p>不妨设H1-&gt;val &lt; H2-&gt;val</p>
+<ul>
+<li><p>H1-&gt;left == NULL，H1-&gt;left = H2</p>
+</li>
+<li><p>H1-&gt;left != NULL，合并H1-&gt;right和H2</p>
+</li>
+</ul>
+</li>
+<li><p>不符合左式堆结构时交换新堆的左右子树</p>
+</li>
+<li><p>更新新堆的Npl值</p>
+</li>
 </ol>
 </li>
 <li>非递归<ol>
@@ -1116,7 +2077,7 @@
 <li>merge左右子树</li>
 </ol>
 <h2 id="斜堆"><a href="#斜堆" class="headerlink" title="斜堆"></a>斜堆</h2><h4 id="merge-amortized-bound-O-logN"><a href="#merge-amortized-bound-O-logN" class="headerlink" title="merge(amortized bound: $O(logN)$)"></a>merge(amortized bound: $O(logN)$)</h4><ul>
-<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值堆子树）</li>
+<li>不维护Npl值，每次merge都交换左右子树（除了右路径上最大键值的子树）</li>
 <li>除了上面一点，操作与左式堆一样</li>
 <li>将1到$2^k-1$按顺序插入到一个斜堆或左式堆中会得到一棵满二叉树</li>
 </ul>
@@ -1177,7 +2138,181 @@
 <li>二项树的表示采用左儿子右兄弟，子树从左到右由大到小，这样使combine trees在常数时间内完成</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2147483647</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">binNode</span> *<span class="title">binTree</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">collection</span> *<span class="title">binQueue</span>;</span></span><br><span class="line"><span class="comment">//树节点声明</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">binNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    binTree lchild, nsibling;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//堆声明</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">collection</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> curSize;</span><br><span class="line">    binTree *trees;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> maxSize = <span class="number">10000</span>; <span class="comment">//堆中树的容量</span></span><br><span class="line"><span class="comment">//初始化一颗二项树</span></span><br><span class="line"><span class="function">binTree <span class="title">initTree</span><span class="params">(binTree T, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    T = <span class="keyword">new</span> binNode;</span><br><span class="line">    T-&gt;lchild = T-&gt;nsibling = <span class="literal">NULL</span>;</span><br><span class="line">    T-&gt;val = val;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//初始化一个堆</span></span><br><span class="line"><span class="function">binQueue <span class="title">initQueue</span><span class="params">(binQueue H)</span> </span>&#123;</span><br><span class="line">    H = <span class="keyword">new</span> collection;</span><br><span class="line">    H-&gt;curSize = <span class="number">0</span>;</span><br><span class="line">    H-&gt;trees = <span class="keyword">new</span> binTree[maxSize];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//连接两颗二项树</span></span><br><span class="line"><span class="function">binTree <span class="title">combine</span><span class="params">(binTree T1, binTree T2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T1-&gt;val&gt;T2-&gt;val)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">combine</span>(T2, T1);</span><br><span class="line">    T2-&gt;nsibling = T1-&gt;lchild;</span><br><span class="line">    T1-&gt;lchild = T2;</span><br><span class="line">    <span class="keyword">return</span> T1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//合并两个堆（二进制加法）</span></span><br><span class="line"><span class="function">binQueue <span class="title">merge</span><span class="params">(binQueue H1, binQueue H2)</span> </span>&#123;</span><br><span class="line">    binTree T1, T2, carry = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    H1-&gt;curSize += H2-&gt;curSize;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>, j=<span class="number">1</span>; j&lt;H1-&gt;curSize; i++, j*=<span class="number">2</span>) &#123;</span><br><span class="line">        T1 = H1-&gt;trees[i];</span><br><span class="line">        T2 = H2-&gt;trees[i];</span><br><span class="line">        <span class="built_in"><span class="keyword">switch</span></span>(<span class="number">4</span>*!!carry + <span class="number">2</span>*!!T2 + !!T1) &#123; <span class="comment">//枚举carry, T1, T2所有可能情况</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">//000</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">break</span>; <span class="comment">//001</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: H1-&gt;trees[i] = T2; <span class="comment">//010</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>: carry = <span class="built_in">combine</span>(T1, T2); <span class="comment">//011</span></span><br><span class="line">                    H1-&gt;trees[i] = H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: H1-&gt;trees[i] = carry; <span class="comment">//100</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>: carry = <span class="built_in">combine</span>(T1, carry); <span class="comment">//101</span></span><br><span class="line">                    H1-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>: carry = <span class="built_in">combine</span>(T2, carry); <span class="comment">//110</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">7</span>: carry = <span class="built_in">combine</span>(carry, T2); <span class="comment">//111</span></span><br><span class="line">                    H2-&gt;trees[i] = <span class="literal">NULL</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> H1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除最小元</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deletemin</span><span class="params">(binQueue H)</span> </span>&#123;</span><br><span class="line">    binQueue delQ = <span class="built_in">initQueue</span>(delQ);</span><br><span class="line">    binTree delT, oldRoot;</span><br><span class="line">    <span class="keyword">int</span> i, j, minTree, minItem = -INF;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;maxSize; i++)</span><br><span class="line">        <span class="keyword">if</span>(H-&gt;trees[i]&amp;&amp;H-&gt;trees[i]-&gt;val&lt;minItem) &#123;</span><br><span class="line">            minItem = H-&gt;trees[i]-&gt;val;</span><br><span class="line">            minTree = i;</span><br><span class="line">        &#125;</span><br><span class="line">    delT = H-&gt;trees[minTree];</span><br><span class="line">    H-&gt;trees[minTree] = <span class="literal">NULL</span>;</span><br><span class="line">    oldRoot = delT;</span><br><span class="line">    delT = delT-&gt;lchild;</span><br><span class="line">    <span class="built_in">free</span>(oldRoot);</span><br><span class="line">    delQ-&gt;curSize = (<span class="number">1</span> &lt;&lt; minTree)<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(j=minTree<span class="number">-1</span>; j&gt;=<span class="number">0</span>; j--) &#123;</span><br><span class="line">        delQ-&gt;trees[j] = delT;</span><br><span class="line">        delT = delT-&gt;nsibling;</span><br><span class="line">        delQ-&gt;trees[j]-&gt;nsibling = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    H-&gt;curSize -= <span class="number">1</span> &lt;&lt; minTree;</span><br><span class="line">    H = <span class="built_in">merge</span>(H, delQ);</span><br><span class="line">    <span class="keyword">return</span> minItem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="斐波那契堆"><a href="#斐波那契堆" class="headerlink" title="斐波那契堆"></a>斐波那契堆</h2><h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2>
+<h2 id="斐波那契堆"><a href="#斐波那契堆" class="headerlink" title="斐波那契堆"></a>斐波那契堆</h2><h2 id="backtracking"><a href="#backtracking" class="headerlink" title="backtracking"></a>backtracking</h2><h2 id="Divide-and-conquer"><a href="#Divide-and-conquer" class="headerlink" title="Divide and conquer"></a>Divide and conquer</h2><h4 id="Master-method"><a href="#Master-method" class="headerlink" title="Master method"></a>Master method</h4><h5 id="Master-Theorem"><a href="#Master-Theorem" class="headerlink" title="[Master Theorem]"></a>[Master Theorem]</h5><p>Let $a\geq1$ and $b &gt; 1$ be constants, let $f(N)$ be a function, and let $T(N)$ be defined on the nonnegative integers by the recurrence $T(N)=aT(\frac{N}{b})+f(N)$. Then:</p>
+<ol>
+<li>If $f(N)=O(N^{\log_ba-\varepsilon})$ for some constant $\varepsilon &gt; 0$, then $T(N)=\Theta(N^{\log_ba})$</li>
+<li>If $f(N) = \Theta(N^{\log_ba})$, then $T(N) = \Theta(N^{\log_ba}\log{N})$</li>
+<li>If $f(N)=\Omega(N^{\log_ba+\varepsilon})$ for some constant $\varepsilon &gt; 0$, and if $af(\frac{N}{b}) &lt; cf(N)$ for some constant $c&lt;1$ and all sufficiently large $N$, then $T(N) = \Theta(f(N))$</li>
+</ol>
+<p>However, this cannot cover all the cases.</p>
+<h5 id="Master-Theorem-another-form"><a href="#Master-Theorem-another-form" class="headerlink" title="[Master Theorem] another form"></a>[Master Theorem] another form</h5><p>The recurrence $T(N) = aT(\frac{N}{b})+f(N)$ can be solve as follow:</p>
+<ol>
+<li>If $af(\frac{N}{b})=\kappa f(N)$ for some constant $\kappa&lt;1$, then $T(N)=\Theta(f(N))$</li>
+<li>If $af(\frac{N}{b})=\Kappa f(N)$ for some constant $K&gt;1$, then $T(N)=\Theta(N^{\log_ba})$</li>
+<li>If $af(\frac{N}{b})=f(N)$, then $T(N)=\Theta(f(N)\log_bN)$</li>
+</ol>
+<h5 id="Theorem"><a href="#Theorem" class="headerlink" title="[Theorem]"></a>[Theorem]</h5><p>The solution to the equation $T(N)=aT(\frac{N}{b})+\Theta(N^k\log^pN)$</p>
+<p>where $a\geq1$,$b\geq1$,and $p\geq0$ is</p>
+<ol>
+<li>$T(N)=O(N^{\log_ba})$            if $a&gt;b^k$</li>
+<li>$T(N)=O(N^k\log^{p+1}N)$ if $a=b^k$</li>
+<li>$T(N)=O(N^k\log^pN)$     if $a&lt;b^k$</li>
+</ol>
+<h5 id="example"><a href="#example" class="headerlink" title="example"></a>example</h5><p>$T(n) = 2T(\sqrt n) + logn$</p>
+<p>此时无法直接用master theorem，需要转化</p>
+<p>令$n = 2^m$</p>
+<p>则化为$T(2^m) = 2T(2^{m/2})+m$</p>
+<p>令$G(m) = T(2^m)$</p>
+<p>则$G(m) = 2G(m/2)+m$</p>
+<p>由master theorem 知$T(n) = G(m) = O(mlogm) = O(lognloglogn)$</p>
+<h2 id="NP-Completeness"><a href="#NP-Completeness" class="headerlink" title="NP-Completeness"></a>NP-Completeness</h2><h3 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h3><ul>
+<li><strong>Deterministic Turing Machine</strong>: executes one instruction at each point in time. The depending on the instruction, it goes to the next unique instruction</li>
+<li><strong>Nondeterministic Turing Machine</strong>: free to choose its next step from a finite set. And if one of these steps leads to a solution, it will always choose the correct one</li>
+</ul>
+<h3 id="NP"><a href="#NP" class="headerlink" title="NP"></a>NP</h3><ul>
+<li>Solve by a <strong>==N==ondeterministic Turing Machine</strong> in <strong>==p==olynomial time</strong></li>
+<li>proof any solution is true in polynomial time(equal to the above one)</li>
+</ul>
+<h4 id="NP-Complete"><a href="#NP-Complete" class="headerlink" title="NP-Complete"></a>NP-Complete</h4><ul>
+<li>The hardest in NP</li>
+<li>Any problem in NP can be polynomially reduced to it(we can convert any NP problem to a NPC problem in polynomial time)</li>
+<li>NP hard &gt;= NPC !!!</li>
+</ul>
+<h4 id="relation"><a href="#relation" class="headerlink" title="relation"></a>relation</h4><ul>
+<li><img src="/Users/yuanzhizhang/Library/Application Support/typora-user-images/image-20210520111617829.png" alt="image-20210520111617829" style="zoom:50%;float: left"></li>
+</ul>
+<h3 id="A-Formal-language-Framework"><a href="#A-Formal-language-Framework" class="headerlink" title="A Formal-language Framework"></a>A Formal-language Framework</h3><h4 id="abstract-problem"><a href="#abstract-problem" class="headerlink" title="abstract problem"></a>abstract problem</h4><ul>
+<li><strong>an</strong> <strong>abstract problem Q</strong> <strong>is a binary relation on a set</strong> <strong>I</strong> <strong>of problem</strong> <strong>instances</strong> <strong>and a set</strong> <strong>S</strong> <strong>of problem</strong> <strong>solutions</strong></li>
+</ul>
+<h2 id="Approximation"><a href="#Approximation" class="headerlink" title="Approximation"></a>Approximation</h2><h3 id="target"><a href="#target" class="headerlink" title="target"></a>target</h3><ul>
+<li>find near-optimal solutions in a polynomial time</li>
+</ul>
+<h3 id="approximation-ratio"><a href="#approximation-ratio" class="headerlink" title="approximation ratio"></a>approximation ratio</h3><ul>
+<li>任意规模n的输入，$max(C/C^<em>,C^</em>/C)&lt;=\rho(n)$，其中$C^*$为最优解，$C$为近似解。</li>
+</ul>
+<h3 id="approximation-scheme"><a href="#approximation-scheme" class="headerlink" title="approximation scheme"></a>approximation scheme</h3><ul>
+<li><p>也属于一种近似算法</p>
+</li>
+<li><p>输入多了一个值$\epsilon&gt;0$，使得对于任意固定的$\epsilon$，该模式是一个$(1+\epsilon)$- approximation</p>
+</li>
+<li><p>如果对于任意的$\epsilon$，该approximation scheme在多项式时间内完成，则称之为PTAS(polynomial-time approximation scheme)。</p>
+<p>但常常是$O(n^{2/\epsilon}),O((1/\epsilon)^2n^3)$这样的复杂度，当算法结果越接近精确值，时间复杂度也将迅速增大，$O((1/\epsilon)^2n^3)$被称为FPTAS，因为对于n和$\epsilon$都是polynomial的</p>
+</li>
+</ul>
+<h3 id="Bin-packing"><a href="#Bin-packing" class="headerlink" title="Bin packing"></a>Bin packing</h3><h4 id="next-fit"><a href="#next-fit" class="headerlink" title="next fit"></a>next fit</h4><ul>
+<li>对于每个物品，上一个箱子能放下就放下，放不下就开个新箱子</li>
+<li>$O(n)$</li>
+<li>假设最少需要M个箱子，则next fit最多需要2M-1个箱子，而且这个上界可以取到</li>
+</ul>
+<h4 id="first-fit"><a href="#first-fit" class="headerlink" title="first fit"></a>first fit</h4><ul>
+<li>对于每个物品，从头遍历每个箱子，遇到能放进去的就放进去，要是都放不进去就开一个新箱子</li>
+<li>$O(nlogn)$</li>
+<li>假设最少需要M个箱子，first fit最多要17M/10个箱子，总能构造出一个序列使其用掉17(M-1)/10个箱子</li>
+</ul>
+<h4 id="best-fit"><a href="#best-fit" class="headerlink" title="best fit"></a>best fit</h4><ul>
+<li>寻找能放进而且剩余空隙最小的箱子</li>
+<li>$O(nlogn)$</li>
+<li>和first fit相同，上界仍然是1.7M</li>
+</ul>
+<h4 id="on-line-algorithm"><a href="#on-line-algorithm" class="headerlink" title="on-line algorithm"></a>on-line algorithm</h4><ul>
+<li>对于在线装箱问题，总存在一个序列使得算法用掉的箱子至少是最优解的5/3倍</li>
+</ul>
+<h4 id="off-line-algorithm"><a href="#off-line-algorithm" class="headerlink" title="off-line algorithm"></a>off-line algorithm</h4><ul>
+<li>先将物品大小降序排列，在运用first fit或best fit</li>
+<li>M是最优解，对于off-line的first fit，最多用掉(11M+6)/9个箱子</li>
+</ul>
+<h3 id="knapsack-problem"><a href="#knapsack-problem" class="headerlink" title="knapsack problem"></a>knapsack problem</h3><h4 id="fractional-version"><a href="#fractional-version" class="headerlink" title="fractional version"></a>fractional version</h4><ul>
+<li><p>给一个容量为M的箱子和N件物品，第i件物品重量为wi，利润为pi，wi的xi被打包，即可获利pixi，找到获利最大的打包方案，即$\sum_{i=1}^Nw_ix_i&lt;=M$的情况下，使$\sum_{i=1}^Np_ix_i$最大化</p>
+</li>
+<li><p>greedy：依pi/wi的值对物品进行降序排列，然后依次选取</p>
+</li>
+</ul>
+<h4 id="0-1-version"><a href="#0-1-version" class="headerlink" title="0-1 version"></a>0-1 version</h4><ul>
+<li>每个物品要么取要么不取</li>
+<li>greedy：对pi或pi/wi进行贪心——2-approximation</li>
+<li>dp：经典dp问题</li>
+</ul>
+<h3 id="K-center-problem"><a href="#K-center-problem" class="headerlink" title="K-center problem"></a>K-center problem</h3><ul>
+<li>输入n个sites：$s_1,…,s_n$，选择K个centers，此时每个site都有一个离它最近的center，记$s_i$对应的这个距离为$dist(s_i,C)$，目标是使得$r(C)=\max_i dist(s_i,C)$最小</li>
+<li></li>
+</ul>
+<h2 id="Local-search"><a href="#Local-search" class="headerlink" title="Local search"></a>Local search</h2><h3 id="neighbor-relaiton"><a href="#neighbor-relaiton" class="headerlink" title="neighbor relaiton"></a>neighbor relaiton</h3><ul>
+<li>$S\sim S’$: $S’$ is a neiboring solution of S($S’$可由S的微小改动得到)</li>
+<li>$N(S)$: $S’$组成的集合</li>
+</ul>
+<h3 id="vertex-cover"><a href="#vertex-cover" class="headerlink" title="vertex cover"></a>vertex cover</h3><ul>
+<li><p>寻找最小点集实现顶点覆盖</p>
+</li>
+<li><p>feasible solution set $\mathcal F\mathcal S$: all the vertex covers($V \in \mathcal F\mathcal S$)</p>
+</li>
+<li>cost(S) = |S|</li>
+<li>$S\sim S’$: $S’$由S增加或删除一个点得到</li>
+<li>search：从S=V开始，不断删除点，直到不是顶点覆盖（很多时候无法到达全局最优）</li>
+</ul>
+<h4 id="The-Metropolis-Algorithm"><a href="#The-Metropolis-Algorithm" class="headerlink" title="The Metropolis Algorithm"></a>The Metropolis Algorithm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SolutionType Metropolis()</span><br><span class="line">&#123;   </span><br><span class="line">		Define constants k and T;</span><br><span class="line">    Start from a feasible solution S in FS ;</span><br><span class="line">    MinCost &#x3D; cost(S);</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        S’ &#x3D; Randomly chosen from N(S); &#x2F;&#x2F;add or delete</span><br><span class="line">        CurrentCost &#x3D; cost(S’);</span><br><span class="line">        if ( CurrentCost &lt; MinCost ) &#123;</span><br><span class="line">            MinCost &#x3D; CurrentCost;    S &#x3D; S’;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            With a probability P let S &#x3D; S’;</span><br><span class="line">            else  break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的伪代码中$P = e^{-\Delta cost/(kT)}$</p>
+<h4 id="simulated-annealing-模拟退火"><a href="#simulated-annealing-模拟退火" class="headerlink" title="simulated annealing(模拟退火)"></a>simulated annealing(模拟退火)</h4><ul>
+<li>The material is cooled very gradually from a high temperature, allowing it enough time to reach equilibrium at a succession of intermediate lower temperatures</li>
+<li>Cooling schedule: $T=\{T_1,T_2,..\}$</li>
+</ul>
+<h3 id="Hopfiled-Neural-Networks"><a href="#Hopfiled-Neural-Networks" class="headerlink" title="Hopfiled Neural Networks"></a>Hopfiled Neural Networks</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>图G具有非0整数权重w的边</li>
+<li>顶点具有两种状态：+1和-1</li>
+<li><p>边权为负：两顶点状态相同；边权为正：两顶点状态相反</p>
+</li>
+<li><p>边权的绝对值代表我们想要两顶点状态相同或相反的强烈程度</p>
+</li>
+<li>输出：a configuration S: 给每个顶点assign一个state满足上述条件</li>
+</ul>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li><p>上述configuration不一定能找到，所以退而求其次，找到一个sufficiently good的解</p>
+</li>
+<li><p>edge e(u, v) is good：$w_es_us_v&lt;0$</p>
+<p>上述条件等价于：$w_e&lt;0$当且仅当$s_u=s_v$</p>
+</li>
+<li><p>node u is satisfied: 在包含该顶点的所有边中，好边总权值大于等于坏边总权值</p>
+<p>公式表达：$\sum_{v:e(u,v)\in E}w_es_us_v&lt;=0$</p>
+</li>
+<li><p>a configuration is stable: 所有顶点satisfied</p>
+</li>
+</ul>
+<h4 id="state-flipping-algorithm"><a href="#state-flipping-algorithm" class="headerlink" title="state-flipping algorithm"></a>state-flipping algorithm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ConfigType State_flipping()</span><br><span class="line">&#123;</span><br><span class="line">    Start from an arbitrary configuration S;</span><br><span class="line">    while ( ! IsStable(S) ) &#123;</span><br><span class="line">        u &#x3D; GetUnsatisfied(S);</span><br><span class="line">        su &#x3D; - su;</span><br><span class="line">    &#125;</span><br><span class="line">    return S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>顶点可能被flip多次，但此算法一定会终止</li>
+<li>Claim: state-flipping算法最多循环$W=\sum_e|w_e|$次</li>
+</ul>
+<h3 id="maximum-cut"><a href="#maximum-cut" class="headerlink" title="maximum cut"></a>maximum cut</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>对于边权为正整数的无向图G，将顶点分成两部分A, B，使得$w(A, B)=\sum_{u\in A,v\in B}w_{uv}$最大</li>
+</ul>
+<h4 id="related-to-local-search"><a href="#related-to-local-search" class="headerlink" title="related to local search"></a>related to local search</h4><ul>
+<li>Problem: maximize $w(A,B)$</li>
+<li>Feasible solution set: any partition (A, B)</li>
+<li>$S\sim S’$: $S’$可由S将一个顶点由一个集合移到另一个集合得到</li>
+</ul>
+<h4 id="special-Hopfield-Neural-Network"><a href="#special-Hopfield-Neural-Network" class="headerlink" title="special Hopfield Neural Network"></a>special Hopfield Neural Network</h4><ul>
+<li>上述问题是特殊的Hopfield，所有边权大于0</li>
+<li>但用state-flipping解时，不一定是全局最优</li>
+</ul>
+<h4 id="how-good-is-the-local-optimum"><a href="#how-good-is-the-local-optimum" class="headerlink" title="how good is the local optimum"></a>how good is the local optimum</h4><ul>
+<li><p>Claim: $(A,B)$为局部最优，$(A^<em>,B^</em>)$为全局最优，则$w(A,B)&gt;=w(A^<em>,B^</em>)/2$</p>
+<p>Proof: 任取$u \in A$，因为$(A,B)$为局部最优，故有$\sum_{v \in A}w_{uv}&lt;=\sum_{v\in B}w_{uv}$</p>
+<p>两边对所有$u\in A$求和：</p>
+<p>$\sum_{u\in A}\sum_{v \in A}w_{uv}&lt;=w(A,B)$</p>
+<p>同理：</p>
+<p>$\sum_{u\in B}\sum_{v \in B}w_{uv}&lt;=w(A,B)$</p>
+<p>所以$w(A^<em>,B^</em>)&lt;=\sum w_e=w(A,B)+1/2\sum_{u\in A}\sum_{v \in A}w_{uv}+1/2\sum_{u\in B}\sum_{v \in B}w_{uv}&lt;=w(A,B)+1/2w(A,B)+1/2w(A,B)=2w(A,B)$</p>
+</li>
+<li><p>Unless P=NP, no 17/16 approximation algorithm for MAX-CUT</p>
+</li>
+</ul>
+<h4 id="improvement"><a href="#improvement" class="headerlink" title="improvement"></a>improvement</h4><ul>
+<li>上述算法可能无法在多项式时间内完成，可以考虑提早跳出循环：当任何翻转后都无法提升“足够多”时，就跳出循环</li>
+<li>Big-improvement-flip：选择node翻转时保证翻转后$w(A,B)$至少提升$\frac{2\epsilon}{|V|}w(A,B)$</li>
+<li>上述算法结束循环时，能够保证$(2+\epsilon)w(A,B)&gt;=w(A^<em>,B^</em>)$</li>
+<li>上述算法结束循环时，最多执行$O(\frac{n}{\epsilon} logW)$次翻转</li>
+<li></li>
+</ul>
+
       
     </div>
 
