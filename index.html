@@ -258,7 +258,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-30 09:20:54" itemprop="dateModified" datetime="2021-05-30T09:20:54+08:00">2021-05-30</time>
+        <time title="Modified: 2021-06-06 16:06:27" itemprop="dateModified" datetime="2021-06-06T16:06:27+08:00">2021-06-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -474,7 +474,7 @@
 </ul>
 </li>
 </ul>
-
+<h2 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h2>
       
     </div>
 
@@ -936,7 +936,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-17 10:22:22" itemprop="dateModified" datetime="2021-05-17T10:22:22+08:00">2021-05-17</time>
+        <time title="Modified: 2021-06-04 21:02:57" itemprop="dateModified" datetime="2021-06-04T21:02:57+08:00">2021-06-04</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1508,6 +1508,35 @@
 <li>level 2：内存风格的纠错码，将字节拆分存储在多张磁盘上，纠错位储存在其它磁盘上</li>
 <li>level 3：位交叉的奇偶校验，</li>
 </ul>
+<h2 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h2><h3 id="equivalent-rules"><a href="#equivalent-rules" class="headerlink" title="equivalent rules"></a>equivalent rules</h3><ul>
+<li>$\sigma_{\theta_1\cap\theta_2}(E)=\sigma_{\theta_1}(\sigma_{\theta_2}(E))$</li>
+<li>$\sigma_{\theta_1}(\sigma_{\theta_2}(E)) = \sigma_{\theta_2}(\sigma_{\theta_1}(E))$：选择顺序可交换</li>
+<li>投影运算只和最后一次运算有关，前面的没用</li>
+<li><p>选择操作和笛卡尔积操作配合形成theta join操作</p>
+<ul>
+<li>$\sigma_{\theta}(E1 \times E2)=E1 \Join _{\theta}E2 $</li>
+<li>$\sigma_{\theta_1}(E1\Join_{\theta_2}E2)=E1\Join_{\theta_1\cap\theta_2}E2$，这是上一个公式的一般情况</li>
+</ul>
+</li>
+<li><p>theta join有交换律和结合律（优化时尽量先将小的表join）</p>
+</li>
+<li><p>$(E1\Join_{\theta_1}E2)\Join_{\theta_2\cap \theta_3}E3=E1\Join_{\theta_1\cap \theta_3}(E2\Join_{\theta_2}E3)$</p>
+</li>
+<li><p>假设$\theta_0$只和E1的属性有关</p>
+<p>$\sigma_{\theta_0}(E1\Join_{\theta}E2)=\sigma_{\theta_0}(E1)\Join_{\theta}E2$</p>
+</li>
+<li><p>假设$\theta_1$只和$E_1$的属性有关，$\theta_2$只和$E2$的属性有关</p>
+<p>$\sigma_{\theta_1\cap \theta_2}(E1\Join_{\theta}E2)=\sigma_{\theta_1}(E1)\Join_{\theta}\sigma _{\theta_2}(E2)$</p>
+</li>
+<li><p>假设$\theta$只包含$L1\cup L2$中的属性</p>
+<p>$\Pi_{L1\cup L2}(E1\Join _{\theta}E2)=(\Pi_{L1}(E1))\Join _{\theta}(\Pi_{L2}(E2))$</p>
+</li>
+</ul>
+<h3 id="优化原则"><a href="#优化原则" class="headerlink" title="优化原则"></a>优化原则</h3><ul>
+<li>将选择操作和投影操作尽量往树叶上推（提早执行）</li>
+<li>join操作时，原则上先join小的表</li>
+</ul>
+<h3 id="cost-estimation"><a href="#cost-estimation" class="headerlink" title="cost estimation"></a>cost estimation</h3><p>* </p>
 
       
     </div>
@@ -1665,7 +1694,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-02 20:21:48" itemprop="dateModified" datetime="2021-06-02T20:21:48+08:00">2021-06-02</time>
+        <time title="Modified: 2021-06-05 11:20:43" itemprop="dateModified" datetime="2021-06-05T11:20:43+08:00">2021-06-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1956,7 +1985,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-03 23:47:02" itemprop="dateModified" datetime="2021-06-03T23:47:02+08:00">2021-06-03</time>
+        <time title="Modified: 2021-06-04 10:17:35" itemprop="dateModified" datetime="2021-06-04T10:17:35+08:00">2021-06-04</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2232,9 +2261,26 @@
 <li>greedy：对pi或pi/wi进行贪心——2-approximation</li>
 <li>dp：经典dp问题</li>
 </ul>
-<h3 id="K-center-problem"><a href="#K-center-problem" class="headerlink" title="K-center problem"></a>K-center problem</h3><ul>
+<h3 id="K-center-problem"><a href="#K-center-problem" class="headerlink" title="K-center problem"></a>K-center problem</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
 <li>输入n个sites：$s_1,…,s_n$，选择K个centers，此时每个site都有一个离它最近的center，记$s_i$对应的这个距离为$dist(s_i,C)$，目标是使得$r(C)=\max_i dist(s_i,C)$最小</li>
-<li></li>
+</ul>
+<h4 id="greedy"><a href="#greedy" class="headerlink" title="greedy"></a>greedy</h4><ul>
+<li><p>假设最优解为$r(C^<em>)$，那么任取一个site当作center时，该半径不会超过$2r(C^</em>)$</p>
+</li>
+<li><p>```pseudocode<br>Centers  Greedy-2r ( Sites S[ ], int n, int K, double r )<br>{   Sites  S’[ ] = S[ ]; /<em> S’ is the set of the remaining sites </em>/</p>
+<pre><code>Centers  C[ ] = empty;
+while ( S’[ ] != empty ) &#123;
+    Select any s from S’ and add it to C;
+    Delete all s’ from S’ that are at dist(s’, s) &lt;= 2r;
+&#125; /* end-while */
+if ( |C| &lt;= K ) return C;
+else ERROR(No set of K centers with covering radius at most r);
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 假设上述算法得到的center集合大于K，则对于所有不大于K的center集合，覆盖半径必然大于r</span><br><span class="line"></span><br><span class="line">  Proof: 假设某个不大于K的center集合的覆盖半径不大于r，则任取site作为center时，覆盖半径的上界不会超过2r，那么算法中的while循环不会执行超过K次，即得到的center集合不会超过K，矛盾</span><br><span class="line"></span><br><span class="line">* 上述算法中参数r的估计</span><br><span class="line"></span><br><span class="line">  先确定上下界，初始下界可设为0，上界为两个最远点距离的一半，然后二分</span><br><span class="line"></span><br><span class="line">* 2-approximation</span><br><span class="line"></span><br><span class="line">* a smarter solution：</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;pseudocode</span><br><span class="line">  Centers  Greedy-Kcenter ( Sites S[ ], int n, int K )</span><br><span class="line">  &#123;   Centers  C[ ] &#x3D; empty;</span><br><span class="line">      Select any s from S and add it to C;</span><br><span class="line">      while ( |C| &lt; K ) &#123;</span><br><span class="line">          Select s from S with maximum dist(s, C);</span><br><span class="line">          Add s it to C;</span><br><span class="line">      &#125; &#x2F;* end-while *&#x2F;</span><br><span class="line">      return C;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述算法仍然是2-approximation</p>
+</li>
+<li>Unless P=NP，不存在K- center的$\rho$- approximation算法使得$\rho&lt;2$</li>
 </ul>
 <h2 id="Local-search"><a href="#Local-search" class="headerlink" title="Local search"></a>Local search</h2><h3 id="neighbor-relaiton"><a href="#neighbor-relaiton" class="headerlink" title="neighbor relaiton"></a>neighbor relaiton</h3><ul>
 <li>$S\sim S’$: $S’$ is a neiboring solution of S($S’$可由S的微小改动得到)</li>
@@ -2264,7 +2310,7 @@
 </li>
 <li>输出：a configuration S: 给每个顶点assign一个state满足上述条件</li>
 </ul>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<h4 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h4><ul>
 <li><p>上述configuration不一定能找到，所以退而求其次，找到一个sufficiently good的解</p>
 </li>
 <li><p>edge e(u, v) is good：$w_es_us_v&lt;0$</p>
