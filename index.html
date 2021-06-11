@@ -258,7 +258,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-06 16:06:27" itemprop="dateModified" datetime="2021-06-06T16:06:27+08:00">2021-06-06</time>
+        <time title="Modified: 2021-06-06 16:58:36" itemprop="dateModified" datetime="2021-06-06T16:58:36+08:00">2021-06-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -474,7 +474,52 @@
 </ul>
 </li>
 </ul>
-<h2 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h2>
+<h2 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h2><h4 id="PageRank-The-“flow”-Model"><a href="#PageRank-The-“flow”-Model" class="headerlink" title="PageRank: The “flow” Model"></a>PageRank: The “flow” Model</h4><ul>
+<li>Idea: links as votes</li>
+<li><p>A vote from an important page is worth more</p>
+<ul>
+<li>Each link’s vote is proportional to the importance of its source page</li>
+<li>If page i with importance ri has di out-links, each links gets ri/di votes</li>
+<li>Page j’s own importance rj is the sum of the votes on its in-links</li>
+</ul>
+</li>
+<li><p>node j 的 rank rj = $\sum_{i\rightarrow j}r_i/d_i$，其中di是node i的out-degree</p>
+</li>
+</ul>
+<h4 id="Matrix-Formulation"><a href="#Matrix-Formulation" class="headerlink" title="Matrix Formulation"></a>Matrix Formulation</h4><ul>
+<li><p>Stochastic adjacency matrix M</p>
+<ul>
+<li>Page j have dj out-links</li>
+<li>if j -&gt; i, then Mij = 1/dj (M is a column stochastic matrix, column sum to 1)</li>
+</ul>
+</li>
+<li><p>Rank vector r: An entry per page</p>
+<ul>
+<li>ri is the importance score of page i</li>
+<li>$\sum_ir_i = 1$</li>
+</ul>
+</li>
+<li><p>上面的flow equation可以写成r = M*r</p>
+</li>
+</ul>
+<h4 id="connection-to-random-walk"><a href="#connection-to-random-walk" class="headerlink" title="connection to random walk"></a>connection to random walk</h4><ul>
+<li><p>假设有一个random web surfer</p>
+<ul>
+<li>在t时刻，surfer停留在page i</li>
+<li>在t+1时刻，surfer等可能走到其中一个out-link</li>
+<li>重复上述过程</li>
+</ul>
+</li>
+<li><p>令p(t)为一个概率向量，其中第i项是是这个surfer在时间t停留在页面i的概率(表示概率分布)</p>
+<p>p(t+1) = M*p(t)</p>
+<p>当不断迭代到p(t) = p(t+1)时，p(t)称为stationary distribution of a random walk</p>
+<p>由上面知r = M*r，所以r就是stationary distribution</p>
+</li>
+<li><p>从特征值的角度来看，r是M的特征向量(特征值为1)</p>
+<p>任取初始向量u，不断左乘M，最后收敛到r</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -1985,7 +2030,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-04 10:17:35" itemprop="dateModified" datetime="2021-06-04T10:17:35+08:00">2021-06-04</time>
+        <time title="Modified: 2021-06-11 12:11:31" itemprop="dateModified" datetime="2021-06-11T12:11:31+08:00">2021-06-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2115,6 +2160,7 @@
 <li>二项树用$B_k$表示，k代表二项树的高度，其中$B_k$有$2^k$个节点</li>
 <li>二项树$B_k$在第d层的节点数为$C_k^d$</li>
 <li>一个二项队列可用一个二进制串表示，merge操作实质上是在做二进制加法</li>
+<li><img src="/Users/yuanzhizhang/blog/source/_posts/ADS/FE6ECAD7-A31B-49AD-B6F5-5A4C0B02B983.png" alt="FE6ECAD7-A31B-49AD-B6F5-5A4C0B02B983" style="zoom:50%;float: left"></li>
 </ul>
 <h3 id="operations"><a href="#operations" class="headerlink" title="operations"></a>operations</h3><h4 id="findmin"><a href="#findmin" class="headerlink" title="findmin"></a>findmin</h4><ul>
 <li>最小节点必在某一棵二项树的根节点</li>
