@@ -2030,7 +2030,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-11 12:13:57" itemprop="dateModified" datetime="2021-06-11T12:13:57+08:00">2021-06-11</time>
+        <time title="Modified: 2021-06-11 16:00:47" itemprop="dateModified" datetime="2021-06-11T16:00:47+08:00">2021-06-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2403,7 +2403,160 @@ else ERROR(No set of K centers with covering radius at most r);
 <li>上述算法结束循环时，能够保证$(2+\epsilon)w(A,B)&gt;=w(A^<em>,B^</em>)$</li>
 <li>上述算法结束循环时，最多执行$O(\frac{n}{\epsilon} logW)$次翻转</li>
 </ul>
-<h2 id="parallel-algorithm"><a href="#parallel-algorithm" class="headerlink" title="parallel algorithm"></a>parallel algorithm</h2>
+<h2 id="parallel-algorithm"><a href="#parallel-algorithm" class="headerlink" title="parallel algorithm"></a>parallel algorithm</h2><h3 id="2-models"><a href="#2-models" class="headerlink" title="2 models"></a>2 models</h3><h4 id="Parallel-Random-Access-Machine-PRAM"><a href="#Parallel-Random-Access-Machine-PRAM" class="headerlink" title="Parallel Random Access Machine(PRAM)"></a>Parallel Random Access Machine(PRAM)</h4><ul>
+<li>多处理器，共享内存</li>
+<li>内存冲突解决<ul>
+<li>exclusive-read exclusive-write(EREW)：最多允许一个处理器在内存进行读写</li>
+<li>concurrent-read exclusive-write(CREW)：可以一起读但不能一起写</li>
+<li>concurrent-read concurrent-write(CRCW)：都可以一起<ul>
+<li>arbitrary rule</li>
+<li>Priority rule (P with the smallest number)</li>
+<li>common rule (if all the processors are trying to write the same value)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Work-Depth-WD"><a href="#Work-Depth-WD" class="headerlink" title="Work-Depth(WD)"></a>Work-Depth(WD)</h4><h3 id="求和问题"><a href="#求和问题" class="headerlink" title="求和问题"></a>求和问题</h3><ul>
+<li>输入A(1),…,A(n)</li>
+<li>求和</li>
+</ul>
+<h4 id="PRAM-model"><a href="#PRAM-model" class="headerlink" title="PRAM model"></a>PRAM model</h4><ul>
+<li>构建二维数组B，其中B(0, i) = A(i), B(h, i) = B(h-1, 2i-1) + B(h-1, 2i)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for Pi, 1 &lt;&#x3D; i &lt;&#x3D; n  pardo</span><br><span class="line">  B(0, i) :&#x3D; A( i )</span><br><span class="line">  for h &#x3D; 1 to log n do</span><br><span class="line">    if i &lt;&#x3D; n&#x2F;2^h</span><br><span class="line">      B(h, i) :&#x3D; B(h-1, 2i-1) + B(h-1, 2i)</span><br><span class="line">    else stay idle</span><br><span class="line">  for i &#x3D; 1: output B(log n, 1); for i &gt; 1: stay idle</span><br></pre></td></tr></table></figure>
+<ul>
+<li>T(n) = logn + 2</li>
+<li>每次所有处理器都要分配任务（计算B或stay idle），效率较低</li>
+</ul>
+<h4 id="WD-Presentation"><a href="#WD-Presentation" class="headerlink" title="WD Presentation"></a>WD Presentation</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for Pi ,  1 &lt;&#x3D; i &lt;&#x3D; n  pardo</span><br><span class="line">   B(0, i) :&#x3D; A( i )</span><br><span class="line">for h &#x3D; 1 to log n </span><br><span class="line">    for Pi, 1 &lt;&#x3D; i &lt;&#x3D; n&#x2F;2^h  pardo</span><br><span class="line">        B(h, i) :&#x3D; B(h-1, 2i-1) + B(h-1, 2i)</span><br><span class="line">for i &#x3D; 1 pardo</span><br><span class="line">   output  B(log n, 1)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每次只给那些需要实际工作的处理器分配任务，剩下的不管</li>
+</ul>
+<h3 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h3><h4 id="work-load-W-n"><a href="#work-load-W-n" class="headerlink" title="work load: W(n)"></a>work load: W(n)</h4><ul>
+<li>总操作数</li>
+</ul>
+<h4 id="worst-case-running-time-T-n"><a href="#worst-case-running-time-T-n" class="headerlink" title="worst-case running time: T(n)"></a>worst-case running time: T(n)</h4><ul>
+<li>最坏运行时间</li>
+</ul>
+<h4 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h4><ul>
+<li><p>W<em>(</em>n) operations and <em>T</em>(<em>n</em>) time</p>
+</li>
+<li><p>P<em>(</em>n) = <em>W</em>(<em>n</em>)/<em>T</em>(<em>n</em>) processors and <em>T</em>(<em>n</em>) time (on a PRAM)</p>
+</li>
+<li><p>W(n)/p time using any number of <em>p</em> ≤ <em>W</em>(<em>n</em>)/<em>T</em>(<em>n</em>) processors (on a PRAM)</p>
+</li>
+<li><p>W(n)/p + <em>T</em>(<em>n</em>) time using any number of <em>p</em> processors (on a PRAM)</p>
+</li>
+</ul>
+<h4 id="WD-presentation-Sufficiency-Theorem"><a href="#WD-presentation-Sufficiency-Theorem" class="headerlink" title="WD-presentation Sufficiency Theorem"></a><strong>WD-presentation Sufficiency</strong> <strong>Theorem</strong></h4><ul>
+<li>An algorithm in the WD mode can be implemented by <em>any</em> <em>P</em>(<em>n</em>) processors within O(<em>W</em>(<em>n</em>)/<em>P</em>(<em>n</em>) + <em>T</em>(<em>n</em>)) time, using the same concurrent-write convention as in the WD presentation.</li>
+</ul>
+<h3 id="prefix-sum"><a href="#prefix-sum" class="headerlink" title="prefix-sum"></a>prefix-sum</h3><ul>
+<li><p>输入A(1),…,A(n)</p>
+</li>
+<li><p>输出：所有前缀和</p>
+<p><img src="/Users/yuanzhizhang/blog/source/_posts/ADS/966C420F-9DB1-4500-8D51-87DA57F3E4A4.png" alt="966C420F-9DB1-4500-8D51-87DA57F3E4A4" style="zoom:50%;float: left"></p>
+</li>
+<li><p>构建二叉树，首先和求和问题一样，求出二维数组B</p>
+</li>
+<li><p>再根据B求出二维数组C</p>
+</li>
+<li><p>C(h, i)=从该节点一直向右走，对应叶节点的前缀和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if i &#x3D;&#x3D; 1:</span><br><span class="line">	C(h, i) &#x3D; B(h, i)</span><br><span class="line">if i is even:</span><br><span class="line">	C(h, i) &#x3D; C(h+1, i&#x2F;2)</span><br><span class="line">if i is odd and i &gt; 1:</span><br><span class="line">	C(h, i) &#x3D; C(h+1, (i-1)&#x2F;2) + B(h, i)</span><br></pre></td></tr></table></figure>
+<p>数组B是自底向上计算的，数组C是自顶向下计算的，而且每一层是同时计算出来的</p>
+</li>
+<li><p>```pseudocode<br>for Pi , 1 &lt;= i &lt;= n pardo<br>  B(0, i) := A(i)<br>for h = 1 to log n<br>  for i , 1 &lt;= i &lt;= n/2^h pardo</p>
+<pre><code>B(h, i) := B(h - 1, 2i - 1) + B(h - 1, 2i)
+</code></pre><p>for h = log n to 0<br>  for i even, 1 &lt;= i &lt;= n/2^h pardo</p>
+<pre><code>C(h, i) := C(h + 1, i/2)
+</code></pre><p>  for i = 1 pardo</p>
+<pre><code>C(h, 1) := B(h, 1)
+</code></pre><p>  for i odd, 3 &lt;= i &lt;= n/2^h pardo</p>
+<pre><code>C(h, i) := C(h + 1, (i - 1)/2) + B(h, i)
+</code></pre><p>for Pi , 1 &lt;= i &lt;= n pardo<br>  Output C(0, i)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* T(n) &#x3D; O(log n)</span><br><span class="line"></span><br><span class="line">* W(n) &#x3D; O(n)</span><br><span class="line"></span><br><span class="line">### Merging</span><br><span class="line"></span><br><span class="line">* 输入：两个非降序数组A(1),...,A(n), B(1),...,B(m)</span><br><span class="line">* 输出：合并后的非降序数组C</span><br><span class="line">* 假设：</span><br><span class="line">  * A，B中的元素俩俩不同</span><br><span class="line">  * m&#x3D;n</span><br><span class="line">  * logn和n&#x2F;logn都是整数</span><br><span class="line"></span><br><span class="line">#### 问题转化Merging-&gt;Ranking</span><br><span class="line"></span><br><span class="line">* Merging-&gt;Ranking</span><br><span class="line"></span><br><span class="line">  假设此时对B数组Ranking：则有</span><br><span class="line"></span><br><span class="line">  * B(j)在A(i)和A(i+1)之间时，RANK(j, A) &#x3D; i</span><br><span class="line">  * B(j)比所有A小，RANK(j, A) &#x3D; 0</span><br><span class="line">  * B(j)比所有A大，RANK(j, A) &#x3D; n</span><br><span class="line"></span><br><span class="line">* 假设此时已经对A和B完成了Ranking，那么有</span><br><span class="line"></span><br><span class="line">  * C(i + RANK(i, A)) &#x3D; B(i)</span><br><span class="line">  * C(i + RANK(i, B)) &#x3D; A(i)</span><br><span class="line"></span><br><span class="line">  所以只要解决Ranking问题，Merging问题在常数时间内即可解决</span><br><span class="line"></span><br><span class="line">#### Ranking</span><br><span class="line"></span><br><span class="line">* 二分法：</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;pseudocode</span><br><span class="line">  for Pi, 1 &lt;&#x3D; i &lt;&#x3D; n pardo</span><br><span class="line">  	RANK(i, B) &#x3D; binary(A(i), B)</span><br><span class="line">  	RANK(i, A) &#x3D; binary(B(i), A)</span><br></pre></td></tr></table></figure>
+<p>T(n) = O(logn)</p>
+<p>W(n) = O(nlogn)</p>
+</li>
+<li><p>线性法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i &#x3D; j &#x3D; 0; </span><br><span class="line">while ( i &lt;&#x3D; n || j &lt;&#x3D; m ) &#123;</span><br><span class="line">    if ( A(i+1) &lt; B(j+1) )</span><br><span class="line">        RANK(++i, B) &#x3D; j;</span><br><span class="line">    else RANK(++j, A) &#x3D; i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>T(n) = O(n+m)</p>
+<p>W(n) = O(n+m)</p>
+</li>
+</ul>
+<h4 id="parallel-ranking"><a href="#parallel-ranking" class="headerlink" title="parallel ranking"></a>parallel ranking</h4><ul>
+<li><p>假设m=n，A(n+1)和B(n+1)是两个无限大的数</p>
+</li>
+<li><p>partitioning：p = n/logn</p>
+<ul>
+<li>A_select(i) = A(1+(i-1)logn) for 1&lt;=i&lt;=p</li>
+<li>B_select(i) = B(1+(i-1)logn) for 1&lt;=i&lt;=p</li>
+</ul>
+<p>T(n) = O(logn)</p>
+<p>W(n) = O(plogn) = O(n)</p>
+</li>
+<li><p>Actual ranking</p>
+<p>找到前一步选取的元素在对面数组的位置，此时划分成了若干个子问题</p>
+<p><img src="/Users/yuanzhizhang/blog/source/_posts/ADS/E63B80A0-75A4-4574-9F7F-435933BFA4A9.png" alt="E63B80A0-75A4-4574-9F7F-435933BFA4A9" style="zoom:50%;float: left"></p>
+<p>最多划分为2p个O(logn)规模的问题</p>
+<p>T(n) = O(logn)</p>
+<p>W(n) = O(plogn) = O(n)</p>
+</li>
+<li><p>T(n) = O(logn)</p>
+</li>
+<li>W(n) = O(n)</li>
+</ul>
+<h3 id="寻找最大元"><a href="#寻找最大元" class="headerlink" title="寻找最大元"></a>寻找最大元</h3><ul>
+<li><p>求和问题中，直接将+运算改为取较大者运算即可</p>
+<p>此时T(n) = O(logn), W(n) = O(n)</p>
+</li>
+<li><p>一次比较所有的pair</p>
+<p>此时T(n) = O(1), W(n) = O(n^2)</p>
+<p>此时内存冲突的解决办法是CRCW中的common rule</p>
+</li>
+</ul>
+<h4 id="doubly-logarithmic-paradigm"><a href="#doubly-logarithmic-paradigm" class="headerlink" title="doubly-logarithmic paradigm"></a>doubly-logarithmic paradigm</h4><ul>
+<li><p>假设h = log log n是整数</p>
+</li>
+<li><p>partition by $\sqrt n$</p>
+<p>A1 = A(1) ,…, A($\sqrt n$)</p>
+<p>A2 = A($\sqrt n + 1$), … ,A(2$\sqrt n$)</p>
+<p>……</p>
+<p>A$_\sqrt n$ = A(n-$\sqrt n$+1), …, A(n)</p>
+<p>对于每个Ai，线性查找最大值Mi</p>
+<p>对于$\sqrt n$个局部最大值Mi，运用一次比较找出其中的最大值</p>
+<p>综上可得出: </p>
+<p>​    T(n) = O(log log n)</p>
+<p>​    W(n) = O(nlog log n)</p>
+</li>
+<li><p>Partition by h = loglogn</p>
+<p>A1 = A(1),…, A(h)</p>
+<p>A2 = A(h+1), …, A(2h)</p>
+<p>……</p>
+<p>An/h = A(n-h+1), …, A(n)</p>
+<p>T(n) = O(h+loglog(n/h)) = O(loglogn)</p>
+<p>W(n) = O(h*(n/h)+(n/h)*loglog(n/h)) = O(n)</p>
+</li>
+</ul>
+<h4 id="random-sampling"><a href="#random-sampling" class="headerlink" title="random sampling"></a>random sampling</h4><ul>
+<li><p>A中有n个元素</p>
+</li>
+<li><p>在A中随机选出$n^{7/8}$个元素，放入B中</p>
+</li>
+<li><p>将B分块，每块$n^{1/8}$个元素，则一共有$n^{3/4}$块</p>
+</li>
+<li><p>对B中的每一块，采取一次比较策略，此时T = O(1), W = O($(n^{1/8})^2$)=O($n^{1/4}$)</p>
+</li>
+<li><p>上述过程：T(n) = O(1)，W(n) = O($n^{1/4}*n^{3/4}$) = O(n)，此时得到了$n^{3/4}$个局部最大值，将其放入B中</p>
+</li>
+<li><p>将B分块，每块$n^{1/4}$个元素，则一共有$n^{1/2}$个块</p>
+</li>
+<li><p>继续上述过程，采取一次比较策略</p>
+<p> The algorithm finds the maximum among <em>n</em> elements. With very high probability it runs in O(1) time and O(<em>n</em>) work. The probability of <em>not finishing</em> within this time and work complexity is O(1/<em>n^c</em>) for some positive constant <em>c</em></p>
+</li>
+</ul>
+
       
     </div>
 
