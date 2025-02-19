@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Chivalry"
+title                    : "Homepage of the chivalrous knight"
 title_separator          : "-"
 name                     : &name "Zhizhang Yuan"
 description              : &description "personal description"
