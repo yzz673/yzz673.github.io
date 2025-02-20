@@ -1,15 +1,35 @@
 ---
 permalink: /
-title: "Comming soon"
+# title: "Comming soon"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-{% for post in site.publications reversed %}
+## {% icon fa-user %} About Me
+
+I'm a second year graduate student from [College of Computer Science and Technology](http://www.cs.zju.edu.cn/), [Zhejiang University](https://www.zju.edu.cn/), fortunatly advised by [Prof. Yang](http://yangy.org/). 
+I obtained my bachelor’s degree in Computer Science and Technology from Zhejiang University.
+My research interests primarily focus on AI for science, time series analysis, large-scale pretraining, and various cutting-edge AI technologies. 
+My study mainly focuses on utilizing AI techniques to solve problems in fields such as healthcare and neuroscience.
+
+
+## <i class="fas fa-book"></i> Publications
+
+<!-- {% for post in site.publications reversed %}
   {% include archive-single.html %}
-{% endfor %}
+{% endfor %} -->
+
+## <i class="fa-solid fa-award"></i> Honors & Awards
+
+## <i class="fa-solid fa-chalkboard"></i> Teaching
+
+I'm the teaching assistant of [Prof. Yang](http://yangy.org/):
+
+* Advanced Data Structure and Algorithm Analysis, Fall 2024.
+* Advanced Data Structure and Algorithm Analysis, Spring 2024.
+* Advanced Data Structure and Algorithm Analysis, Spring 2023.
 
 
 <!-- 
