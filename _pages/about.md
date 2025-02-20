@@ -7,8 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-## {% icon fa-user %} About Me
-
 I'm a second-year graduate student from [College of Computer Science and Technology](http://www.cs.zju.edu.cn/), [Zhejiang University](https://www.zju.edu.cn/), fortunatly advised by [Prof. Yang](http://yangy.org/). 
 I obtained my bachelor’s degree in Computer Science and Technology from Zhejiang University.
 My research interests primarily focus on AI for science, time series analysis, large-scale pretraining, and various cutting-edge AI technologies. 
