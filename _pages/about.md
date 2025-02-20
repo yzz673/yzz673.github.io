@@ -15,7 +15,7 @@ My research interests primarily focus on AI for science, time series analysis, l
 My study mainly focuses on utilizing AI techniques to solve problems in fields such as healthcare and neuroscience.
 
 
-## <i class="fas fa-book"></i> Publications
+## <i class="fa-solid fa-book"></i> Publications
 
 <!-- {% for post in site.publications reversed %}
   {% include archive-single.html %}
