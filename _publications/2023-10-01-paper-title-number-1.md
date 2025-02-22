@@ -6,7 +6,7 @@ category: manuscripts
 permalink: /publication/2023-10-01-paper-title-number-1
 # excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2023-10-01
-venue: 'the Thirty-Seventh Annual Conference on Neural Information Processing Systems'
+venue: 'In Proceedings of the Thirty-Seventh Annual Conference on Neural Information Processing Systems'
 authors: '**Zhizhang Yuan**\*, Daoze Zhang\*, Yang Yang, Junru Chen, Yafeng Li (\*: equal contribution)'
 link: 'https://papers.nips.cc/paper_files/paper/2023/hash/dbeb7e621d4a554069a6a775da0f7273-Abstract-Conference.html'
 paperurl: 'http://academicpages.github.io/files/paper1.pdf'
