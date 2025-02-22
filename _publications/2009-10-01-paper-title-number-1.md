@@ -1,6 +1,6 @@
 ---
 title: "Paper Title Number 1"
-teaser: "images/image-alignment-580x300.jpg"
+teaser: "/images/image-alignment-580x300.jpg"
 collection: publications
 category: manuscripts
 permalink: /publication/2009-10-01-paper-title-number-1
