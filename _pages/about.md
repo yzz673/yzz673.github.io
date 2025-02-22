@@ -16,7 +16,7 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
 ## <i class="fa-solid fa-book"></i> Publications
 
 {% for post in site.publications reversed %}
-  {% include archive-single.html %}
+  {% include archive-single.html type="grid" %}
 {% endfor %}
 
 ## <i class="fa-solid fa-award"></i> Honors & Awards
