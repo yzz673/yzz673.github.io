@@ -15,16 +15,23 @@
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
 
-    <h2 class="archive__item-title" itemprop="headline" style="font-size: 15px;">
+    <h2 class="archive__item-title" itemprop="headline" style="font-size: 18px;">
       <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
     </h2>
 
+    <p>{{ post.authors }}</p>
+    
+    <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
 
-    {% if post.read_time %}
+    <div class="archive__item-teaser">
+      <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: 80%; height: auto;">
+    </div>
+
+    <p><a href="{{ post.paperurl }}">Download Paper</a></p>
+
+    <!-- {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-
-    <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
 
     {% if post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
@@ -44,11 +51,7 @@
       <p><a href=" {{ post.paperurl }} ">Download Paper</a></p>
     {% elsif post.slidesurl %}
       <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
-    {% endif %}
-
-    <div class="archive__item-teaser">
-      <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: 50%; height: auto;">
-    </div>
+    {% endif %} -->
 
   </article>
 </div>
