@@ -15,15 +15,15 @@
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
 
-    <h2 class="archive__item-title" itemprop="headline" style="font-size: 18px; line-height: 1.6;">
+    <h2 class="archive__item-title" itemprop="headline" style="font-size: 20px; line-height: 1.2;">
       <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
     </h2>
-    <p style="line-height: 1.6;">{{ post.authors | markdownify }}</p>
-    <p style="line-height: 1.6;">Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+    <p style="line-height: 1.2;">{{ post.authors | markdownify }}</p>
+    <p style="line-height: 1.2;">Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
     <div class="archive__item-teaser">
       <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: 80%; height: auto;">
     </div>
-    <p style="line-height: 1.6;"><a href="{{ post.paperurl }}">Download Paper</a></p>
+    <p style="line-height: 1.2;"><a href="{{ post.paperurl }}">Download Paper</a></p>
 
     <!-- {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>

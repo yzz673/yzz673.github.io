@@ -17,25 +17,6 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
 
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
-  <!-- <div class="publication-item">
-      <div class="publication-image">
-        <img src="{{ post.teaser }}" alt="Publication Image">
-      </div>
-      <div class="publication-details">
-        <h2 class="publication-title">
-          <a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
-        </h2>
-        <p class="publication-authors">
-          <strong>Authors:</strong> {{ post.authors }}
-        </p>
-        <p class="publication-date">
-          <strong>Published on:</strong> {{ post.date | date: "%B %d, %Y" }}
-        </p>
-        <p class="publication-venue">
-          <strong>Published in:</strong> {{ post.venue }}
-        </p>
-      </div>
-  </div> -->
 {% endfor %}
 
 ## <i class="fa-solid fa-award"></i> Honors & Awards
