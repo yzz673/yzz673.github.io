@@ -19,7 +19,7 @@
       <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
     </h2>
     <p>{{ post.authors | markdownify }}</p>
-    <p>{{ post.venue | markdownify }}, {{ post.date | default: "1900-01-01" | date: "%Y" }} | <a href="{{ post.paperurl }}">PDF</a></p>
+    <p>{{ post.venue | markdownify | strip_html }}, {{ post.date | default: "1900-01-01" | date: "%Y" }} | <a href="{{ post.paperurl }}">PDF</a></p>
     <div class="archive__item-teaser">
       <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: 90%; height: auto;">
     </div>
