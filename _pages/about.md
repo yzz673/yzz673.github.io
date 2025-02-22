@@ -20,7 +20,7 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
   <div class="publication-item">
       <div class="publication-image">
         <!-- 展示 publication 的封面图片，假设图片路径保存在 `post.image` 字段中 -->
-        <img src="{{ post.image }}" alt="Publication Image">
+        <img src="{{ post.teaser }}" alt="Publication Image">
       </div>
       <div class="publication-details">
         <!-- 标题链接 -->
