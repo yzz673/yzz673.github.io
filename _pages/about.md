@@ -16,7 +16,31 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
 ## <i class="fa-solid fa-book"></i> Publications
 
 {% for post in site.publications reversed %}
-  {% include archive-single.html type="grid" %}
+  <!-- {% include archive-single.html type="grid" %} -->
+  <div class="publication-item">
+      <div class="publication-image">
+        <!-- 展示 publication 的封面图片，假设图片路径保存在 `post.image` 字段中 -->
+        <img src="{{ post.image }}" alt="Publication Image">
+      </div>
+      <div class="publication-details">
+        <!-- 标题链接 -->
+        <h2 class="publication-title">
+          <a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+        </h2>
+        <!-- 作者 -->
+        <p class="publication-authors">
+          <strong>Authors:</strong> {{ post.authors }}
+        </p>
+        <!-- 出版日期 -->
+        <p class="publication-date">
+          <strong>Published on:</strong> {{ post.date | date: "%B %d, %Y" }}
+        </p>
+        <!-- 期刊或会议 -->
+        <p class="publication-venue">
+          <strong>Published in:</strong> {{ post.venue }}
+        </p>
+      </div>
+    </div>
 {% endfor %}
 
 ## <i class="fa-solid fa-award"></i> Honors & Awards
