@@ -10,5 +10,5 @@ venue: '*Arxiv Preprint* (under review at *[Nature Neuroscience](https://www.nat
 authors: '**Zhizhang Yuan**, Fanqi Shen, Meng Li, Yuguo Yu, Fei Wu, Chenhao Tan, [Yang Yang](http://yangy.org/)'
 link: 'https://arxiv.org/abs/2402.10251'
 paperurl: 'https://arxiv.org/pdf/2402.10251'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+wdith: 80
 ---

@@ -10,5 +10,5 @@ venue: '*In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery
 authors: 'Daoze Zhang, **Zhizhang Yuan**, Junru Chen, Kerui Chen, [Yang Yang](http://yangy.org/)'
 link: 'https://dl.acm.org/doi/10.1145/3637528.3671953'
 paperurl: 'https://arxiv.org/pdf/2409.00122'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+wdith: 90
 ---
