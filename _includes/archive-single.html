@@ -21,7 +21,7 @@
     <p>{{ post.authors | markdownify }}</p>
     <p><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} | <a href="{{ post.paperurl }}">PDF</a></p>
     <div class="archive__item-teaser">
-      <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: {{ post.width }}%; height: auto; margin: 0 auto;">
+      <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="" style="width: 80%; height: auto; margin: 0 auto;">
     </div>
     <hr style="border: none; border-top: 2px solid #d3d3d3; width: 100%; margin: 20px 0;">
 
