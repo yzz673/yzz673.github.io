@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a second-year master student from [College of Computer Science and Technology](http://www.cs.zju.edu.cn/), [Zhejiang University](https://www.zju.edu.cn/), fortunately advised by [Prof. Yang](http://yangy.org/). I also work closely with [Prof. Tan](https://chenhaot.com/) and [Prof. Li](https://people.ucas.ac.cn/~0073658).
+I'm a second-year master student from [College of Computer Science and Technology](http://www.cs.zju.edu.cn/), [Zhejiang University](https://www.zju.edu.cn/), fortunately advised by Professor [Yang Yang](http://yangy.org/) at Zhejiang University. I also work closely with Professor [Chenhao Tan](https://chenhaot.com/) at [the University of Chicago](https://www.uchicago.edu/) and Professor [Meng Li](https://people.ucas.ac.cn/~0073658) at [Chinese Academy of Sciences](https://english.cas.cn/).
 I obtained my bachelor’s degree in Computer Science and Technology from Zhejiang University.
 My research interests are AI for science, large-scale pretraining, time series analysis, and various cutting-edge AI technologies. 
 My study mainly focuses on utilizing AI techniques to solve problems in fields such as healthcare and neuroscience.
