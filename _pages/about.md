@@ -26,9 +26,9 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
 
 ## <i class="fa-solid fa-chalkboard"></i> Teaching
 
-* Advanced Data Structure and Algorithm Analysis, Fall 2024.
-* Advanced Data Structure and Algorithm Analysis, Spring 2024.
-* Advanced Data Structure and Algorithm Analysis, Spring 2023.
+* Advanced Data Structure and Algorithm Analysis, Fall 2024, Teaching Assistant.
+* Advanced Data Structure and Algorithm Analysis, Spring 2024, Teaching Assistant.
+* Advanced Data Structure and Algorithm Analysis, Spring 2023, Teaching Assistant.
 
 ## <i class="fa-solid fa-school"></i> Education
 
