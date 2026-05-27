@@ -9,7 +9,7 @@ redirect_from:
 
 I'm a Ph.D. student from [College of Computer Science and Technology](http://www.cs.zju.edu.cn/), [Zhejiang University](https://www.zju.edu.cn/), fortunately advised by Professor [Yang Yang](http://yangy.org/) at Zhejiang University. I also work closely with Professor [Chenhao Tan](https://chenhaot.com/) at [the University of Chicago](https://www.uchicago.edu/) and Professor [Meng Li](https://people.ucas.ac.cn/~0073658) at [Chinese Academy of Sciences](https://english.cas.cn/).
 I obtained my bachelor’s degree in Computer Science and Technology from Zhejiang University.
-My research interests are AI for science, large-scale pretraining, time series analysis, and various cutting-edge AI technologies. 
+My research interests are AI for science, agentic systems for scientific discovery, large-scale pretraining, time series analysis, and other cutting-edge AI technologies.
 My study mainly focuses on utilizing AI techniques to solve problems in fields such as healthcare and neuroscience.
 
 
@@ -32,7 +32,7 @@ My study mainly focuses on utilizing AI techniques to solve problems in fields s
 
 ## <i class="fa-solid fa-school"></i> Education
 
-* **Zhejiang University**, Ph.D. in Computer Science and Technology (transferred from M.S.), 2023.09 - Present
+* **Zhejiang University**, Ph.D. in Computer Science and Technology, 2023.09 - Present
 * **Zhejiang University**, Bachelor in Computer Science and Technology, 2019.09 - 2023.06
 
 <!-- 
